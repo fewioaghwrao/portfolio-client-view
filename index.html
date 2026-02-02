@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ポートフォリオ</title>
+ <meta name="description" content="N.O.のポートフォリオ（業務説明会向け）。C#（WPF/WinForms）実務を中心に、自己研鑽としてJava/Spring Boot、ASP.NET Coreの成果物も掲載。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="robots" content="noindex,nofollow,noarchive,noimageindex" />
+  <meta name="googlebot" content="noindex,nofollow,noarchive,noimageindex" />
+  <meta name="referrer" content="no-referrer" />
+
+  <link rel="icon" href="icon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="N.O. Portfolio ホーム">
+        <img src="images/logox.svg" alt="N.O. Portfolio" class="brand__logo-img" width="160" height="48" />
+      </a>
+      <nav class="nav" aria-label="グローバルナビゲーション">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="navList">MENU</button>
+        <ul id="navList" class="nav__list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Skills</a></li>
+          <li><a href="#works">Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<section id="about">
+  <div class="container">
+    <header class="section__head reveal">
+      <h2 class="section__title">About</h2>
+    </header>
+
+    <div class="hero__inner">
+      <div class="hero__copy">
+<h2 class="hero__title reveal">
+  N.O.<br class="only-sp">
+<span class="hero__subtitle">C# 業務アプリ（WPF/WinForms）｜ASP.NET Core/Spring は自己研鑽</span>
+
+</h2>
+<div class="hero__lead reveal reveal-delay-1">
+  <p>
+    業務アプリ開発を主軸とするソフトウェアエンジニアです。
+    C#（WPF/WinForms）によるWindows業務アプリ開発を中心に、要件整理〜設計〜実装〜テスト〜運用・保守まで一貫して担当してきました。
+  </p>
+
+  <p>
+    直近は、PLC連携・TCP通信を含む社内向け業務アプリにおいて、ログ／例外処理／再送など運用を意識した実装と、障害時の原因切り分け・改修にも対応してきました。
+  </p>
+
+  <p>
+    併せて自己研鑽として、Java（Spring Boot）やC#（ASP.NET Core）による業務想定の個人開発に取り組み、設計〜実装〜テスト（CI）まで一通り経験しています。
+  </p>
+
+  <p>
+    本ポートフォリオでは、実務で培った設計力（責務分離・状態管理・例外設計）を、業務想定の成果物で再現することを重視しています。
+  </p>
+
+  <ul class="hero__summary">
+    <li><strong>得意領域：</strong>C# 業務アプリ（要件整理〜運用まで）</li>
+    <li><strong>強み：</strong>外部機器/外部システム連携を前提にした堅牢な実装（ログ・例外・運用設計）</li>
+    <li><strong>自己研鑽：</strong>Spring Boot / ASP.NET Core でWeb領域を拡張</li>
+  </ul>
+</div>
+
+
+        <div class="hero__actions reveal reveal-delay-2">
+          <a class="btn btn--ghost" href="#works" aria-label="制作実績へ">Works</a>
+        </div>
+      </div>
+
+      <figure class="hero__image reveal reveal-delay-3">
+        <img src="images/hero1.png" alt="N.O. ポートフォリオ プロフィール画像">
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+  <section id="services" class="section section--alt">
+    <div class="container">
+      <header class="section__head reveal">
+<h2 class="section__title">Skills / Technical Summary</h2>
+      </header>
+ <div class="grid cards">
+<article class="card reveal">
+  <p class="card__role">Backend / API設計</p>
+  <h3 class="card__title">C#（Web / ASP.NET Core）</h3>
+  <p class="card__text">
+    業務アプリを想定した請求書・入金管理ダッシュボードを個人開発。
+    管理者/会員の権限分離、一覧・検索・更新を中心に Web バックエンド設計〜実装を行っています。
+  </p>
+
+  <ul class="card__list">
+    <li><strong>Backend：</strong>ASP.NET Core（.NET 8 / Minimal API）</li>
+    <li><strong>設計：</strong>DTO設計 / 認証・認可（JWT）/ 例外処理</li>
+    <li><strong>業務：</strong>請求・入金・一部入金・売上集計</li>
+    <li><strong>周辺：</strong>EF Core / CSV出力 / ログ（Serilog）</li>
+  </ul>
+<p class="card__links">
+  <a href="invoice.html">Detail</a>
+  <span class="sep">/</span>
+  <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
+     target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
+  <span class="sep">/</span>
+  <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
+     target="_blank" rel="noopener noreferrer nofollow">Demo</a>
+</p>
+<p class="card__note">※Demoは閲覧可能な環境の方のみ（不可の場合はDetail/GitHubをご参照ください）</p>
+</article>
+
+  <!-- Java Spring Boot -->
+  <article class="card reveal reveal-delay-1">
+    <p class="card__role">Full-stack（個人開発）</p>
+    <h3 class="card__title">Java（Spring Boot）</h3>
+    <p class="card__text">
+      スタジオ時間貸し予約アプリを個人開発（業務アプリを想定したロール/決済/通知を含む）。
+    </p>
+
+    <ul class="card__list">
+      <li><strong>担当：</strong>要件整理 / DB設計 / API・画面実装 / デプロイ</li>
+      <li><strong>技術：</strong>Spring Boot 3 / MVC / Security / Data JPA</li>
+      <li><strong>外部連携：</strong>Stripe、Mailgun（メール）</li>
+      <li><strong>品質：</strong>JUnit5 / Mockito / MockMvc（Web層テスト）</li>
+    </ul>
+
+    <p class="card__links">
+      <a href="studiobook.html">Detail</a>
+      <span class="sep">/</span>
+      <a href="https://github.com/fewioaghwrao/studio_book" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
+      <span class="sep">/</span>
+      <a href="https://studio-book-naoki2025-d9e2f98301ba.herokuapp.com/" target="_blank" rel="noopener noreferrer nofollow">Demo</a>
+    </p>
+    <p class="card__note">※Demoは閲覧可能な環境の方のみ（不可の場合はDetail/GitHubをご参照ください）</p>
+  </article>
+
+  <article class="card reveal reveal-delay-3">
+    <p class="card__role">Desktop業務アプリ</p>
+    <h3 class="card__title">C#（Desktop / WPF・WinForms）</h3>
+  <p class="card__text">
+    社内向け業務アプリを中心に、7年以上の C# 実務経験。
+    要件整理から設計・実装・運用まで一貫して担当してきました。
+  </p>
+
+  <ul class="card__list">
+    <li><strong>実務：</strong>WPF / WinForms</li>
+    <li><strong>連携：</strong>PLC・ロボット・TCP/IP 通信</li>
+    <li><strong>帳票：</strong>Excel / PDF 出力（ClosedXML / QuestPDF）</li>
+    <li><strong>役割：</strong>要件整理 / 保守 / 改修 / 運用</li>
+  </ul>
+
+  <p class="card__links">
+    <a href="CCharp/index.html">Detail</a>
+    <span class="sep">/</span>
+    <a href="https://github.com/fewioaghwrao/WpfReportLauncher"
+       target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
+  </p>
+</article>
+
+</div>
+    </div>
+  </section>
+
+  <section id="works" class="section">
+    <div class="container">
+      <header class="section__head reveal">
+        <h2 class="section__title">Works</h2>
+      </header>
+      <div class="grid works">
+<!-- ① Invoice -->
+<a class="work reveal reveal-delay-1" href="invoice.html" aria-label="請求書・入金ステータスダッシュボード 詳細">
+  <img src="images/invoice-top.png" alt="請求書・入金ステータスダッシュボード（Lite）">
+  <div class="work__meta">
+    <span class="work__tag">請求書・入金ステータスダッシュボード</span>
+    <h3 class="work__title">C#（ASP.NET Core / Next.js）</h3>
+  </div>
+</a>
+
+<!-- ② Studio Book -->
+<a class="work reveal reveal-delay-2" href="studiobook.html" aria-label="スタジオ時間貸し予約アプリ 詳細">
+  <img src="images/studio-book-top.png" alt="スタジオ時間貸し予約アプリ">
+  <div class="work__meta">
+    <span class="work__tag">スタジオ時間貸し予約アプリ</span>
+    <h3 class="work__title">Java（Spring Boot）</h3>
+  </div>
+</a>
+
+<!-- ④ WPF -->
+<a class="work reveal" href="CCharp/index.html" aria-label="C# WPF 実績サンプル 詳細">
+  <img src="images/C1.png" alt="C# WPF 実績サンプル">
+  <div class="work__meta">
+    <span class="work__tag">実務経験を基に再構成したサンプル（守秘義務配慮）</span>
+    <h3 class="work__title">C#（WPF）</h3>
+  </div>
+</a>
+
+      </div>
+    </div>
+  </section>
+
+<section id="contact" class="section section--cta">
+  <div class="container cta reveal">
+    <h2 class="section__title">Contact</h2>
+    <p>
+      本ページは業務説明会向けの参考資料として作成しています。<br/>
+      ご連絡は担当営業（HAL）経由でお願いいたします。<br/>
+      ※外部からの直接のご連絡は、対応窓口の関係上ご遠慮いただいております。
+    </p>
+    <p>
+      GitHub：<a href="https://github.com/fewioaghwrao" target="_blank" rel="noopener noreferrer nofollow">こちら</a>
+      <small>※任意閲覧</small>
+    </p>
+    <small>
+      ※本ページは検索避け（noindex）設定済み。URLをご存知の方のみの想定公開です。
+    </small>
+  </div>
+</section>
+
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>※本ページは検索避け（noindex）設定済み。URLをご存知の方のみの想定公開です。</small>
+      <a href="#about" class="to-top" aria-label="ページ上部へ">↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // スクロールアニメーション
+    (function(){
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+
+    // モバイルナビゲーション制御
+    (function(){
+      const toggle = document.querySelector('.nav__toggle');
+      const nav = document.querySelector('.nav__list');
+      const navLinks = document.querySelectorAll('.nav__list a');
+      
+      if (!toggle || !nav) return;
+      
+      // メニューボタンクリックでトグル
+      toggle.addEventListener('click', function() {
+        const isOpen = nav.classList.contains('is-open');
+        
+        if (isOpen) {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          nav.classList.add('is-open');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+      
+      // ナビゲーションリンクをクリックしたらメニューを閉じる
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+      
+      // メニュー外をクリックしたら閉じる
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+      
+    })();
+  </script>
+</body>
+</html>

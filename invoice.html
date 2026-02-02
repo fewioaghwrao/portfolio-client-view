@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>請求書・入金ステータスダッシュボード（Lite）｜ポートフォリオ</title>
+  <meta name="description" content="請求書・入金・ステータス管理を中心に、業務アプリとしての一覧/検索/詳細/更新を揃えたダッシュボード（Lite）の制作実績ページ。実装状況・API設計・画面イメージを掲載。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="robots" content="noindex,nofollow,noarchive,noimageindex" />
+  <meta name="googlebot" content="noindex,nofollow,noarchive,noimageindex" />
+
+  <meta name="referrer" content="no-referrer" />
+
+  <link rel="icon" href="icon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="ポートフォリオ トップへ">
+      <img src="images/logox.svg" alt="コーディアワークス ロゴ" class="brand__logo-img" width="160" height="48" />
+    </a>
+    <nav class="nav" aria-label="グローバルナビゲーション">
+      <button class="nav__toggle" aria-expanded="false" aria-controls="navList">MENU</button>
+      <ul id="navList" class="nav__list">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Skills</a></li>
+        <li><a href="index.html#works">Works</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <main>
+<!-- Hero / 概要 -->
+<section id="overview" class="section section--alt">
+  <div class="container">
+    <header class="section__head reveal">
+      <h1 class="section__title">請求書・入金ステータスダッシュボード（Lite）</h1>
+    </header>
+
+    <div class="hero__inner hero__inner--detail">
+      <div class="hero__copy">
+        <p class="hero__lead reveal reveal-delay-1">
+          <strong>請求書・入金・ステータス管理を中心に、業務アプリとして必要になりやすい「一覧 / 検索 / 詳細 / 更新」を一通り揃えたダッシュボード</strong>です。<br>
+          Lite版として要件を絞りつつも、<strong>設計（データ構造・画面遷移・API）と実装の整合</strong>が伝わる構成を目指しています。
+        </p>
+
+<div class="hero__actions reveal reveal-delay-2">
+  <a class="btn" href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
+     target="_blank" rel="noopener noreferrer nofollow">
+    デモサイトを見る
+  </a>
+  <a class="btn btn--ghost" href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
+     target="_blank" rel="noopener noreferrer nofollow">
+    GitHub リポジトリ
+  </a>
+</div>
+
+
+<p class="hero__note reveal reveal-delay-3">
+  ※デモは閲覧可能な環境の方のみご参照ください。<br>
+  ※デモ環境はクラウド上で動作しています。初回アクセス時に起動待ちが発生する場合があります。<br>
+  ※デモデータはダミーです。
+</p>
+      </div>
+
+      <figure class="hero__image reveal reveal-delay-3">
+        <!-- ★ここは invoice のトップ画像に差し替え推奨 -->
+        <img src="images/invoice-top.png" alt="請求書・入金ステータスダッシュボード（Lite）のトップ画面イメージ">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- プロジェクト概要 -->
+<section class="section">
+  <div class="container">
+    <header class="section__head reveal">
+      <h2 class="section__title">プロジェクト概要</h2>
+    </header>
+
+    <div class="project-summary reveal">
+      <dl class="summary-list">
+        <div class="summary-list__row">
+          <dt>開発期間</dt>
+          <dd>約1ヶ月（設計〜実装〜デモ公開まで個人で対応）</dd>
+        </div>
+        <div class="summary-list__row">
+          <dt>開発人数</dt>
+          <dd>1名（個人開発）</dd>
+        </div>
+        <div class="summary-list__row">
+          <dt>担当範囲</dt>
+          <dd>要件整理／画面設計／DB設計／バックエンドAPI／フロント実装／デモデータ整備／ドキュメント</dd>
+        </div>
+        <div class="summary-list__row">
+          <dt>想定ユーザー</dt>
+          <dd>請求・入金を管理する管理者／支払状況を確認する会員（ロール制御）</dd>
+        </div>
+        <div class="summary-list__row">
+          <dt>使用技術</dt>
+          <dd>ASP.NET Core / Next.js / TypeScript / Tailwind / PostgreSQL（Heroku Postgres）</dd>
+        </div>
+        <div class="summary-list__row">
+          <dt>URL</dt>
+          <dd>
+            デモサイト：
+            <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
+               target="_blank" rel="noopener noreferrer nofollow">
+              https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login
+            </a>
+            <br>
+            API（Health）：
+            <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health"
+               target="_blank" rel="noopener noreferrer nofollow">
+              https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
+            </a>
+            <br>
+GitHub：
+<a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
+   target="_blank" rel="noopener noreferrer nofollow">
+  https://github.com/fewioaghwrao/Invoice-management-system-lite
+</a>
+
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Status -->
+    <section id="status" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="section__title">実装状況</h2>
+<p class="section__lead">
+  業務アプリとして必要なコア機能は一通り実装済みとし、
+  現在は運用・拡張を見据えた改善点を整理しています。
+</p>
+        </header>
+
+        <div class="grid cards">
+          <article class="card reveal">
+            <h3 class="card__title">実装済み（現時点）</h3>
+<ul class="card__list">
+  <li>認証/認可（ログイン・ロール制御）</li>
+  <li>請求書：一覧/検索/詳細/作成/更新</li>
+  <li>請求明細（InvoiceLines）：追加/更新/削除</li>
+  <li>入金：一覧/検索/詳細/登録</li>
+  <li>ステータス（未入金／一部入金／入金済み）の自動判定</li>
+  <li>催促（リマインド）：送信履歴管理</li>
+  <li>売上集計：月次 / 顧客別 / ステータス別</li>
+  <li>請求書PDF出力（管理者/会員）※QuestPDF + 日本語フォント埋め込み</li>
+</ul>
+
+            <p class="card__text">
+              ※機能は「動作する状態」を基準に記載しています（UIのみ/未結線は実装済みに含めません）。
+            </p>
+          </article>
+
+          <article class="card reveal reveal-delay-1">
+            <h3 class="card__title">これから（実装予定）</h3>
+<ul class="card__list">
+  <li>催促テンプレの編集UI（文面の管理・履歴差分）</li>
+  <li>売上集計のCSV自動定期出力</li>
+  <li>月次締め処理（締め後の更新制御）</li>
+  <li>監査ログ：重要操作の追跡（管理者向け）</li>
+  <li>テスト拡充（サービス層・集計ロジック）</li>
+</ul>
+
+            <p class="card__text">
+              「未実装」を明確にすることで、要件整理と優先順位付けの判断が伝わるようにしています。
+            </p>
+          </article>
+
+          <article class="card reveal reveal-delay-2">
+            <h3 class="card__title">設計方針</h3>
+            <ul class="card__list">
+              <li>関心の分離：API / Application / Domain / Infrastructure</li>
+              <li>DTO で入出力を固定し、内部実装の変更に強い構造へ</li>
+              <li>一覧は標準で：検索条件・ページング・ソート</li>
+            </ul>
+          </article>
+          <article class="card reveal reveal-delay-3">
+  <h3 class="card__title">品質・テスト</h3>
+  <ul class="card__list">
+    <li>CI（GitHub Actions）で build / test を自動実行</li>
+    <li>入金割当・ステータス再計算など重要ロジックの単体テストを実装</li>
+    <li>管理者 / 会員の認可について Integration Test で 403 を検証</li>
+  </ul>
+  <p class="card__text">
+    業務上の重要度が高い処理から優先的にテストし、
+    仕様変更やリファクタリング時の安全性を確保しています。
+  </p>
+</article>
+        </div>
+      </div>
+    </section>
+
+    <!-- API -->
+    <section id="api" class="section section--alt">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="section__title">API一覧（設計・実装ベース）</h2>
+        </header>
+
+        <div class="reveal">
+          <div class="api-table-wrap">
+            <table class="api-table">
+              <thead>
+                <tr>
+                  <th>カテゴリ</th>
+                  <th>Method</th>
+                  <th>Path</th>
+                  <th>概要</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Invoices</td>
+                  <td>GET</td>
+                  <td>/api/invoices</td>
+                  <td>請求書一覧（検索/ページング）</td>
+                </tr>
+                <tr>
+                  <td>Invoices</td>
+                  <td>GET</td>
+                  <td>/api/invoices/{id}</td>
+                  <td>請求書詳細（明細含む）</td>
+                </tr>
+                <tr>
+                  <td>Invoices</td>
+                  <td>POST</td>
+                  <td>/api/invoices</td>
+                  <td>請求書作成</td>
+                </tr>
+                <tr>
+                  <td>Invoices</td>
+                  <td>PUT</td>
+                  <td>/api/invoices/{id}</td>
+                  <td>請求書更新</td>
+                </tr>
+                <tr>
+                  <td>Payments</td>
+                  <td>GET</td>
+                  <td>/api/payments</td>
+                  <td>入金一覧（検索/ページング/サマリー）</td>
+                </tr>
+                <tr>
+                  <td>Payments</td>
+                  <td>GET</td>
+                  <td>/api/payments/{id}</td>
+                  <td>入金詳細（割当込み）</td>
+                </tr>
+                <tr>
+  <td>Auth</td>
+  <td>POST</td>
+  <td>/api/auth/login</td>
+  <td>ログイン</td>
+</tr>
+<tr>
+  <td>Members</td>
+  <td>GET</td>
+  <td>/api/members</td>
+  <td>会員一覧（検索/ページング）</td>
+</tr>
+<tr>
+  <td>Sales</td>
+  <td>GET</td>
+  <td>/api/sales</td>
+  <td>売上集計（月次/サマリー）</td>
+</tr>
+
+              </tbody>
+            </table>
+          </div>
+
+<p class="note">
+  ※ 本ページでは設計意図が伝わる代表的な API のみ掲載しています。
+  全 API 定義・リクエスト/レスポンス仕様は GitHub リポジトリ内のドキュメントに記載しています。
+</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screens -->
+    <section id="screens" class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="section__title">画面キャプチャ</h2>
+        </header>
+
+<div class="grid works works--detail">
+  <figure class="work work--plain reveal">
+    <img src="images/A-admin-dashboard.png" alt="管理者ダッシュボード" />
+    <figcaption class="work__meta">
+      <span class="work__tag">管理者ダッシュボード</span>
+      <h3 class="work__title">売上・未入金・回収率を集約</h3>
+      <p class="work__text">
+        売上・未入金・請求数・回収率などを集約し、請求・入金状況を一目で把握できる管理者向けダッシュボードです。
+      </p>
+    </figcaption>
+  </figure>
+
+  <figure class="work work--plain reveal reveal-delay-1">
+    <img src="images/B-invoice-list.png" alt="請求書一覧（管理者）" />
+    <figcaption class="work__meta">
+      <span class="work__tag">請求書一覧（管理者）</span>
+      <h3 class="work__title">検索 / ページング</h3>
+      <p class="work__text">
+        請求番号・会員・ステータス・期間で検索でき、日常的な請求管理業務を想定した一覧画面です。
+      </p>
+    </figcaption>
+  </figure>
+
+  <figure class="work work--plain reveal reveal-delay-2">
+    <img src="images/C-invoice-detail.png" alt="請求書詳細・入金状況" />
+    <figcaption class="work__meta">
+      <span class="work__tag">請求書詳細・入金状況</span>
+      <h3 class="work__title">一部入金 → 完済の状態遷移</h3>
+      <p class="work__text">
+        請求金額・入金履歴・残額を確認でき、一部入金から完済までの状態遷移を確認できます。
+      </p>
+    </figcaption>
+  </figure>
+
+  <figure class="work work--plain reveal reveal-delay-3">
+    <img src="images/D-payment-allocation.png" alt="入金割当（部分入金対応）" />
+    <figcaption class="work__meta">
+      <span class="work__tag">入金割当（部分入金対応）</span>
+      <h3 class="work__title">1件の入金を複数請求へ割当</h3>
+      <p class="work__text">
+        1件の入金を複数の請求書に割り当て可能で、実務を想定した柔軟な入金管理に対応しています。
+      </p>
+    </figcaption>
+  </figure>
+
+  <figure class="work work--plain reveal reveal-delay-4">
+    <img src="images/F-member-dashboard.png" alt="会員用ダッシュボード" />
+    <figcaption class="work__meta">
+      <span class="work__tag">会員用ダッシュボード</span>
+      <h3 class="work__title">権限分離（管理者/会員）</h3>
+      <p class="work__text">
+        会員自身が請求書と入金状況を確認できる画面で、管理者と会員の権限分離を実装しています。
+      </p>
+    </figcaption>
+  </figure>
+</div>
+
+
+<p class="card__text">
+  業務アプリを想定し、一覧・検索・更新の導線と、ロール制御（管理者/会員）を重視しています。
+</p>
+
+      </div>
+    </section>
+
+<!-- 学び・今後の改善予定 -->
+<section class="section">
+  <div class="container">
+    <header class="section__head reveal">
+      <h2 class="section__title">学び・今後の改善予定</h2>
+    </header>
+
+    <div class="reveal">
+      <h3 class="h3">学び</h3>
+      <ul class="list">
+        <li>業務ドメイン（請求・入金・一部入金）の状態遷移を、データ構造と画面導線に落とし込む設計</li>
+        <li>フロント（Next.js）↔ バック（ASP.NET Core）を REST API + JWT で疎結合にし、役割分担できる構成</li>
+        <li>集計（売上/未入金/回収率）を「一覧・検索」と同じUXで扱うための API 設計（条件・ページング・サマリー）</li>
+        <li>“動くデモ”として成立させるためのダミーデータ設計と公開時の安全設計（権限/入力/ログ）</li>
+        <li>認可（管理者/会員）や重要ロジックを CI 上の自動テストで継続的に検証し、リファクタリング耐性を確保</li>
+      </ul>
+
+<h3 class="h3 mt-3">今後の改善予定</h3>
+<ul class="list">
+  <li>
+    テスト拡充：重要ロジック（入金割当／ステータス再計算／集計）を中心に、
+    既存テストに網羅ケース（境界値・期限超過・複数割当）を段階的に追加
+  </li>
+  <li>
+    運用強化：監査ログ（重要操作）／例外ハンドリングの統一／ログの相関ID付与
+  </li>
+  <li>
+    業務拡張：月次締め（締め後の更新制御）／催促テンプレの管理（文面・差分履歴）
+  </li>
+  <li>
+    パフォーマンス：一覧の検索最適化（index設計）／集計のキャッシュ・非同期化（必要時）
+  </li>
+</ul>
+      <p class="note mt-2">
+        ※ Lite 版では「実務で重要度が高いコア機能（請求・入金・集計）」を優先し、
+        運用系（締め/監査/テスト拡充）は改善項目として段階的に追加する方針です。
+      </p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Links -->
+    <section id="links" class="section section--alt">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="section__title">リンク</h2>
+        </header>
+
+        <div class="reveal">
+<ul class="link-list">
+  <li><strong>Demo：</strong>
+    <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login" target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login
+    </a>
+  </li>
+  <li><strong>API：</strong>
+    <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health" target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
+    </a>
+  </li>
+ <li><strong>GitHub：</strong>
+  <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
+     target="_blank" rel="noopener noreferrer nofollow">
+    https://github.com/fewioaghwrao/Invoice-management-system-lite
+  </a>
+</li>
+</ul>
+
+
+          <p class="mt-2">
+            <a class="btn btn--ghost" href="index.html#works">Works 一覧へ戻る</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>※本ページは検索避け（noindex）設定済み。URLをご存知の方のみの想定公開です。</small>
+      <a href="#top" class="to-top" aria-label="ページ上部へ">↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // スクロールアニメーション
+    (function(){
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+
+    // モバイルナビゲーション制御
+    (function(){
+      const toggle = document.querySelector('.nav__toggle');
+      const nav = document.querySelector('.nav__list');
+      const navLinks = document.querySelectorAll('.nav__list a');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function() {
+        const isOpen = nav.classList.contains('is-open');
+        nav.classList.toggle('is-open', !isOpen);
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+

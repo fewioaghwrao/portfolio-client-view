@@ -1,0 +1,205 @@
+<!doctype html>
+ <html lang="ja"> 
+  <head> 
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <title>Excel/帳票 ランチャー | README</title> 
+    <meta name="description" content="C# .NET 8 WPFポートフォリオ：Excel/帳票 自動化ランチャー README ドキュメント（企業提出用）" /> 
+    <meta name="robots" content="noindex,nofollow,noarchive,noimageindex" /> 
+    <meta name="googlebot" content="noindex,nofollow,noarchive,noimageindex" /> 
+    <meta name="referrer" content="no-referrer" />
+     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+       <link rel="icon" href="../../icon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../icon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../icon/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../icon/apple-touch-icon.png">
+  <meta name="theme-color" content="#ffffff">
+      <style>
+       body { font-family: "Noto Sans JP", sans-serif; 
+       line-height: 1.8; margin: 0 auto; 
+       padding: 24px; max-width: 900px; 
+       background: #f9fafb; color: #1f2937; } 
+       h1, h2, h3 { color: #111827; } 
+       code { background: #e5e7eb; padding: 2px 6px; border-radius: 4px; } 
+       pre { background: #1e293b; color: #f1f5f9; padding: 12px; border-radius: 6px; overflow-x: auto; }
+        a { color: #0ea5e9; } 
+        .screenshot { border: 1px solid #ddd; border-radius: 8px; margin: 14px 0; max-width: 100%; } 
+        ul li { margin: 4px 0; } 
+        </style> 
+        </head> 
+        <body> 
+          <header> 
+            <h1>Excel/帳票 ランチャー</h1>
+             <p>C# (.NET 8 WPF) で実装したデスクトップアプリケーション。<br> 表に入力した売上データから <strong>Excel 売上レポート（ClosedXML）</strong> と <strong>PDF 請求書（QuestPDF）</strong> をワンクリックで生成します。<br> <code>appsettings.json</code> のホットリロード、プロダクト選択パネル、ログ出力（Serilog）に対応しています。</p> 
+            </header> 
+            <main> 
+              <section> 
+                <h2>概要</h2> 
+                <ul> 
+                  <li>DataGridに商品・数量・単価を追加し、<strong>Excel売上レポート</strong>（合計行付き）を生成</li> 
+                  <li>DataGridの内容から<strong>PDF請求書</strong>を自動生成（会社名・部署名・税率は設定から反映）</li>
+                   <li><code>appsettings.json</code> の変更を <strong>自動検知（FileSystemWatcher）</strong> し、アプリへ即時反映</li>
+                    <li>商品のマスタは <code>appsettings.json</code> の <code>products</code> 配列から読み込み、UIのコンボボックスに表示</li>
+                     <li>DataGrid行のダブルクリックで削除確認ダイアログ（カスタムWPFウィンドウ）</li> 
+                     <li>出力先は <code>Output/</code> 配下に自動作成（<code>SalesReport</code> / <code>Invoice</code> / <code>Log</code>）</li> 
+                </ul>
+                     <img src="../images/report-placeholder.png" alt="アプリ メイン画面" class="screenshot"> 
+              </section>
+              <section>
+  <h2>主な画面/機能</h2>
+  <ul>
+    <li><strong>メイン画面</strong>：<em>売上レポート（Excel）生成 / 請求書（PDF）生成 / 出力フォルダを開く / 設定</em> ボタン、ステータスバー、商品追加パネル、売上一覧DataGrid</li>
+    <li><strong>商品追加パネル</strong>：<em>商品名（ComboBox）/ 値段 / 数量（−/＋）/ 追加</em></li>
+    <li><strong>設定画面</strong>：会社名・部署名・税率（%）を編集し<code>appsettings.json</code>へ保存</li>
+    <li><strong>終了確認ダイアログ</strong>：アプリ終了時に確認（OK/キャンセル）</li>
+  </ul>
+  <img src="../images/launcher-settings.png" alt="設定画面" class="screenshot">
+</section>
+
+<section>
+  <h2>使用技術</h2>
+  <ul>
+    <li>.NET 8 / WPF（<code>net8.0-windows</code>）</li>
+    <li>CommunityToolkit.MVVM（<code>ObservableObject</code> / <code>[ObservableProperty]</code> / <code>RelayCommand</code>）</li>
+    <li>ClosedXML（Excel生成）</li>
+    <li>QuestPDF（PDF請求書）※<code>App.OnStartup</code> で <code>QuestPDF.Settings.License = LicenseType.Community;</code> を設定</li>
+    <li>Serilog + Serilog.Sinks.File（構造化ログ出力）</li>
+    <li>Microsoft.Extensions.DependencyInjection（DI 基盤参照・必要に応じて拡張可能）</li>
+    <li>FluentValidation（将来的な入力検証に備えパッケージ参照）</li>
+  </ul>
+</section>
+
+<section>
+  <h2>フォルダ/出力構成</h2>
+  <ul>
+    <li><code>Output/SalesReport/</code> … <code>SalesReport_yyyyMMdd_HHmmss.xlsx</code></li>
+    <li><code>Output/Invoice/</code> … <code>Invoice_INV-yyyyMMdd_yyyyMMdd_HHmmss.pdf</code></li>
+    <li><code>Output/Log/</code> … <code>launcher.log</code>（Serilog / 日次ローテーション）</li>
+  </ul>
+</section>
+
+<section>
+  <h2>推奨動作環境</h2>
+  <h3>OS</h3>
+  <ul><li>Windows 10 / 11（64bit）</li></ul>
+  <h3>.NET ランタイム</h3>
+  <ul><li>.NET 8 Desktop Runtime（ビルドは <code>net8.0-windows</code>）</li></ul>
+  <h3>ハードウェア</h3>
+  <ul>
+    <li>CPU: Intel Core i3 以上（推奨 i5+）</li>
+    <li>メモリ: 4GB 以上（推奨 8GB 以上）</li>
+    <li>ストレージ: SSD 推奨、空き容量 500MB 以上</li>
+  </ul>
+  <h3>画面解像度</h3>
+  <ul><li>1280x800 以上推奨</li></ul>
+</section>
+
+<section>
+  <h2>ビルド手順（開発者向け）</h2>
+  <h3>前提</h3>
+  <ul>
+    <li>Visual Studio 2022/2025（.NET デスクトップ開発）</li>
+    <li>.NET 8 SDK</li>
+  </ul>
+
+  <h3>取り込み</h3>
+  <ol>
+    <li>ソースを取得してソリューションを開く</li>
+    <li>NuGet パッケージは自動復元</li>
+    <li>スタートアッププロジェクトを本アプリに設定し、<em>Release / x64</em> でビルド</li>
+  </ol>
+</section>
+<section>
+  <h2>実行手順（利用者向け）</h2>
+  <ol>
+    <li>配布パッケージを展開（例：<code>ExcelReportLauncher_v1.0.zip</code>）</li>
+    <li><code>WpfReportLauncher.exe</code> を起動</li>
+    <li>必要に応じて <code>appsettings.json</code> を編集（会社名・部署名・税率・商品）</li>
+    <li>メイン画面のボタンから Excel / PDF を生成</li>
+  </ol>
+
+  <h3>UI 操作メモ</h3>
+  <ul>
+    <li><strong>商品追加</strong>：コンボボックスで商品を選び、数量を調整して「追加」</li>
+    <li><strong>行の削除</strong>：売上一覧の行をダブルクリック → 確認ダイアログで OK</li>
+    <li><strong>設定</strong>：会社名/部署名/税率（%）を変更 → 保存で <code>appsettings.json</code> に反映</li>
+  </ul>
+</section>
+
+<section>
+  <h2>設定ファイル（<code>appsettings.json</code>）</h2>
+  <p>アプリと同じフォルダに配置。変更は自動検知され、アプリに即反映されます。</p>
+  <h3>サンプル</h3>
+  <pre>{
+"Output": {
+"BaseDirectory": "Output"
+},
+"Invoice": {
+"CompanyName": "Cat Coffee Co.",
+"IssuerName": "Cat Coffee 請求部",
+"TaxRate": 0.10
+},
+"products": [
+{ "name": "コーヒー豆 200g", "price": 1200 },
+{ "name": "紅茶ティーバッグ 20個入り", "price": 800 },
+{ "name": "チョコレートケーキ", "price": 1500 },
+{ "name": "クロワッサン", "price": 300 },
+{ "name": "抹茶ラテ", "price": 600 }
+]
+}</pre>
+<h3>補足</h3>
+<ul>
+<li><code>TaxRate</code> は <code>0.10</code>（=10%）の <em>小数</em> または <code>"10%"</code> の <em>文字列</em>でも解釈可能</li>
+<li><code>products</code> は UI の商品選択コンボボックスに反映</li>
+<li><code>Output.BaseDirectory</code> は既定 <code>Output</code>、内部で必要サブフォルダを自動作成</li>
+</ul>
+</section>
+<section>
+  <h2>実装ハイライト</h2>
+  <ul>
+    <li><strong>MVVM</strong>：<code>MainViewModel</code> で状態管理（<code>Status</code>、<code>Products</code>、<code>SampleSales</code> など）</li>
+    <li><strong>コマンド</strong>：Excel/PDF生成・出力フォルダを開く・設定画面表示・数量増減・行削除など</li>
+    <li><strong>監視</strong>：<code>FileSystemWatcher</code> による <code>appsettings.json</code> ホットリロード</li>
+    <li><strong>Excel</strong>：ヘッダスタイル・合計行・自動幅調整（ClosedXML）</li>
+    <li><strong>PDF</strong>：請求書ヘッダ・明細テーブル・小計/消費税/合計のレイアウト（QuestPDF）</li>
+    <li><strong>ログ</strong>：<code>Output/Log/launcher.log</code> に生成処理ログ（Serilog、日次ローテ）</li>
+  </ul>
+</section>
+
+<section>
+  <h2>トラブルシューティング</h2>
+  <ul>
+    <li><strong>JSON 読み込みエラー</strong>：「<code>'/' is invalid start of a value.</code>」等  
+      → <code>appsettings.json</code> の <em>JSON 構文</em> を確認（全角記号や末尾カンマに注意）。</li>
+    <li><strong>Excel/PDF の出力に失敗</strong>  
+      → 出力先パスの権限、他アプリでのファイルロック、<code>Output</code> ディレクトリの存在を確認。</li>
+    <li><strong>商品がコンボボックスに出ない</strong>  
+      → <code>products</code> 配列の各要素に <code>name</code> と <code>price</code> が正しく定義されているか確認。</li>
+    <li><strong>PDF 生成時に例外</strong>  
+      → <code>App.OnStartup</code> で <code>QuestPDF.Settings.License = LicenseType.Community;</code> を設定済みか確認。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>ライセンス/注意点</h2>
+  <ul>
+    <li>本ポートフォリオはサンプル用途です。各ライブラリ（ClosedXML / QuestPDF / Serilog / CommunityToolkit.Mvvm 等）のライセンス条件に従ってご利用ください。</li>
+    <li>アプリケーションアイコン（<code>Resources/aicon.ico</code>）は著作権・利用許諾に留意してください。</li>
+    <li>機密情報（APIキー等）は <code>appsettings.json</code> に保存しないでください。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>関連リンク</h2>
+  <ul>
+    <li><a href="../index.html">C# ポートフォリオ トップ</a></li>
+    <li><a href="report-demo.html" target="_blank">デモページ</a></li>
+  </ul>
+</section>
+</main>
+ <footer>
+   <p>© <span id="year"></span> N.O. All rights reserved.</p>
+ </footer> 
+ <script> document.getElementById("year").textContent = new Date().getFullYear(); </script> 
+</body>
+ </html>
