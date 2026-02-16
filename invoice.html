@@ -58,18 +58,24 @@
 <div class="hero__actions reveal reveal-delay-2">
   <a class="btn" href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
      target="_blank" rel="noopener noreferrer nofollow">
-    デモサイトを見る
+    デモ（Heroku：本番相当）
   </a>
+
+  <a class="btn" href="https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login"
+     target="_blank" rel="noopener noreferrer nofollow">
+    デモ（Azure：App Service）
+  </a>
+
   <a class="btn btn--ghost" href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
      target="_blank" rel="noopener noreferrer nofollow">
     GitHub リポジトリ
   </a>
 </div>
 
-
 <p class="hero__note reveal reveal-delay-3">
   ※デモは閲覧可能な環境の方のみご参照ください。<br>
-  ※デモ環境はクラウド上で動作しています。初回アクセス時に起動待ちが発生する場合があります。<br>
+  ※Herokuは「本番相当（結合テスト）」、Azureは「クラウド構成検証（App Service + Azure SQL）」として公開しています。<br>
+  ※初回アクセス時に起動待ちが発生する場合があります。<br>
   ※デモデータはダミーです。
 </p>
       </div>
@@ -107,33 +113,51 @@
           <dt>想定ユーザー</dt>
           <dd>請求・入金を管理する管理者／支払状況を確認する会員（ロール制御）</dd>
         </div>
-        <div class="summary-list__row">
-          <dt>使用技術</dt>
-          <dd>ASP.NET Core / Next.js / TypeScript / Tailwind / PostgreSQL（Heroku Postgres）</dd>
-        </div>
-        <div class="summary-list__row">
-          <dt>URL</dt>
-          <dd>
-            デモサイト：
-            <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
-               target="_blank" rel="noopener noreferrer nofollow">
-              https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login
-            </a>
-            <br>
-            API（Health）：
-            <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health"
-               target="_blank" rel="noopener noreferrer nofollow">
-              https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
-            </a>
-            <br>
-GitHub：
-<a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
-   target="_blank" rel="noopener noreferrer nofollow">
-  https://github.com/fewioaghwrao/Invoice-management-system-lite
-</a>
+<div class="summary-list__row">
+  <dt>URL</dt>
+  <dd>
+    <strong>Heroku（本番相当・結合テスト環境）</strong><br>
+    フロントエンド：
+    <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
+       target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login
+    </a><br>
+    バックエンド API：
+    <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com"
+       target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-naoki-app-api-333afef82093.herokuapp.com
+    </a><br>
+    Health：
+    <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health"
+       target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
+    </a><br><br>
 
-          </dd>
-        </div>
+    <strong>Azure（App Service / Azure SQL）</strong><br>
+    フロントエンド：
+    <a href="https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login"
+       target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login
+    </a><br>
+    バックエンド API：
+    <a href="https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net"
+       target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net
+    </a><br>
+    Health：
+    <a href="https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net/health"
+       target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net/health
+    </a><br><br>
+
+    GitHub：
+    <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
+       target="_blank" rel="noopener noreferrer nofollow">
+      https://github.com/fewioaghwrao/Invoice-management-system-lite
+    </a>
+  </dd>
+</div>
+
       </dl>
     </div>
   </div>
@@ -418,23 +442,45 @@ GitHub：
 
         <div class="reveal">
 <ul class="link-list">
-  <li><strong>Demo：</strong>
+  <li><strong>Heroku（本番相当・結合テスト）Front：</strong>
     <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login" target="_blank" rel="noopener noreferrer nofollow">
       https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login
     </a>
   </li>
-  <li><strong>API：</strong>
+  <li><strong>Heroku API：</strong>
+    <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com" target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-naoki-app-api-333afef82093.herokuapp.com
+    </a>
+  </li>
+  <li><strong>Heroku Health：</strong>
     <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health" target="_blank" rel="noopener noreferrer nofollow">
       https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
     </a>
   </li>
- <li><strong>GitHub：</strong>
-  <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
-     target="_blank" rel="noopener noreferrer nofollow">
-    https://github.com/fewioaghwrao/Invoice-management-system-lite
-  </a>
-</li>
+
+  <li class="mt-2"><strong>Azure（App Service / Azure SQL）Front：</strong>
+    <a href="https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login" target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login
+    </a>
+  </li>
+  <li><strong>Azure API：</strong>
+    <a href="https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net" target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net
+    </a>
+  </li>
+  <li><strong>Azure Health：</strong>
+    <a href="https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net/health" target="_blank" rel="noopener noreferrer nofollow">
+      https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net/health
+    </a>
+  </li>
+
+  <li class="mt-2"><strong>GitHub：</strong>
+    <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite" target="_blank" rel="noopener noreferrer nofollow">
+      https://github.com/fewioaghwrao/Invoice-management-system-lite
+    </a>
+  </li>
 </ul>
+
 
 
           <p class="mt-2">
