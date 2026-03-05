@@ -74,7 +74,7 @@
 
 <p class="hero__note reveal reveal-delay-3">
   ※デモは閲覧可能な環境の方のみご参照ください。<br>
-  ※Herokuは「本番相当（結合テスト）」、Azureは「クラウド構成検証（App Service + Azure SQL）」として公開しています。<br>
+  ※Herokuは「本番相当（API + DB の結合テスト）」、Azureは「フロント（App Service）配置の検証環境」として公開しています。<br>
   ※初回アクセス時に起動待ちが発生する場合があります。<br>
   ※デモデータはダミーです。
 </p>
@@ -133,22 +133,22 @@
       https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
     </a><br><br>
 
-    <strong>Azure（App Service / Azure SQL）</strong><br>
-    フロントエンド：
-    <a href="https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login"
-       target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login
-    </a><br>
-    バックエンド API：
-    <a href="https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net"
-       target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net
-    </a><br>
-    Health：
-    <a href="https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net/health"
-       target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net/health
-    </a><br><br>
+<strong>Azure（フロント配置の検証環境：App Service）</strong><br>
+フロントエンド：
+<a href="https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login"
+   target="_blank" rel="noopener noreferrer nofollow">
+  https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login
+</a><br>
+バックエンド API（共通：Heroku）：
+<a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com"
+   target="_blank" rel="noopener noreferrer nofollow">
+  https://invoice-naoki-app-api-333afef82093.herokuapp.com
+</a><br>
+Health（共通：Heroku）：
+<a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health"
+   target="_blank" rel="noopener noreferrer nofollow">
+  https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
+</a><br><br>
 
     GitHub：
     <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
@@ -458,21 +458,21 @@
     </a>
   </li>
 
-  <li class="mt-2"><strong>Azure（App Service / Azure SQL）Front：</strong>
-    <a href="https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login" target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login
-    </a>
-  </li>
-  <li><strong>Azure API：</strong>
-    <a href="https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net" target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net
-    </a>
-  </li>
-  <li><strong>Azure Health：</strong>
-    <a href="https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net/health" target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-system-dtdvfha0fpeqg8h3.japaneast-01.azurewebsites.net/health
-    </a>
-  </li>
+<li class="mt-2"><strong>Azure（フロント配置の検証）Front：</strong>
+  <a href="https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login" target="_blank" rel="noopener noreferrer nofollow">
+    https://invoice-system-front-d8hzbteyhse0b8bj.japaneast-01.azurewebsites.net/auth/login
+  </a>
+</li>
+<li><strong>Backend API（共通：Heroku）：</strong>
+  <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com" target="_blank" rel="noopener noreferrer nofollow">
+    https://invoice-naoki-app-api-333afef82093.herokuapp.com
+  </a>
+</li>
+<li><strong>Health（共通：Heroku）：</strong>
+  <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health" target="_blank" rel="noopener noreferrer nofollow">
+    https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
+  </a>
+</li>
 
   <li class="mt-2"><strong>GitHub：</strong>
     <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite" target="_blank" rel="noopener noreferrer nofollow">
