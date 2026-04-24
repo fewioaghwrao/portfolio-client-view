@@ -336,49 +336,52 @@
         </div>
       </section>
 
-      <!-- Excel/帳票 自動化ランチャー -->
-      <section id="report" class="col-6 card" aria-labelledby="reportTitle">
-        <div class="card__header">
-          <span class="badge" aria-label="アプリ種別">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="3" stroke="#fff" stroke-width="1.6"/>
-              <path d="M8 3v18M3 8h18M12 8v13M3 13h18" stroke="#fff" stroke-width="1.6"/>
-            </svg>
-            Excel / 帳票ランチャー（業務ユーザー向け想定）
-          </span>
-          <h2 id="reportTitle" class="card__title">テンプレ × データで一括帳票出力</h2>
-          <p class="card__desc">
-            JSONデータを読み込み、Excelテンプレ + ClosedXML / QuestPDF でレポートを一括生成。ジョブはランチャーUIから選択し、設定は JSON ホットリロード対応。
-          </p>
-        </div>
+<!-- 請求書・入金管理 WPF クライアント -->
+<section id="invoice-wpf" class="col-6 card" aria-labelledby="invoiceWpfTitle">
+  <div class="card__header">
+    <span class="badge" aria-label="アプリ種別">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="3" stroke="#fff" stroke-width="1.6"/>
+        <path d="M8 8h8M8 12h8M8 16h5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      請求書・入金管理 WPF クライアント（業務ユーザー向け想定）
+    </span>
+    <h2 id="invoiceWpfTitle" class="card__title">請求・入金・会員・売上を一元管理</h2>
+    <p class="card__desc">
+      ASP.NET Core Web API と連携する C# / WPF 製のデスクトップクライアントです。
+      管理者・会員のロールに応じて、請求書確認、入金管理、会員管理、売上確認を行える業務向けアプリとして実装しています。
+    </p>
+  </div>
 
-        <div class="media">
-          <img src="images/report-placeholder.png" alt="帳票ランチャーのスクリーンショット（ジョブ一覧、出力ログ、生成PDFプレビュー）">
-        </div>
+  <div class="media">
+    <img src="images/invoice-wpf-dashboard.png" alt="請求書・入金管理WPFクライアントのスクリーンショット（管理者ダッシュボード）">
+  </div>
 
-        <div class="card__body">
-          <ul class="features">
-            <li>テンプレ：Excel（xlsx）と PDF（QuestPDF）の両対応</li>
-            <li>入出力：JSON 読み込み、出力先ディレクトリ自動採番</li>
-            <li>ログ：実行履歴・エラー出力、失敗ジョブのみ再実行</li>
-          </ul>
+  <div class="card__body">
+    <ul class="features">
+      <li>認証：JWT ログイン、Admin / Member ロール別画面遷移</li>
+      <li>請求管理：請求書一覧・詳細、入金状況・残額確認</li>
+      <li>管理機能：会員管理、売上一覧、顧客別集計、催促管理</li>
+      <li>出力：請求書 PDF 表示、CSV 出力、API連携</li>
+    </ul>
 
-          <div class="chips" aria-label="使用技術">
-            <span class="chip">WPF</span>
-            <span class="chip">CommunityToolkit.MVVM</span>
-            <span class="chip">ClosedXML</span>
-            <span class="chip">QuestPDF</span>
-            <span class="chip">Serilog</span>
-            <span class="chip">JSON Config</span>
-          </div>
+    <div class="chips" aria-label="使用技術">
+      <span class="chip">C#</span>
+      <span class="chip">.NET 8</span>
+      <span class="chip">WPF</span>
+      <span class="chip">MVVM</span>
+      <span class="chip">HttpClient</span>
+      <span class="chip">OxyPlot</span>
+      <span class="chip">xUnit</span>
+      <span class="chip">GitHub Actions</span>
+    </div>
 
-          <div class="cta" aria-label="関連リンク">
-            <a class="btn is-primary" href="https://github.com/fewioaghwrao/WpfReportLauncher" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
-<a class="btn" href="docs/report-demo.html" target="_blank" rel="noopener">動画デモ</a>
-
-          </div>
-        </div>
-      </section>
+    <div class="cta" aria-label="関連リンク">
+      <a class="btn is-primary" href="https://github.com/fewioaghwrao/InvoiceSystem.Wpf" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
+      <a class="btn" href="docs/invoice-wpf-demo.html" target="_blank" rel="noopener">動画デモ</a>
+    </div>
+  </div>
+</section>
     </div>
 
     <div class="sep" role="presentation" aria-hidden="true"></div>
