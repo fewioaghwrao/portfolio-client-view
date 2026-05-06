@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ポートフォリオ</title>
-<meta name="description" content="N.O.のポートフォリオ（業務説明会向け）。C#（WPF/WinForms）実務を中心に、請求・入金管理WPFクライアント、ASP.NET Core、Java/Spring Bootの成果物も掲載。">
+<meta name="description" content="N.O.のポートフォリオ（業務説明会向け）。C#（WPF/WinForms）実務を中心に、ASP.NET Core / Next.js による業務想定Webアプリ、請求・入金管理WPFクライアント、Java/Spring Bootの比較実装も掲載。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@
       <div class="hero__copy">
 <h2 class="hero__title reveal">
   N.O.<br class="only-sp">
-<span class="hero__subtitle">C# 業務アプリ（WPF/WinForms）｜ASP.NET Core/Spring は自己研鑽</span>
+<span class="hero__subtitle">C# 業務アプリ（WPF/WinForms）｜ASP.NET Core / Next.js でWeb領域を拡張</span>
 
 </h2>
 <div class="hero__lead reveal reveal-delay-1">
@@ -61,19 +61,21 @@
     直近は、PLC連携・TCP通信を含む社内向け業務アプリにおいて、ログ／例外処理／再送など運用を意識した実装と、障害時の原因切り分け・改修にも対応してきました。
   </p>
 
-  <p>
-    併せて自己研鑽として、Java（Spring Boot）やC#（ASP.NET Core）による業務想定の個人開発に取り組み、設計〜実装〜テスト（CI）まで一通り経験しています。
-  </p>
+<p>
+  併せて自己研鑽として、C#（ASP.NET Core）と TypeScript（Next.js）による業務想定のWebアプリ開発に取り組み、
+  認証・予約・決済・管理画面・テスト・CI/CD・デプロイまで一通り経験しています。
+  Java（Spring Boot）についても、同テーマの初期実装を通じてWebアプリ構成を学習しました。
+</p>
 
   <p>
     本ポートフォリオでは、実務で培った設計力（責務分離・状態管理・例外設計）を、業務想定の成果物で再現することを重視しています。
   </p>
 
-  <ul class="hero__summary">
-    <li><strong>得意領域：</strong>C# 業務アプリ（要件整理〜運用まで）</li>
-    <li><strong>強み：</strong>外部機器/外部システム連携を前提にした堅牢な実装（ログ・例外・運用設計）</li>
-    <li><strong>自己研鑽：</strong>Spring Boot / ASP.NET Core でWeb領域を拡張</li>
-  </ul>
+<ul class="hero__summary">
+  <li><strong>得意領域：</strong>C# 業務アプリ（要件整理〜運用まで）</li>
+  <li><strong>強み：</strong>外部機器/外部システム連携を前提にした堅牢な実装（ログ・例外・運用設計）</li>
+  <li><strong>自己研鑽：</strong>ASP.NET Core / Next.js による業務想定Webアプリ開発</li>
+</ul>
 </div>
 
 
@@ -97,64 +99,68 @@
       </header>
 <div class="grid cards">
 
-  <article class="card reveal">
-    <p class="card__role">Backend / API設計</p>
-    <h3 class="card__title">C#（Web / ASP.NET Core）</h3>
-    <p class="card__text">
-      業務想定のWebアプリとして、請求書・入金管理ダッシュボードや
-      小規模チーム向け案件・タスク管理アプリを個人開発。
-      認証、ロール制御、一覧・検索・更新を中心に、
-      Web バックエンド設計〜実装を行っています。
-    </p>
+<article class="card reveal">
+  <p class="card__role">Backend / Full-stack Web</p>
+  <h3 class="card__title">C#（ASP.NET Core）/ TypeScript（Next.js）</h3>
+<p class="card__text">
+  業務想定のWebアプリとして、スタジオ予約システム、請求書・入金管理、
+  小規模チーム向け案件・タスク管理アプリを個人開発。
+  認証、ロール制御、予約・決済、一覧・検索・集計、CSV/PDF出力、
+  テスト、CI/CD、クラウドデプロイまで含めて実装しています。
+</p>
 
-    <ul class="card__list">
-      <li><strong>Backend：</strong>ASP.NET Core（.NET 8 / Web API）</li>
-      <li><strong>設計：</strong>DTO設計 / 認証・認可 / 状態遷移ルール / 例外処理</li>
-      <li><strong>業務：</strong>請求・入金管理 / タスク管理 / ロール制御</li>
-      <li><strong>周辺：</strong>EF Core / CSV出力 / テスト / CI</li>
-    </ul>
+  <ul class="card__list">
+    <li><strong>Backend：</strong>ASP.NET Core（.NET 8 / Web API）</li>
+    <li><strong>Frontend：</strong>Next.js / TypeScript</li>
+    <li><strong>設計：</strong>DTO設計 / 認証・認可 / 状態遷移ルール / 例外処理</li>
+    <li><strong>周辺：</strong>EF Core / MySQL / PostgreSQL / CSV・PDF出力 / テスト / CI/CD</li>
+  </ul>
 
-    <p class="card__links">
-      <a href="invoice.html">Invoice Detail</a>
-      <span class="sep">/</span>
-      <a href="taskstatus.html">Task App Detail</a>
-      <span class="sep">/</span>
-      <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
-         target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
-      <span class="sep">/</span>
-      <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
-         target="_blank" rel="noopener noreferrer nofollow">Demo</a>
-    </p>
-    <p class="card__note">※ Demo は請求書・入金管理ダッシュボードのみ公開中です。タスク管理アプリは Detail / GitHub をご参照ください。</p>
-  </article>
+<p class="card__links">
+  <a href="studiobook.html">Studio Book Detail</a>
+  <span class="sep">/</span>
+  <a href="https://gray-bush-08e107700.7.azurestaticapps.net/"
+     target="_blank" rel="noopener noreferrer nofollow">Studio Book Demo</a>
+  <span class="sep">/</span>
+  <a href="invoice.html">Invoice Detail</a>
+  <span class="sep">/</span>
+  <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
+     target="_blank" rel="noopener noreferrer nofollow">Invoice Demo</a>
+  <span class="sep">/</span>
+  <a href="taskstatus.html">Task App Detail</a>
+</p>
+<p class="card__note">
+  ※ Studio Book と Invoice は、ASP.NET Core / Next.js による主力成果物として掲載しています。
+</p>
+</article>
 
-  <article class="card reveal reveal-delay-1">
-    <p class="card__role">Full-stack（個人開発）</p>
-    <h3 class="card__title">Java（Spring Boot）</h3>
-    <p class="card__text">
-      スタジオ時間貸し予約アプリを個人開発。
-      業務アプリを想定し、ロール管理、予約、決済、通知などを含めて、
-      要件整理から画面・API実装、デプロイまで一通り対応しています。
-    </p>
+<article class="card reveal reveal-delay-1">
+  <p class="card__role">Learning / Comparative Implementation</p>
+  <h3 class="card__title">Java（Spring Boot）</h3>
+  <p class="card__text">
+    スタジオ時間貸し予約アプリの初期版として、Java / Spring Boot で実装。
+    予約CRUD、ロール管理、予約重複防止、Stripe決済連携などを通じて、
+    業務Webアプリの基本構成を学習しました。
+    現在は同テーマを ASP.NET Core + Next.js 版へ発展させています。
+  </p>
 
-    <ul class="card__list">
-      <li><strong>担当：</strong>要件整理 / DB設計 / API・画面実装 / デプロイ</li>
-      <li><strong>技術：</strong>Spring Boot 3 / MVC / Security / Data JPA</li>
-      <li><strong>外部連携：</strong>Stripe / Mailgun</li>
-      <li><strong>品質：</strong>JUnit5 / Mockito / MockMvc（Web層テスト）</li>
-    </ul>
+  <ul class="card__list">
+    <li><strong>担当：</strong>要件整理 / DB設計 / 画面実装 / デプロイ</li>
+    <li><strong>技術：</strong>Spring Boot 3 / MVC / Security / Data JPA</li>
+    <li><strong>外部連携：</strong>Stripe / Mailgun</li>
+    <li><strong>品質：</strong>JUnit5 / Mockito / MockMvc（Web層テスト）</li>
+  </ul>
 
-    <p class="card__links">
-      <a href="studiobook.html">Detail</a>
-      <span class="sep">/</span>
-      <a href="https://github.com/fewioaghwrao/studio_book"
-         target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
-      <span class="sep">/</span>
-      <a href="https://studio-book-naoki2025-d9e2f98301ba.herokuapp.com/"
-         target="_blank" rel="noopener noreferrer nofollow">Demo</a>
-    </p>
-    <p class="card__note">※ Demo は閲覧可能な環境の方のみご参照ください。</p>
-  </article>
+  <p class="card__links">
+    <a href="studiobook-java.html">Java版 Detail</a>
+    <span class="sep">/</span>
+    <a href="https://github.com/fewioaghwrao/studio_book"
+       target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
+  </p>
+  <p class="card__note">
+    ※ Java版は初期学習・比較実装版です。現在の主力版は ASP.NET Core + Next.js 版です。
+  </p>
+</article>
 
 <article class="card reveal reveal-delay-3">
   <p class="card__role">Desktop業務アプリ</p>
@@ -190,35 +196,28 @@
       <header class="section__head reveal">
         <h2 class="section__title">Works</h2>
       </header>
-      <div class="grid works">
-<!-- ① Invoice -->
-<a class="work reveal reveal-delay-1" href="invoice.html" aria-label="請求書・入金ステータスダッシュボード 詳細">
+<div class="grid works">
+
+<!-- ① Studio Book ASP.NET Core + Next.js -->
+<a class="work reveal reveal-delay-1" href="studiobook.html" aria-label="スタジオ時間貸し予約アプリ ASP.NET Core Next.js版 詳細">
+  <img src="images/studio-book-next-top.png" alt="スタジオ時間貸し予約アプリ ASP.NET Core Next.js版">
+  <div class="work__meta">
+    <span class="work__tag">スタジオ時間貸し予約アプリ / 予約・決済・管理・AI検索</span>
+    <h3 class="work__title">C#（ASP.NET Core）/ TypeScript（Next.js）</h3>
+  </div>
+</a>
+
+<!-- ② Invoice -->
+<a class="work reveal reveal-delay-2" href="invoice.html" aria-label="請求書・入金ステータスダッシュボード 詳細">
   <img src="images/invoice-top.png" alt="請求書・入金ステータスダッシュボード（Lite）">
   <div class="work__meta">
     <span class="work__tag">請求書・入金ステータスダッシュボード</span>
     <h3 class="work__title">C#（ASP.NET Core / Next.js）</h3>
   </div>
 </a>
-<!-- ① Task Status -->
-<a class="work reveal reveal-delay-3" href="taskstatus.html" aria-label="小規模チーム向け 案件・タスク管理アプリ 詳細">
-  <img src="images/taskstatus-top.png" alt="小規模チーム向け 案件・タスク管理アプリ">
-  <div class="work__meta">
-    <span class="work__tag">小規模チーム向け 案件・タスク管理アプリ / 複数UI比較</span>
-    <h3 class="work__title">C#（ASP.NET Core API / Next.js / Razor / WPF）</h3>
-  </div>
-</a>
 
-<!-- ② Studio Book -->
-<a class="work reveal reveal-delay-2" href="studiobook.html" aria-label="スタジオ時間貸し予約アプリ 詳細">
-  <img src="images/studio-book-top.png" alt="スタジオ時間貸し予約アプリ">
-  <div class="work__meta">
-    <span class="work__tag">スタジオ時間貸し予約アプリ</span>
-    <h3 class="work__title">Java（Spring Boot）</h3>
-  </div>
-</a>
-
-<!-- ④ WPF -->
-<a class="work reveal" href="CSharp/index.html" aria-label="請求書・入金管理 WPF クライアント 詳細">
+<!-- ③ WPF -->
+<a class="work reveal reveal-delay-3" href="CSharp/index.html" aria-label="請求書・入金管理 WPF クライアント 詳細">
   <img src="images/invoice-wpf-top.png" alt="請求書・入金管理 WPF クライアント">
   <div class="work__meta">
     <span class="work__tag">請求・入金・会員・売上管理を扱う業務向けWPFクライアント</span>
@@ -226,7 +225,25 @@
   </div>
 </a>
 
-      </div>
+<!-- ④ Task Status -->
+<a class="work reveal reveal-delay-4" href="taskstatus.html" aria-label="小規模チーム向け 案件・タスク管理アプリ 詳細">
+  <img src="images/taskstatus-top.png" alt="小規模チーム向け 案件・タスク管理アプリ">
+  <div class="work__meta">
+    <span class="work__tag">小規模チーム向け 案件・タスク管理アプリ / 複数UI比較</span>
+    <h3 class="work__title">C#（ASP.NET Core API / Next.js / Razor / WPF）</h3>
+  </div>
+</a>
+
+<!-- ⑤ Studio Book Java / Spring Boot 旧版 -->
+<a class="work reveal reveal-delay-5" href="studiobook-java.html" aria-label="スタジオ時間貸し予約アプリ Java Spring Boot版 詳細">
+  <img src="images/studio-book-top.png" alt="スタジオ時間貸し予約アプリ Java Spring Boot版">
+  <div class="work__meta">
+    <span class="work__tag">スタジオ予約アプリ / 初期学習・比較実装版</span>
+    <h3 class="work__title">Java（Spring Boot）</h3>
+  </div>
+</a>
+
+</div>
     </div>
   </section>
 

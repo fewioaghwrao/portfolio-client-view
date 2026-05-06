@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>スタジオ時間貸し予約アプリ（Studio Book）｜ポートフォリオ</title>
-  <meta name="description" content="3ロール（一般/ホスト/管理者）の権限分離、予約×状態遷移、Stripe Webhook による決済確定まで実装した時間貸し予約Webアプリ（Java / Spring Boot）。">
+  <title>スタジオ時間貸し予約アプリ ASP.NET Core / Next.js版｜ポートフォリオ</title>
+  <meta name="description" content="ASP.NET Core API と Next.js によるスタジオ時間貸し予約Webアプリ。一般・ホスト・管理者の3ロール、予約、Stripe決済、売上管理、レビュー、AI検索、CSV/PDF出力、CI/CD、クラウドデプロイまで実装。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
 </head>
 <body>
 
-  <!-- ヘッダー（トップページと同じレイアウト想定） -->
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="ポートフォリオ トップへ">
@@ -39,49 +38,54 @@
     </div>
   </header>
 
-  <!-- メインコンテンツ -->
   <main>
 
     <!-- Hero / 概要 -->
     <section class="section section--alt">
       <div class="container">
         <header class="section__head reveal">
-          <h1 class="section__title">スタジオ時間貸し予約アプリ（Studio Book）</h1>
+          <h1 class="section__title">スタジオ時間貸し予約アプリ（ASP.NET Core / Next.js 版）</h1>
         </header>
 
         <div class="hero__inner hero__inner--detail">
           <div class="hero__copy">
             <p class="hero__lead reveal reveal-delay-1">
-              <strong>予約・決済・運営管理までを一気通貫で扱う、時間貸し予約の業務Webアプリ</strong>です。<br>
-              ダンススタジオやレンタルスペースなどの
-              <strong>時間貸し予約</strong> を行う Web アプリケーションです。<br>
-              一般ユーザーは「検索 → 予約 → 決済」までをブラウザ上で完結でき、<br>
-              スタジオ提供者（ホスト）は予約・売上・レビューを一元管理、<br>
-              管理者は全体のスタジオ・ユーザー・売上を統括できる
-              <strong>三者ロール構成</strong>になっています。
+              <strong>ASP.NET Core API と Next.js による、スタジオ時間貸し予約の業務想定Webアプリ</strong>です。<br>
+              一般ユーザー、ホスト、管理者の3ロール構成で、
+              スタジオ検索、予約、Stripe決済、売上管理、レビュー、営業時間・休館日・料金ルール管理、
+              CSV/PDF出力、AI検索までを実装しています。<br>
+              Java / Spring Boot 版で作成した予約業務の構成をもとに、
+              API分離、管理機能、テスト、CI/CD、クラウドデプロイを含む、
+              より実務に近い構成へ発展させました。
             </p>
 
             <div class="hero__actions reveal reveal-delay-2">
-              <a class="btn" href="https://studio-book-naoki2025-d9e2f98301ba.herokuapp.com/" target="_blank" rel="noopener noreferrer nofollow">
+              <a class="btn" href="https://gray-bush-08e107700.7.azurestaticapps.net/"
+                 target="_blank" rel="noopener noreferrer nofollow">
                 デモサイトを見る
               </a>
-              <a class="btn btn--ghost" href="https://github.com/fewioaghwrao/studio_book" target="_blank" rel="noopener noreferrer nofollow">
+              <a class="btn btn--ghost" href="https://github.com/fewioaghwrao/studio-book-dotnet-next"
+                 target="_blank" rel="noopener noreferrer nofollow">
                 GitHub リポジトリ
+              </a>
+              <a class="btn btn--ghost" href="studiobook-java.html">
+                Java版を見る
               </a>
             </div>
 
             <p class="hero__note reveal reveal-delay-3">
-              ※デモは閲覧可能な環境の方のみご参照ください。<br>
-  ※デモ環境はクラウド上で動作しています。初回アクセス時に起動待ちが発生する場合があります。<br>
-              また、スタジオは架空のものとなっております。
+              ※フロントエンドは Azure Static Web Apps、バックエンド API は Heroku 上で動作する構成です。<br>
+              ※デモ環境の状態により、初回アクセス時に起動待ちやAPI応答待ちが発生する場合があります。<br>
+              ※掲載しているスタジオ・ユーザー・予約データは、すべて架空の検証用データです。
             </p>
+
             <p class="hero__note reveal reveal-delay-3">
-              ※決済は Stripe の Test Mode を使用しており、実際の請求は発生しません
+              ※決済連携は Stripe の Test Mode を使用しており、実際の請求は発生しません。
             </p>
           </div>
 
           <figure class="hero__image reveal reveal-delay-3">
-            <img src="images/studio-book-top.png" alt="スタジオ時間貸し予約アプリのトップ画面イメージ">
+            <img src="images/studio-book-next-top.png" alt="スタジオ時間貸し予約アプリ ASP.NET Core Next.js版のトップ画面イメージ">
           </figure>
         </div>
       </div>
@@ -97,32 +101,55 @@
         <div class="project-summary reveal">
           <dl class="summary-list">
             <div class="summary-list__row">
-              <dt>開発期間</dt>
-              <dd>約1ヶ月（設計〜実装〜デプロイまで個人で一貫対応。業務要件を優先し、機能を絞って完成度を重視）</dd>
+              <dt>位置づけ</dt>
+              <dd>
+                ASP.NET Core / Next.js による主力成果物です。
+                Java / Spring Boot 版で整理した予約業務の構成をもとに、
+                API分離、管理機能、テスト、CI/CD、クラウドデプロイ、README整備を強化しています。
+              </dd>
             </div>
+
+            <div class="summary-list__row">
+              <dt>開発期間</dt>
+              <dd>個人開発として継続改善中（設計、実装、テスト、デプロイ、ドキュメント整備まで一貫対応）</dd>
+            </div>
+
             <div class="summary-list__row">
               <dt>開発人数</dt>
               <dd>1名（個人開発）</dd>
             </div>
+
             <div class="summary-list__row">
               <dt>担当範囲</dt>
-              <dd>要件整理／画面設計／DB設計／バックエンド／フロントエンド／テスト／デプロイ／ドキュメント</dd>
+              <dd>
+                要件整理／画面設計／DB設計／API設計／バックエンド実装／フロントエンド実装／
+                認証・認可／決済連携／テスト／CI/CD／クラウドデプロイ／README・構成図作成
+              </dd>
             </div>
+
             <div class="summary-list__row">
               <dt>想定ユーザー</dt>
               <dd>スタジオ利用者（一般ユーザー）、スタジオオーナー（ホスト）、サービス運営者（管理者）</dd>
             </div>
+
             <div class="summary-list__row">
               <dt>URL</dt>
               <dd>
                 デモサイト：
-                <a href="https://studio-book-naoki2025-d9e2f98301ba.herokuapp.com/" target="_blank" rel="noopener noreferrer nofollow">
-                  https://studio-book-naoki2025-d9e2f98301ba.herokuapp.com/
+                <a href="https://gray-bush-08e107700.7.azurestaticapps.net/"
+                   target="_blank" rel="noopener noreferrer nofollow">
+                  https://gray-bush-08e107700.7.azurestaticapps.net/
                 </a>
                 <br>
                 GitHub：
-                <a href="https://github.com/fewioaghwrao/studio_book" target="_blank" rel="noopener noreferrer nofollow">
-                  https://github.com/fewioaghwrao/studio_book
+                <a href="https://github.com/fewioaghwrao/studio-book-dotnet-next"
+                   target="_blank" rel="noopener noreferrer nofollow">
+                  https://github.com/fewioaghwrao/studio-book-dotnet-next
+                </a>
+                <br>
+                Java / Spring Boot 旧版：
+                <a href="studiobook-java.html">
+                  Studio Book Java / Spring Boot 版
                 </a>
               </dd>
             </div>
@@ -142,32 +169,35 @@
           <article class="card reveal">
             <h3 class="card__title">バックエンド</h3>
             <ul class="card__list">
-              <li>Java 17</li>
-              <li>Spring Boot 3 / Spring MVC / Spring Security</li>
-              <li>Spring Data JPA（Hibernate）</li>
-              <li>Bean Validation（入力チェック）</li>
-              <li>Stripe API（クレジットカード決済／Webhook による決済結果反映）</li>
+              <li>C# / ASP.NET Core（.NET 8 / Web API）</li>
+              <li>Entity Framework Core</li>
+              <li>JWT認証 / ロール認可（User / Host / Admin）</li>
+              <li>Stripe API / Webhook（決済結果反映）</li>
+              <li>QuestPDF（PDF出力）</li>
+              <li>OpenAI API連携（AI検索・レビュー補助）</li>
             </ul>
           </article>
 
           <article class="card reveal reveal-delay-1">
             <h3 class="card__title">フロントエンド</h3>
             <ul class="card__list">
-              <li>Thymeleaf（テンプレートエンジン）</li>
-              <li>HTML / CSS / Bootstrap</li>
-              <li>JavaScript（バリデーション・UI補助）</li>
-              <li>FullCalendar（予約状況カレンダー表示）</li>
-              <li>Chart.js（ホスト向け売上グラフ）</li>
+              <li>Next.js / TypeScript</li>
+              <li>React</li>
+              <li>FullCalendar（予約・休館日カレンダー表示）</li>
+              <li>Recharts（売上・ダッシュボード表示）</li>
+              <li>レスポンシブ対応の画面レイアウト</li>
+              <li>Jest / React Testing Library</li>
             </ul>
           </article>
 
           <article class="card reveal reveal-delay-2">
             <h3 class="card__title">インフラ・その他</h3>
             <ul class="card__list">
-              <li>MySQL / MariaDB</li>
-              <li>Heroku（アプリケーションデプロイ）</li>
-              <li>Mailgun（本番想定）／開発環境ではログ出力で検証</li>
-              <li>JUnit5 / Mockito / MockMvc（Web層テスト）</li>
+              <li>MySQL（Heroku / JawsDB想定）</li>
+              <li>Heroku（バックエンドAPI）</li>
+              <li>Azure Static Web Apps（フロントエンド）</li>
+              <li>GitHub Actions（CI/CD）</li>
+              <li>Docker Compose（ローカルMySQL環境）</li>
               <li>Git / GitHub（ソースコード管理）</li>
             </ul>
           </article>
@@ -182,162 +212,170 @@
           <h2 class="section__title">画面イメージ</h2>
           <p class="section__lead">
             代表的な画面をいくつか抜粋しています。<br>
-            実際の動作はデモサイトからご確認いただけます。
+            一般ユーザー、ホスト、管理者それぞれの業務フローを想定して実装しています。
           </p>
         </header>
 
         <div class="grid works works--detail">
           <figure class="work work--plain reveal">
-            <img src="images/studio-book-search.png" alt="検索画面：スタジオ一覧と条件検索" />
+            <img src="images/studio-book-next-search.png" alt="スタジオ検索画面">
             <figcaption class="work__meta">
               <span class="work__tag">一般ユーザー</span>
               <h3 class="work__title">スタジオ検索・一覧画面</h3>
               <p class="work__text">
-                エリアやキーワードでスタジオを検索し、料金の目安やレビュー評価を確認できます。
+                キーワードや条件に応じてスタジオを検索し、料金・所在地・レビュー情報を確認できます。
+                AI検索では、自然文によるスタジオ検索も想定しています。
               </p>
             </figcaption>
           </figure>
 
           <figure class="work work--plain reveal reveal-delay-1">
-            <img src="images/studio-book-detail.png" alt="スタジオ詳細画面" />
+            <img src="images/studio-book-next-detail.png" alt="スタジオ詳細・予約画面">
             <figcaption class="work__meta">
               <span class="work__tag">一般ユーザー</span>
-              <h3 class="work__title">スタジオ詳細・料金計算</h3>
+              <h3 class="work__title">スタジオ詳細・予約登録</h3>
               <p class="work__text">
-                日時を選択すると、営業時間・休館日・料金ルール（平日/休日）を考慮した金額を自動計算します。
+                営業時間、休館日、料金ルールを考慮し、予約可能時間と料金を確認して予約できます。
+                Stripe決済と連携し、決済後に予約ステータスを反映します。
               </p>
             </figcaption>
           </figure>
 
-          <figure class="work work--plain reveal reveal-delay-2">
-            <img src="images/studio-book-host-dashboard.png" alt="ホスト向けダッシュボード画面" />
-            <figcaption class="work__meta">
-              <span class="work__tag">ホスト</span>
-              <h3 class="work__title">ホスト向けダッシュボード</h3>
-              <p class="work__text">
-                月別の予約数・売上推移、レビュー平均などをグラフで把握できます。
-              </p>
-            </figcaption>
-          </figure>
+<figure class="work work--plain reveal reveal-delay-2">
+  <img src="images/studio-book-next-host-dashboard.png" alt="ホスト向け統計一覧画面">
+  <figcaption class="work__meta">
+    <span class="work__tag">ホスト</span>
+    <h3 class="work__title">ホスト向け統計一覧</h3>
+    <p class="work__text">
+      ホストが管理するスタジオについて、直近3か月の売上、稼働率、レビュー平均を確認できる画面です。
+      スタジオ別の絞り込みや表示月の切り替えに対応し、運営状況を可視化しています。
+    </p>
+  </figcaption>
+</figure>
 
-          <figure class="work work--plain reveal reveal-delay-3">
-            <img src="images/studio-book-calendar.png" alt="カレンダー画面" />
-            <figcaption class="work__meta">
-              <span class="work__tag">ホスト</span>
-              <h3 class="work__title">カレンダー・休館日設定</h3>
-              <p class="work__text">
-                FullCalendar により予約状況・休館日をカレンダーで可視化しています。
-              </p>
-            </figcaption>
-          </figure>
+<figure class="work work--plain reveal reveal-delay-3">
+  <img src="images/studio-book-next-admin-dashboard.png" alt="管理者向けデータ一覧画面">
+  <figcaption class="work__meta">
+    <span class="work__tag">管理者</span>
+    <h3 class="work__title">管理者向けデータ一覧</h3>
+    <p class="work__text">
+      管理者が全スタジオを対象に、登録数、ホスト数、予約件数、手数料売上、稼働率、レビュー平均を確認できる画面です。
+      サービス全体の利用状況と収益状況を把握するためのダッシュボードとして実装しています。
+    </p>
+  </figcaption>
+</figure>
         </div>
       </div>
     </section>
 
-    <!-- 機能一覧 -->
+    <!-- 主な機能 -->
     <section class="section section--alt">
       <div class="container">
         <header class="section__head reveal">
           <h2 class="section__title">主な機能</h2>
         </header>
 
-<p class="note reveal">
-  ※本ページの「主な機能」は実装済みの内容です。末尾の「今後の改善予定」は拡張案として整理したものです。<br>
-  ※操作ログ（audit_logs）は現在試作段階のため、改善予定に含めています。
-</p>
-
+        <p class="note reveal">
+          ※本ページの「主な機能」は ASP.NET Core / Next.js 版で実装した内容です。<br>
+          ※Java / Spring Boot 旧版で整理した予約業務をもとに、API分離・管理画面・CI/CD・ドキュメントを強化しています。
+        </p>
 
         <div class="grid cards">
           <article class="card reveal">
-            <h3 class="card__title">一般ユーザー機能（ROLE_GENERAL）</h3>
+            <h3 class="card__title">一般ユーザー機能</h3>
             <ul class="card__list">
-              <li>スタジオ検索（キーワード／エリア）</li>
-              <li>スタジオ詳細閲覧、設備・料金の確認</li>
-              <li>日時選択による料金自動計算（15分単位）</li>
-              <li>Stripe によるクレジットカード決済</li>
-              <li>マイページでの予約一覧・キャンセル</li>
+              <li>会員登録 / ログイン / JWT認証</li>
+              <li>スタジオ検索・一覧・詳細表示</li>
+              <li>予約登録・予約一覧・予約キャンセル</li>
+              <li>Stripe Checkout による決済</li>
               <li>レビュー投稿・編集・削除</li>
+              <li>AIによるスタジオ検索補助</li>
             </ul>
           </article>
 
           <article class="card reveal reveal-delay-1">
-            <h3 class="card__title">ホスト機能（ROLE_HOST）</h3>
+            <h3 class="card__title">ホスト機能</h3>
             <ul class="card__list">
-              <li>自店舗のスタジオ登録・編集・公開/非公開切り替え</li>
-              <li>予約一覧・売上一覧の閲覧</li>
-              <li>営業時間（business_hours）の設定</li>
-              <li>休館日（closures）の登録・管理</li>
-              <li>料金ルール（price_rules）の設定（平日/休日、倍率・固定料金）</li>
-              <li>レビューへの返信、公開/非公開の管理</li>
-              <li>ダッシュボードで売上・稼働率・レビュー平均を可視化</li>
+              <li>自分のスタジオ・ルーム管理</li>
+              <li>営業時間設定</li>
+              <li>料金ルール設定</li>
+              <li>休館日登録・カレンダー表示</li>
+              <li>予約一覧・売上一覧・売上詳細</li>
+              <li>CSV出力 / PDF出力</li>
+              <li>レビュー返信・公開状態管理</li>
             </ul>
           </article>
 
           <article class="card reveal reveal-delay-2">
-            <h3 class="card__title">管理者機能（ROLE_ADMIN）</h3>
+            <h3 class="card__title">管理者機能</h3>
             <ul class="card__list">
-              <li>ユーザー／ホスト／スタジオの一覧・詳細管理</li>
-              <li>全体の予約・売上状況の確認</li>
-              <li>不適切なレビューの非表示処理</li>
-              <li>システム設定（税率・手数料率など）の変更</li>
+              <li>ユーザー一覧・詳細管理</li>
+              <li>予約一覧・売上状況確認</li>
+              <li>スタジオ・ルーム情報の確認</li>
+              <li>システム設定（税率・手数料率など）の管理</li>
+              <li>監査ログ検索</li>
+              <li>AI検索ログ確認</li>
+              <li>管理者向けダッシュボード</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- アーキテクチャ & DB -->
+    <!-- アーキテクチャ・設計 -->
     <section class="section">
       <div class="container">
         <header class="section__head reveal">
-          <h2 class="section__title">アーキテクチャ・DB設計</h2>
+          <h2 class="section__title">アーキテクチャ・設計</h2>
         </header>
 
         <div class="grid grid--2col">
           <div class="reveal">
-            <h3 class="h3">レイヤードアーキテクチャ</h3>
-<p class="mt-2">
-  詳細な設計方針は
-  <a href="https://github.com/fewioaghwrao/studio_book/blob/main/docs/ARCHITECTURE.md"
-     target="_blank"
-     rel="noopener noreferrer nofollow">
-    docs/ARCHITECTURE.md
-  </a>
-  にまとめています。
-</p>
-
-              Controller / Service / Repository / Entity からなる
-              <strong>レイヤードアーキテクチャ</strong> で構成しています。
+            <h3 class="h3">構成方針</h3>
+            <p class="mt-2">
+              フロントエンドとバックエンドを分離し、
+              Next.js から ASP.NET Core Web API を呼び出す構成にしています。
+              認証はJWTを利用し、一般ユーザー、ホスト、管理者のロールに応じて
+              利用できる画面・APIを分けています。
             </p>
+
             <ul class="list">
-              <li>Controller：ルーティングと画面遷移制御</li>
-              <li>Service：業務ロジック（料金計算、営業判定、権限制御）</li>
-              <li>Repository：Spring Data JPA による DB アクセス</li>
-              <li>Entity：テーブル構造に対応したドメインモデル</li>
+              <li>Frontend：Next.js / TypeScript</li>
+              <li>Backend：ASP.NET Core Web API</li>
+              <li>Database：MySQL</li>
+              <li>Auth：JWT / Role-based Authorization</li>
+              <li>Payment：Stripe Checkout / Webhook</li>
+              <li>Deploy：Azure Static Web Apps + Heroku</li>
             </ul>
 
-            <pre class="code-block"><code>RoomController → RoomService → RoomRepository → Room(Entity)
-ReservationController → ReservationService → ReservationRepository → Reservation(Entity)
-HostStatsController → HostStatsService → ReservationRepository / ReviewRepository</code></pre>
+            <pre class="code-block"><code>Next.js Frontend
+  → ASP.NET Core Web API
+    → Service Layer
+      → EF Core
+        → MySQL
+
+Stripe Webhook
+  → Reservation / Payment Status Update</code></pre>
           </div>
 
           <div class="reveal reveal-delay-1">
-            <h3 class="h3">主なテーブル</h3>
+            <h3 class="h3">主な設計対象</h3>
             <ul class="list">
-              <li><strong>users, roles, verification_tokens</strong>：ユーザーと認証・認可</li>
-              <li><strong>rooms</strong>：スタジオ情報</li>
-              <li><strong>reservations</strong>：予約情報</li>
-              <li><strong>reservation_charge_items</strong>：料金明細（時間スライス単位）</li>
-              <li><strong>business_hours</strong>：曜日ごとの営業時間</li>
-              <li><strong>closures</strong>：休館日情報</li>
-              <li><strong>price_rules</strong>：料金ルール（平日/休日・倍率など）</li>
-              <li><strong>reviews</strong>：レビュー・ホスト返信</li>
-              <li><strong>admin_settings</strong>：税率・手数料などの設定</li>
-              <li><strong>audit_logs</strong>：操作ログ（試作：現状はサンプルデータ）</li>
+              <li><strong>Users / Roles</strong>：ユーザーとロール管理</li>
+              <li><strong>Rooms</strong>：スタジオ・ルーム情報</li>
+              <li><strong>Reservations</strong>：予約情報・ステータス管理</li>
+              <li><strong>ReservationChargeItems</strong>：料金明細・手数料・税額</li>
+              <li><strong>BusinessHours</strong>：曜日ごとの営業時間</li>
+              <li><strong>Closures</strong>：休館日・予約不可日</li>
+              <li><strong>PriceRules</strong>：料金ルール</li>
+              <li><strong>Reviews</strong>：レビュー・ホスト返信</li>
+              <li><strong>AuditLogs</strong>：管理者向け操作ログ</li>
+              <li><strong>AiSearchLogs</strong>：AI検索ログ</li>
             </ul>
 
             <p class="mt-2">
-              ER 図は GitHub の <code>docs/diagrams</code> ディレクトリ、および README に掲載しています。
+              README、ER図、画面構成図、認証フロー、予約・決済フローなどを
+              GitHub上のドキュメントとして整備しています。
             </p>
           </div>
         </div>
@@ -355,59 +393,56 @@ HostStatsController → HostStatsService → ReservationRepository / ReviewRepos
           <div class="reveal">
             <h3 class="h3">実装面で意識したポイント</h3>
             <ul class="list">
-              <li>予約日時が営業時間内・休館日外であることのチェック</li>
-              <li>15分単位の時間スライスに分解した料金計算ロジック</li>
-              <li>Stripe 決済と予約ステータスの連動（Webhook を利用）</li>
-              <li>Bean Validation による入力チェックとエラーメッセージ表示</li>
-              <li>認可（ROLE_GENERAL / ROLE_HOST / ROLE_ADMIN）ごとのアクセス制御</li>
-              <li>ホスト／管理者が自分のリソース以外を操作できないようなガード処理</li>
-              <li>FullCalendar・Chart.js を用いた視覚的な UI 提供</li>
-              <li>Stripe Webhook を利用し、決済結果に応じて予約ステータスを確定させる設計</li>
+              <li>JWT認証とロール認可により、一般・ホスト・管理者の操作範囲を分離</li>
+              <li>予約重複、営業時間外、休館日などを考慮した予約制御</li>
+              <li>Stripe Checkout / Webhook による決済結果と予約ステータスの連動</li>
+              <li>ホストが自分のリソース以外を操作できないようにする権限チェック</li>
+              <li>売上・予約・レビューをホスト/管理者ごとに分けて表示</li>
+              <li>CSV/PDF出力により、業務帳票・集計用途を想定</li>
+              <li>AI検索ログを保存し、管理者が利用状況を確認できる構成</li>
             </ul>
           </div>
 
           <div class="reveal reveal-delay-1">
-            <h3 class="h3">テスト</h3>
+            <h3 class="h3">テスト・CI/CD</h3>
             <ul class="list">
-              <li>JUnit5 + Spring Boot Test を用いた Web 層テスト</li>
-              <li>MockMvc による Controller + View の結合テスト</li>
-              <li>Mockito を使った Service のモック・例外パターンの検証</li>
-              <li>正常系・異常系を分けたテストケース設計</li>
-              <li>Stripe Webhook の署名検証や異常系の動作確認</li>
+              <li>xUnit / EF Core InMemory によるバックエンドテスト</li>
+              <li>Jest / React Testing Library によるフロントエンドテスト</li>
+              <li>GitHub Actions による build / test の自動実行</li>
+              <li>Azure Static Web Apps へのフロントエンドデプロイ</li>
+              <li>Heroku への ASP.NET Core API デプロイ</li>
+              <li>環境変数によるJWT、Stripe、CORS、DB接続情報の切り替え</li>
             </ul>
             <p class="mt-2">
-              テストコード例は GitHub リポジトリの <code>src/test/java</code> 以下にまとめています。
+              テスト・CI/CD・デプロイ構成は、READMEおよび docs 配下の構成図に整理しています。
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 学び・今後の展望 -->
+    <!-- Java版からの発展 -->
     <section class="section">
       <div class="container">
         <header class="section__head reveal">
-          <h2 class="section__title">学び・今後の改善予定</h2>
+          <h2 class="section__title">Java版からの発展</h2>
         </header>
 
         <div class="reveal">
-          <h3 class="h3">学び</h3>
+          <h3 class="h3">発展させたポイント</h3>
           <ul class="list">
-            <li>Spring Boot を用いたフルスタック Web アプリ開発の一連の流れ</li>
-            <li>認証・認可、ロールによる画面の出し分けの実装</li>
-            <li>料金計算・営業時間・予約状態など、業務ロジックの整理とテスト</li>
-            <li>外部サービス（Stripe / Mailgun）との連携とエラー処理</li>
+            <li>Java / Spring Boot 版で整理した予約・決済・ロール管理を、ASP.NET Core API + Next.js 構成へ再設計</li>
+            <li>画面とAPIを分離し、フロントエンド・バックエンドの責務を明確化</li>
+            <li>ホスト向け・管理者向けの一覧、詳細、検索、売上、ログ確認機能を強化</li>
+            <li>CSV/PDF出力、AI検索、監査ログなど、業務システムらしい運用機能を追加</li>
+            <li>GitHub Actions、Azure Static Web Apps、Herokuを用いて、CI/CDと公開デモを整備</li>
+            <li>README、ER図、構成図、画面遷移、認証フロー、予約・決済フローなど、説明しやすい資料を拡充</li>
           </ul>
 
-          <h3 class="h3 mt-3">今後の改善予定</h3>
-          <ul class="list">
-            <li>クーポン・割引コード機能の追加</li>
-            <li>より柔軟な料金体系（時間帯別料金、繁忙期設定など）</li>
-            <li>レビュー通報機能やホスト・管理者向け通知強化</li>
-            <li>FullCalendar を用いたドラッグ＆ドロップによる休館日登録（操作性向上）</li>
-            <li>レスポンシブデザインのさらなるブラッシュアップ</li>
-            <li>操作ログ（audit_logs）の本実装：重要操作時の自動記録（誰が・いつ・何を）／検索・閲覧UIの追加</li>
-          </ul>
+          <p class="mt-2">
+            Java / Spring Boot 版は初期学習・比較実装版として残し、
+            現在は本ページの ASP.NET Core / Next.js 版を主力成果物として掲載しています。
+          </p>
         </div>
       </div>
     </section>
@@ -417,14 +452,32 @@ HostStatsController → HostStatsService → ReservationRepository / ReviewRepos
       <div class="container cta reveal">
         <h2 class="section__title">リンク</h2>
         <p class="mb-2">
-          ソースコードは下記からご覧いただけます。
+          デモサイト、ソースコード、旧Java版は下記からご覧いただけます。
         </p>
+
         <p class="mt-1">
-          GitHub リポジトリ：<br>
-          <a href="https://github.com/fewioaghwrao/studio_book" target="_blank" rel="noopener noreferrer nofollow">
-            https://github.com/fewioaghwrao/studio_book
+          デモサイト：<br>
+          <a href="https://gray-bush-08e107700.7.azurestaticapps.net/"
+             target="_blank" rel="noopener noreferrer nofollow">
+            https://gray-bush-08e107700.7.azurestaticapps.net/
           </a>
         </p>
+
+        <p class="mt-1">
+          GitHub リポジトリ：<br>
+          <a href="https://github.com/fewioaghwrao/studio-book-dotnet-next"
+             target="_blank" rel="noopener noreferrer nofollow">
+            https://github.com/fewioaghwrao/studio-book-dotnet-next
+          </a>
+        </p>
+
+        <p class="mt-1">
+          Java / Spring Boot 旧版：<br>
+          <a href="studiobook-java.html">
+            Studio Book Java / Spring Boot 版を見る
+          </a>
+        </p>
+
         <p class="mt-2">
           <a class="btn btn--ghost" href="index.html#works">Works 一覧へ戻る</a>
         </p>
@@ -432,7 +485,6 @@ HostStatsController → HostStatsService → ReservationRepository / ReviewRepos
     </section>
   </main>
 
-  <!-- フッター -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <small>※本ページは検索避け（noindex）設定済み。URLをご存知の方のみの想定公開です。</small>
@@ -440,7 +492,6 @@ HostStatsController → HostStatsService → ReservationRepository / ReviewRepos
     </div>
   </footer>
 
-  <!-- スクロールアニメーション & ナビ制御（トップと同様） -->
   <script>
     // スクロールアニメーション
     (function(){
@@ -469,6 +520,7 @@ HostStatsController → HostStatsService → ReservationRepository / ReviewRepos
 
       toggle.addEventListener('click', function() {
         const isOpen = nav.classList.contains('is-open');
+
         if (isOpen) {
           nav.classList.remove('is-open');
           toggle.setAttribute('aria-expanded', 'false');
@@ -495,4 +547,3 @@ HostStatsController → HostStatsService → ReservationRepository / ReviewRepos
   </script>
 </body>
 </html>
-
