@@ -25,7 +25,7 @@
 <header class="site-header" id="top">
   <div class="container header-inner">
     <a class="brand" href="index.html" aria-label="ポートフォリオ トップへ">
-      <img src="images/logox.svg" alt="コーディアワークス ロゴ" class="brand__logo-img" width="160" height="48" />
+      <img src="images/logox.svg" alt="N.O. Portfolio" class="brand__logo-img" width="160" height="48" />
     </a>
     <nav class="nav" aria-label="グローバルナビゲーション">
       <button class="nav__toggle" aria-expanded="false" aria-controls="navList">MENU</button>
@@ -56,32 +56,28 @@
         </p>
 
 <div class="hero__actions reveal reveal-delay-2">
-  <a class="btn" href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
-     target="_blank" rel="noopener noreferrer nofollow">
-    デモ（Heroku：本番相当）
+  <a class="btn"
+     href="https://delightful-dune-0bf9e7300.7.azurestaticapps.net/auth/login"
+     target="_blank"
+     rel="noopener noreferrer nofollow">
+    デモを見る
   </a>
 
-  <a class="btn" href="https://gray-flower-0a4087900.2.azurestaticapps.net/auth/login"
-     target="_blank" rel="noopener noreferrer nofollow">
-    デモ（Azure: Static Web Apps）
-  </a>
-
-  <a class="btn btn--ghost" href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
-     target="_blank" rel="noopener noreferrer nofollow">
+  <a class="btn btn--ghost"
+     href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
+     target="_blank"
+     rel="noopener noreferrer nofollow">
     GitHub リポジトリ
   </a>
 </div>
 
 <p class="hero__note reveal reveal-delay-3">
-  ※デモは閲覧可能な環境の方のみご参照ください。<br>
-  ※Herokuは「本番相当（API + DB の結合テスト）」、Azureは「フロント（Static Web Apps）配置の検証環境」として公開しています。<br>
-  ※初回アクセス時に起動待ちが発生する場合があります。<br>
+  ※フロントエンドは Azure Static Web Apps、バックエンド API とデータベースは Heroku 上で公開しています。<br>
   ※デモデータはダミーです。
 </p>
       </div>
 
       <figure class="hero__image reveal reveal-delay-3">
-        <!-- ★ここは invoice のトップ画像に差し替え推奨 -->
         <img src="images/invoice-top.png" alt="請求書・入金ステータスダッシュボード（Lite）のトップ画面イメージ">
       </figure>
     </div>
@@ -99,7 +95,7 @@
       <dl class="summary-list">
         <div class="summary-list__row">
           <dt>開発期間</dt>
-          <dd>約1ヶ月（設計〜実装〜デモ公開まで個人で対応）</dd>
+          <dd>初期実装：約1ヶ月／以降、テスト・監査ログ・CI/CD・クラウド対応を継続改善</dd>
         </div>
         <div class="summary-list__row">
           <dt>開発人数</dt>
@@ -113,48 +109,60 @@
           <dt>想定ユーザー</dt>
           <dd>請求・入金を管理する管理者／支払状況を確認する会員（ロール制御）</dd>
         </div>
+        <div class="summary-list__row">
+            <div class="card__links">
 <div class="summary-list__row">
-  <dt>URL</dt>
+  <dt>公開環境</dt>
+
   <dd>
-    <strong>Heroku（本番相当・結合テスト環境）</strong><br>
-    フロントエンド：
-    <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login"
-       target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login
-    </a><br>
-    バックエンド API：
-    <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com"
-       target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-naoki-app-api-333afef82093.herokuapp.com
-    </a><br>
-    Health：
-    <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health"
-       target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
-    </a><br><br>
+    <div class="summary-links">
+      <a class="summary-link summary-link--primary"
+         href="https://delightful-dune-0bf9e7300.7.azurestaticapps.net/auth/login"
+         target="_blank"
+         rel="noopener noreferrer nofollow">
+        デモを開く
+      </a>
 
-<strong>Azure（フロント配置の検証環境：Azure Static Web Apps）</strong><br>
-フロントエンド：
-<a href="https://gray-flower-0a4087900.2.azurestaticapps.net/auth/login"
-   target="_blank" rel="noopener noreferrer nofollow">
-  https://gray-flower-0a4087900.2.azurestaticapps.net/auth/login
-</a><br>
-バックエンド API（共通：Heroku）：
-<a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com"
-   target="_blank" rel="noopener noreferrer nofollow">
-  https://invoice-naoki-app-api-333afef82093.herokuapp.com
-</a><br>
-Health（共通：Heroku）：
-<a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health"
-   target="_blank" rel="noopener noreferrer nofollow">
-  https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
-</a><br><br>
 
-    GitHub：
-    <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
-       target="_blank" rel="noopener noreferrer nofollow">
-      https://github.com/fewioaghwrao/Invoice-management-system-lite
-    </a>
+  <a class="summary-link"
+     href="https://invoice-app-api-b1a73aa4f113.herokuapp.com/swagger"
+     target="_blank"
+     rel="noopener noreferrer nofollow">
+    Swagger
+  </a>
+
+  <a class="summary-link"
+     href="https://invoice-app-api-b1a73aa4f113.herokuapp.com/health"
+     target="_blank"
+     rel="noopener noreferrer nofollow">
+    Health Check
+  </a>
+
+  <a class="summary-link"
+     href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
+     target="_blank"
+     rel="noopener noreferrer nofollow">
+    GitHub
+  </a>
+</div>
+
+<dl class="environment-list">
+  <div>
+    <dt>Frontend</dt>
+    <dd>Next.js / Azure Static Web Apps</dd>
+  </div>
+
+  <div>
+    <dt>Backend</dt>
+    <dd>ASP.NET Core API / Heroku</dd>
+  </div>
+
+  <div>
+    <dt>Database</dt>
+    <dd>PostgreSQL / Heroku Postgres</dd>
+  </div>
+</dl>
+
   </dd>
 </div>
 
@@ -187,7 +195,11 @@ Health（共通：Heroku）：
   <li>催促（リマインド）：送信履歴管理</li>
   <li>売上集計：月次 / 顧客別 / ステータス別</li>
   <li>請求書PDF出力（管理者/会員）※QuestPDF + 日本語フォント埋め込み</li>
-  <li>監査ログ：基礎実装（ログ取得APIまで対応）</li>
+  <li>操作ログ：請求・入金・催促などの監査ログ記録および管理者向け一覧画面</li>
+  <li>催促処理：非同期ジョブとして実行</li>
+  <li>単体テスト：主要サービス層の業務ロジックを検証</li>
+  <li>統合テスト：認証・認可・主要APIエンドポイントを検証</li>
+  <li>Docker / GitHub Actions によるビルド・テスト自動化</li>
 </ul>
 
             <p class="card__text">
@@ -198,11 +210,11 @@ Health（共通：Heroku）：
           <article class="card reveal reveal-delay-1">
             <h3 class="card__title">これから（実装予定）</h3>
 <ul class="card__list">
-  <li>催促テンプレの編集UI（文面の管理・履歴差分）</li>
-  <li>売上集計のCSV自動定期出力</li>
   <li>月次締め処理（締め後の更新制御）</li>
-  <li>監査ログ：重要操作の追跡強化、管理者向けUI整備</li>
-  <li>テスト拡充（サービス層・集計ロジック）</li>
+  <li>催促テンプレートの管理機能</li>
+  <li>監査ログ検索条件・CSV出力の拡充</li>
+  <li>境界値・異常系テストの追加</li>
+  <li>一覧・集計処理のパフォーマンス改善</li>
 </ul>
 
             <p class="card__text">
@@ -292,7 +304,7 @@ Health（共通：Heroku）：
                 <tr>
   <td>Auth</td>
   <td>POST</td>
-  <td>/api/auth/login</td>
+  <td>/auth/login</td>
   <td>ログイン</td>
 </tr>
 <tr>
@@ -382,8 +394,29 @@ Health（共通：Heroku）：
       </p>
     </figcaption>
   </figure>
-</div>
 
+  <figure class="work work--plain reveal reveal-delay-5">
+    <img src="images/G-operation-log-list.png" alt="操作ログ一覧画面" />
+  <figcaption class="work__meta">
+    <span class="work__tag">操作ログ一覧</span>
+    <h3 class="work__title">重要操作の追跡性を確保</h3>
+    <p class="work__text">
+      請求書・入金・催促などの操作履歴を、日時・操作種別・対象・操作者とともに確認できます。
+    </p>
+  </figcaption>
+  </figure>
+
+  <figure class="work work--plain reveal reveal-delay-5">
+    <img src="images/H-logout-confirm.png" alt="ログアウト確認ダイアログ" />
+  <figcaption class="work__meta">
+    <span class="work__tag">ログアウト確認</span>
+    <h3 class="work__title">誤操作を防止する確認導線</h3>
+    <p class="work__text">
+      認証状態を破棄する前に確認ダイアログを表示し、意図しないログアウトを防止しています。
+    </p>
+  </figcaption>
+</figure>
+</div>
 
 <p class="card__text">
   業務アプリを想定し、一覧・検索・更新の導線と、ロール制御（管理者/会員）を重視しています。
@@ -427,7 +460,7 @@ Health（共通：Heroku）：
 </ul>
       <p class="note mt-2">
         ※ Lite 版では「実務で重要度が高いコア機能（請求・入金・集計）」を優先し、
-        運用系（締め/監査/テスト拡充）は改善項目として段階的に追加する方針です。
+        未実装の月次締めや催促テンプレート管理を中心に、運用機能を段階的に追加する方針です。
       </p>
     </div>
   </div>
@@ -442,46 +475,48 @@ Health（共通：Heroku）：
         </header>
 
         <div class="reveal">
-<ul class="link-list">
-  <li><strong>Heroku（本番相当・結合テスト）Front：</strong>
-    <a href="https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login" target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-naoki-app-front-b97fea6c721d.herokuapp.com/auth/login
-    </a>
-  </li>
-  <li><strong>Heroku API：</strong>
-    <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com" target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-naoki-app-api-333afef82093.herokuapp.com
-    </a>
-  </li>
-  <li><strong>Heroku Health：</strong>
-    <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health" target="_blank" rel="noopener noreferrer nofollow">
-      https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
-    </a>
-  </li>
-
-<li class="mt-2"><strong>Azure（フロント配置の検証）Front：</strong>
-  <a href="https://gray-flower-0a4087900.2.azurestaticapps.net/auth/login" target="_blank" rel="noopener noreferrer nofollow">
-    https://gray-flower-0a4087900.2.azurestaticapps.net/auth/login
-  </a>
-</li>
-<li><strong>Backend API（共通：Heroku）：</strong>
-  <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com" target="_blank" rel="noopener noreferrer nofollow">
-    https://invoice-naoki-app-api-333afef82093.herokuapp.com
-  </a>
-</li>
-<li><strong>Health（共通：Heroku）：</strong>
-  <a href="https://invoice-naoki-app-api-333afef82093.herokuapp.com/health" target="_blank" rel="noopener noreferrer nofollow">
-    https://invoice-naoki-app-api-333afef82093.herokuapp.com/health
-  </a>
-</li>
-
-  <li class="mt-2"><strong>GitHub：</strong>
-    <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite" target="_blank" rel="noopener noreferrer nofollow">
-      https://github.com/fewioaghwrao/Invoice-management-system-lite
-    </a>
-  </li>
-</ul>
-
+          <ul class="link-list">
+            <li>
+              <strong>フロントエンド（Azure Static Web Apps）：</strong>
+              <a href="https://delightful-dune-0bf9e7300.7.azurestaticapps.net/auth/login"
+                 target="_blank"
+                 rel="noopener noreferrer nofollow">
+                デモを開く
+              </a>
+            </li>
+            <li>
+              <strong>バックエンド API（Heroku）：</strong>
+              <a href="https://invoice-app-api-b1a73aa4f113.herokuapp.com"
+                 target="_blank"
+                 rel="noopener noreferrer nofollow">
+                APIを開く
+              </a>
+            </li>
+            <li>
+              <strong>Health Check：</strong>
+              <a href="https://invoice-app-api-b1a73aa4f113.herokuapp.com/health"
+                 target="_blank"
+                 rel="noopener noreferrer nofollow">
+                稼働状態を確認
+              </a>
+            </li>
+            <li>
+              <strong>Swagger：</strong>
+              <a href="https://invoice-app-api-b1a73aa4f113.herokuapp.com/swagger"
+                 target="_blank"
+                 rel="noopener noreferrer nofollow">
+                API仕様を確認
+              </a>
+            </li>
+            <li>
+              <strong>GitHub：</strong>
+              <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite"
+                 target="_blank"
+                 rel="noopener noreferrer nofollow">
+                リポジトリを開く
+              </a>
+            </li>
+          </ul>
 
 
           <p class="mt-2">
@@ -547,4 +582,3 @@ Health（共通：Heroku）：
   </script>
 </body>
 </html>
-
