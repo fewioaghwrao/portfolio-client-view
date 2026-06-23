@@ -105,7 +105,7 @@
               <dd>
                 ASP.NET Core / Next.js による主力成果物です。
                 Java / Spring Boot 版で整理した予約業務の構成をもとに、
-                API分離、管理機能、テスト、CI/CD、クラウドデプロイ、README整備を強化しています。
+                API分離、管理機能、テスト、CI/CD、クラウドデプロイに加え、要件定義・基本設計・詳細設計までを含むドキュメントを整備しています。
               </dd>
             </div>
 
@@ -123,7 +123,7 @@
               <dt>担当範囲</dt>
               <dd>
                 要件整理／画面設計／DB設計／API設計／バックエンド実装／フロントエンド実装／
-                認証・認可／決済連携／テスト／CI/CD／クラウドデプロイ／README・構成図作成
+               認証・認可／決済連携／テスト／CI/CD／クラウドデプロイ／要件定義書・基本設計書・詳細設計書・README・構成図作成
               </dd>
             </div>
 
@@ -171,7 +171,7 @@
             <ul class="card__list">
               <li>C# / ASP.NET Core（.NET 8 / Web API）</li>
               <li>Entity Framework Core</li>
-              <li>JWT認証 / ロール認可（User / Host / Admin）</li>
+              <li>JWT Bearer認証 / ロール認可（GeneralUser / Host / Admin）</li>
               <li>Stripe API / Webhook（決済結果反映）</li>
               <li>QuestPDF（PDF出力）</li>
               <li>OpenAI API連携（AI検索・レビュー補助）</li>
@@ -235,8 +235,10 @@
               <span class="work__tag">一般ユーザー</span>
               <h3 class="work__title">スタジオ詳細・予約登録</h3>
               <p class="work__text">
-                営業時間、休館日、料金ルールを考慮し、予約可能時間と料金を確認して予約できます。
-                Stripe決済と連携し、決済後に予約ステータスを反映します。
+営業時間、休館期間、既存予約、時間帯別料金をバックエンドで検証し、
+Stripe Checkoutへ連携します。決済完了後はWebhookを受信し、
+支払金額と再計算結果を照合したうえで予約と料金明細を登録します。
+
               </p>
             </figcaption>
           </figure>
@@ -286,9 +288,9 @@
             <ul class="card__list">
               <li>会員登録 / ログイン / JWT認証</li>
               <li>スタジオ検索・一覧・詳細表示</li>
-              <li>予約登録・予約一覧・予約キャンセル</li>
+              <li>予約内容確認・決済・予約履歴確認</li>
+              <li>レビュー投稿・AIレビュー文補助</li>
               <li>Stripe Checkout による決済</li>
-              <li>レビュー投稿・編集・削除</li>
               <li>AIによるスタジオ検索補助</li>
             </ul>
           </article>
@@ -296,7 +298,7 @@
           <article class="card reveal reveal-delay-1">
             <h3 class="card__title">ホスト機能</h3>
             <ul class="card__list">
-              <li>自分のスタジオ・ルーム管理</li>
+              <li>自分のスタジオ一覧・詳細確認</li>
               <li>営業時間設定</li>
               <li>料金ルール設定</li>
               <li>休館日登録・カレンダー表示</li>
@@ -355,7 +357,7 @@
         → MySQL
 
 Stripe Webhook
-  → Reservation / Payment Status Update</code></pre>
+  → Reservation / Charge Items Registration</code></pre>
           </div>
 
           <div class="reveal reveal-delay-1">
