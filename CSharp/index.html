@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ポートフォリオ | C#（Desktop / WPF）</title>
-  <meta name="description" content="C# WPFポートフォリオ：センサー監視シミュレーションとExcel/帳票自動化ランチャーの紹介ページ。機能、技術、スクリーンショット、GitHub・Releasesリンク付き。"/>
+  <meta name="description" content="C# WPFポートフォリオ：請求・入金管理WPFクライアントと仮想センサー監視サンプルを通じて、業務アプリ設計、状態管理、ログ・例外処理、API連携を紹介。"/>
   <meta name="author" content="N.O." />
 
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="ポートフォリオ | C#（Desktop / WPF）"/>
-  <meta property="og:description" content="C# WPFの2案件（過去実務ベースのサンプル）を個別紹介。機能・技術・スクショ・リンクを整理。"/>
+  <meta property="og:description" content="C# / WPFによる業務向けデスクトップアプリの成果物を紹介。請求・入金管理と仮想センサー監視を掲載。"/>
   <meta property="og:image" content="images/ogp-placeholder.png"/>
 
   <meta name="robots" content="noindex,nofollow,noarchive,noimageindex" />
@@ -281,62 +281,19 @@
 
   <main class="container">
     <section class="hero">
-      <p class="hero__eyebrow">C# / .NET / WPF（過去実務ベースの再現サンプル）</p>
-      <h1 class="hero__title">C#（Desktop / WPF）実績サンプル</h1>
+      <p class="hero__eyebrow">C# / .NET / WPF（業務アプリ開発・個人開発成果物）</p>
+      <h1 class="hero__title">C#（Desktop / WPF）業務アプリ実績・成果物</h1>
       <p class="hero__lead">
-        現場業務の課題を意識した Windows デスクトップアプリ 2件を紹介します（機能・使用技術・スクリーンショット）。
+        C#によるWindows業務アプリ開発で培った、画面設計、状態管理、データ処理、
+        ログ・例外設計、テストの考え方を、2件のWPF成果物として紹介します。
       </p>
 <p class="hero__note">
-  ※ 本ページは「過去実務で培ったC#デスクトップ開発力」を、守秘義務に配慮して再構成したサンプルです（固有情報・顧客情報は含みません）。
+  ※ PLC・ロボット・TCP/IP通信は過去案件で扱った周辺経験です。本ページでは、WPF／WinFormsによる業務アプリ開発を中心に掲載しています。
 </p>
     </section>
 
     <div class="grid">
-      <!-- センサー監視シミュレーション -->
-      <section id="sensor" class="col-6 card" aria-labelledby="sensorTitle">
-        <div class="card__header">
-          <span class="badge" aria-label="アプリ種別">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9" stroke="#fff" stroke-width="1.6"/>
-              <path d="M12 17a5 5 0 1 0-5-5" stroke="#fff" stroke-width="1.6"/>
-              <path d="M12 13a1 1 0 1 0-1-1" stroke="#fff" stroke-width="1.6"/>
-            </svg>
-            仮想センサー監視シミュレーション（設備ユーザー向け想定）
-          </span>
-          <h2 id="sensorTitle" class="card__title">リアルタイム可視化 & アラート通知</h2>
-          <p class="card__desc">
-            仮想センサーのストリームを生成し折れ線グラフで可視化。しきい値超過でトースト通知・ログ出力、設定は JSON ホットリロードに対応。
-          </p>
-        </div>
-
-        <div class="media">
-          <img src="images/C1.png" alt="センサー監視アプリのスクリーンショット（ダッシュボード、アラート、チャート）">
-        </div>
-
-        <div class="card__body">
-          <ul class="features">
-            <li>仮想センサー：ノイズ付きサイン波 / ランダムウォーク</li>
-            <li>チャート：OxyPlot、履歴エクスポート（CSV）</li>
-            <li>アラート：しきい値 / デッドバンド、Serilog ログ</li>
-            <li>設定：appsettings.json ホットリロード、プロファイル切替</li>
-          </ul>
-
-          <div class="chips" aria-label="使用技術">
-            <span class="chip">WPF</span>
-            <span class="chip">CommunityToolkit.MVVM</span>
-            <span class="chip">OxyPlot</span>
-            <span class="chip">Serilog</span>
-            <span class="chip">JSON Config</span>
-          </div>
-
-          <div class="cta" aria-label="関連リンク">
-            <a class="btn is-primary" href="https://github.com/fewioaghwrao/CsharpWpfTelemetryMonitor" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
-            <a class="btn" href="docs/sensor-demo.html" target="_blank" rel="noopener">動画デモ</a>
-          </div>
-        </div>
-      </section>
-
-<!-- 請求書・入金管理 WPF クライアント -->
+      <!-- 請求書・入金管理 WPF クライアント -->
 <section id="invoice-wpf" class="col-6 card" aria-labelledby="invoiceWpfTitle">
   <div class="card__header">
     <span class="badge" aria-label="アプリ種別">
@@ -382,6 +339,52 @@
     </div>
   </div>
 </section>
+
+
+      <!-- 仮想センサー監視シミュレーション -->
+      <section id="sensor" class="col-6 card" aria-labelledby="sensorTitle">
+        <div class="card__header">
+          <span class="badge" aria-label="アプリ種別">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9" stroke="#fff" stroke-width="1.6"/>
+              <path d="M12 17a5 5 0 1 0-5-5" stroke="#fff" stroke-width="1.6"/>
+              <path d="M12 13a1 1 0 1 0-1-1" stroke="#fff" stroke-width="1.6"/>
+            </svg>
+            仮想センサー監視シミュレーション（WPF検証サンプル）
+          </span>
+          <h2 id="sensorTitle" class="card__title">リアルタイム可視化 & アラート通知</h2>
+          <p class="card__desc">
+            WPFでのリアルタイム更新、状態管理、ログ出力、設定変更を検証する個人開発サンプルです。仮想センサー値を折れ線グラフで可視化し、しきい値超過時の通知にも対応します。
+          </p>
+        </div>
+
+        <div class="media">
+          <img src="images/C1.png" alt="センサー監視アプリのスクリーンショット（ダッシュボード、アラート、チャート）">
+        </div>
+
+        <div class="card__body">
+          <ul class="features">
+            <li>仮想センサー：ノイズ付きサイン波 / ランダムウォーク</li>
+            <li>チャート：OxyPlot、履歴エクスポート（CSV）</li>
+            <li>アラート：しきい値 / デッドバンド、Serilog ログ</li>
+            <li>設定：appsettings.json ホットリロード、プロファイル切替</li>
+          </ul>
+
+          <div class="chips" aria-label="使用技術">
+            <span class="chip">WPF</span>
+            <span class="chip">CommunityToolkit.MVVM</span>
+            <span class="chip">OxyPlot</span>
+            <span class="chip">Serilog</span>
+            <span class="chip">JSON Config</span>
+          </div>
+
+          <div class="cta" aria-label="関連リンク">
+            <a class="btn is-primary" href="https://github.com/fewioaghwrao/CsharpWpfTelemetryMonitor" target="_blank" rel="noopener noreferrer nofollow">GitHub</a>
+            <a class="btn" href="docs/sensor-demo.html" target="_blank" rel="noopener">動画デモ</a>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <div class="sep" role="presentation" aria-hidden="true"></div>
@@ -391,8 +394,15 @@
       <div class="col-12">
         <h2 id="aboutTitle">About</h2>
         <p>
-          製造業の現場システムと連携するデスクトップアプリの開発・保守を中心に、7年以上の経験があります（PLC連携、TCP通信、WPF業務アプリ）。
-          現在は業務系Web（ASP.NET Core / Next.js、Java / Spring）も並行して強化中です。
+          C#によるWindows業務アプリ開発を主軸に、WPF／WinFormsを用いた業務システムの
+          要件整理、設計、実装、テスト、運用・保守を担当してきました。
+          製造・品質保証・生産管理領域での経験があり、画面状態管理、データ処理、
+          ログ・例外設計、障害切り分けを含む実運用対応を強みとしています。
+        </p>
+        <p>
+          過去案件では、PLC・ロボット・専用計測器との連携やTCP/IP通信も扱いました。
+          これらは現在の主軸スキルではなく、製造業システムにおける周辺経験として位置付けています。
+          現在はASP.NET Web Formsの実務経験を加え、ASP.NET Core／Next.jsによる業務Webアプリ開発も継続しています。
         </p>
 <p>
   本ページは業務説明会向けの参考資料として作成しています。ご連絡は担当営業（HAL）経由でお願いいたします。<br>
