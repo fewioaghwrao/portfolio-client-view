@@ -3,247 +3,689 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>請求書・入金管理 WPF クライアント | デモ</title>
-  <meta name="description" content="請求書・入金管理 WPF クライアントの動画デモ。管理者ログイン、請求書一覧、請求書詳細、入金状況、PDF出力、売上確認の流れを掲載。" />
+
+  <title>請求書・入金管理 WPF クライアント | 動画デモ</title>
+  <meta
+    name="description"
+    content="請求書・入金管理 WPF クライアントの動画デモ。管理者ログイン、請求書一覧、請求書詳細、入金状況、PDF出力、売上確認の流れを掲載。"
+  />
+
   <meta name="robots" content="noindex,nofollow,noarchive,noimageindex" />
   <meta name="googlebot" content="noindex,nofollow,noarchive,noimageindex" />
   <meta name="referrer" content="no-referrer" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="icon" href="../../icon/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="../../icon/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../../icon/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../../icon/apple-touch-icon.png">
+
   <meta name="theme-color" content="#ffffff">
 
   <style>
-    body{
-      font-family:"Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      margin:0 auto;
-      max-width:1100px;
-      padding:24px;
-      line-height:1.8;
-      background:#f9fafb;
-      color:#111827;
+    :root{
+      --bg:#f7f9fc;
+      --surface:#ffffff;
+      --surface-alt:#f3f7fe;
+      --ink:#0b1220;
+      --muted:#58627a;
+      --brand:#1976d2;
+      --brand-dark:#0d47a1;
+      --line:#d9e2ef;
+      --radius:16px;
+      --container:1120px;
     }
 
-    header,main,footer{
-      margin:0 auto;
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:"Noto Sans JP",system-ui,-apple-system,"Segoe UI",sans-serif;
+      color:var(--ink);
+      line-height:1.75;
+      background:
+        radial-gradient(1000px 420px at 5% -5%, rgba(25,118,210,.10), transparent),
+        radial-gradient(900px 380px at 100% 0%, rgba(13,71,161,.07), transparent),
+        var(--bg);
+    }
+
+    img,
+    video{
+      display:block;
+      max-width:100%;
+    }
+
+    a{
+      color:inherit;
+    }
+
+    .container{
+      width:min(100% - 32px, var(--container));
+      margin-inline:auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.92);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(180%) blur(10px);
+    }
+
+    .header-inner{
+      min-height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--ink);
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    .brand__mark{
+      display:grid;
+      place-items:center;
+      width:36px;
+      height:36px;
+      border-radius:10px;
+      color:#fff;
+      background:linear-gradient(180deg,var(--brand),var(--brand-dark));
+      font-size:14px;
+      letter-spacing:.04em;
+    }
+
+    .brand__text{
+      white-space:nowrap;
+    }
+
+    .header-links{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .header-link{
+      padding:8px 10px;
+      border-radius:8px;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    .header-link:hover{
+      color:var(--brand-dark);
+      background:var(--surface-alt);
+    }
+
+    .hero{
+      padding:44px 0 28px;
+    }
+
+    .eyebrow{
+      margin:0 0 8px;
+      color:var(--brand-dark);
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
 
     h1{
-      font-size:clamp(22px,3.2vw,28px);
-      margin:6px 0 12px;
-    }
-
-    h2{
-      font-size:20px;
-      margin:0 0 10px;
-    }
-
-    h3{
-      font-size:16px;
-      margin:18px 0 8px;
+      margin:0;
+      font-size:clamp(25px,4vw,40px);
+      line-height:1.3;
     }
 
     .lead{
-      color:#374151;
-      margin:0 0 12px;
+      max-width:900px;
+      margin:16px 0 0;
+      color:var(--muted);
+    }
+
+    .hero-actions,
+    .bottom-actions,
+    .link-actions{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:10px;
+    }
+
+    .hero-actions{
+      margin-top:22px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:44px;
+      padding:10px 16px;
+      border:1px solid #bfd0e4;
+      border-radius:11px;
+      background:#fff;
+      color:#17365d;
+      font-weight:700;
+      text-decoration:none;
+      transition:
+        background-color .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      border-color:#70a5dc;
+      background:#eef6ff;
+      color:var(--brand-dark);
+    }
+
+    .btn--primary{
+      color:#fff;
+      border-color:var(--brand-dark);
+      background:linear-gradient(180deg,var(--brand),var(--brand-dark));
+    }
+
+    .btn--primary:hover{
+      color:#fff;
+      border-color:var(--brand-dark);
+      background:linear-gradient(180deg,#2584dc,#1559b1);
+    }
+
+    .btn--full{
+      width:100%;
+    }
+
+    .btn__arrow{
+      font-size:1.05em;
+      line-height:1;
+    }
+
+    main{
+      padding-bottom:36px;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:minmax(0,2fr) minmax(280px,1fr);
+      gap:22px;
+      align-items:start;
+    }
+
+    .main-column,
+    .side-column{
+      min-width:0;
     }
 
     .player{
       position:relative;
-      border-radius:14px;
       overflow:hidden;
-      border:1px solid #e5e7eb;
+      border:1px solid #223146;
+      border-radius:18px;
       background:#000;
+      box-shadow:0 16px 38px rgba(13,71,161,.13);
     }
 
     .player video{
       width:100%;
       height:auto;
-      display:block;
     }
 
     .note{
+      margin:10px 0 0;
+      color:var(--muted);
       font-size:14px;
-      color:#6b7280;
-      margin-top:8px;
     }
 
-    a.btn{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:10px 14px;
-      margin-top:16px;
-      border-radius:10px;
-      border:1px solid #d1d5db;
-      background:#fff;
-      color:#111827;
-      text-decoration:none;
-      font-weight:600;
+    .section-block{
+      margin-top:30px;
     }
 
-    a.btn:hover{
-      background:#f3f4f6;
+    h2{
+      margin:0 0 10px;
+      font-size:22px;
+      line-height:1.4;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
-      margin-top:22px;
-    }
-
-    @media (min-width:920px){
-      .grid{
-        grid-template-columns:2fr 1fr;
-      }
-    }
-
-    ul{
-      margin:0 0 0 18px;
-      padding:0;
-    }
-
-    code{
-      background:#eef2f7;
-      padding:2px 6px;
-      border-radius:6px;
+    h3{
+      margin:22px 0 10px;
+      font-size:17px;
     }
 
     .screenshot{
-      border:1px solid #ddd;
-      border-radius:8px;
-      margin:14px 0;
-      max-width:100%;
+      width:100%;
+      margin:0;
+      border:1px solid var(--line);
+      border-radius:14px;
       background:#fff;
+      box-shadow:0 8px 22px rgba(16,24,40,.06);
+    }
+
+    .screens{
+      display:grid;
+      gap:18px;
+    }
+
+    .screen-card{
+      margin:0;
+    }
+
+    .screen-card figcaption{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:14px;
     }
 
     .panel{
-      background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:14px;
-      padding:16px;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:var(--surface);
+      box-shadow:0 8px 20px rgba(16,24,40,.045);
+    }
+
+    .panel + .panel{
+      margin-top:16px;
+    }
+
+    .panel h2{
+      font-size:18px;
+    }
+
+    .panel ul{
+      margin:0;
+      padding-left:20px;
+    }
+
+    .panel li + li{
+      margin-top:6px;
     }
 
     .chips{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
-      margin:10px 0 0;
+      margin-top:10px;
     }
 
     .chip{
-      font-size:12px;
+      display:inline-flex;
+      align-items:center;
       padding:5px 9px;
+      border:1px solid rgba(25,118,210,.24);
       border-radius:999px;
-      background:#eef2ff;
-      border:1px solid #c7d2fe;
-      color:#1f2937;
-      font-weight:600;
+      background:rgba(25,118,210,.08);
+      color:#17365d;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .link-actions{
+      flex-direction:column;
+      align-items:stretch;
+      margin-top:12px;
+    }
+
+    .bottom-actions{
+      margin-top:30px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
+    }
+
+    .site-footer{
+      border-top:1px solid var(--line);
+      background:rgba(255,255,255,.72);
+    }
+
+    .footer-inner{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .to-top{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px;
+      height:38px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+      color:var(--brand-dark);
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    .to-top:hover{
+      background:var(--surface-alt);
+    }
+
+    :focus-visible{
+      outline:3px solid rgba(25,118,210,.35);
+      outline-offset:3px;
+    }
+
+    @media (max-width:920px){
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+
+      .side-column{
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:16px;
+      }
+
+      .panel + .panel{
+        margin-top:0;
+      }
+    }
+
+    @media (max-width:680px){
+      .header-inner{
+        min-height:58px;
+      }
+
+      .brand__text{
+        display:none;
+      }
+
+      .header-links{
+        gap:2px;
+      }
+
+      .header-link{
+        padding:7px 8px;
+        font-size:13px;
+      }
+
+      .hero{
+        padding-top:30px;
+      }
+
+      .hero-actions,
+      .bottom-actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .hero-actions .btn,
+      .bottom-actions .btn{
+        width:100%;
+      }
+
+      .side-column{
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner{
+        padding-block:16px;
+        align-items:flex-start;
+      }
     }
   </style>
 </head>
 
-<body>
-  <header>
-    <h1>請求書・入金管理 WPF クライアント — 動画デモ</h1>
-    <p class="lead">
-      ASP.NET Core Web API と連携する C# / WPF 製デスクトップクライアントの動作デモです。
-      管理者向けの請求書確認、入金状況確認、PDF出力、売上確認の流れを中心に紹介します。
-    </p>
+<body id="top">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="WPF詳細ページへ戻る">
+        <span class="brand__mark" aria-hidden="true">WPF</span>
+        <span class="brand__text">Invoice System Client</span>
+      </a>
+
+      <nav class="header-links" aria-label="ページ内ナビゲーション">
+        <a class="header-link" href="#demo-video">動画</a>
+        <a class="header-link" href="#screens">画面</a>
+        <a class="header-link" href="#links">リンク</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="grid">
-    <section>
-      <div class="player" role="region" aria-label="動画プレイヤー">
-        <video
-          controls
-          preload="metadata"
-          poster="../images/invoice-wpf-dashboard.png"
-          playsinline
-        >
-          <source src="../assets/video/invoice-wpf-demo.mp4" type="video/mp4">
-          お使いのブラウザは動画要素に対応していません。<a href="../assets/video/invoice-wpf-demo.mp4">こちらから直接再生</a>できます。
-        </video>
-      </div>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">C# / .NET 8 / WPF / ASP.NET Core API</p>
 
-      <p class="note">
-        ※ 動画では、デモ用データを用いて管理者画面の主要な業務フローを確認できます。
-      </p>
+      <h1>請求書・入金管理 WPF クライアント — 動画デモ</h1>
 
-      <h2>デモで確認できる内容</h2>
       <p class="lead">
-        管理者ログイン後、請求書一覧から詳細画面を開き、請求金額・入金済み金額・残額・入金履歴を確認します。
-        その後、PDF出力や売上一覧など、業務管理に必要な画面を確認する流れです。
+        ASP.NET Core Web APIと連携するC# / WPF製デスクトップクライアントの動作デモです。
+        管理者向けの請求書確認、入金状況確認、PDF出力、売上一覧・顧客別集計の流れを中心に紹介します。
       </p>
 
-      <h3>管理者ダッシュボード</h3>
-      <img src="../images/invoice-wpf-dashboard.png" alt="請求書・入金管理WPFクライアントの管理者ダッシュボード" class="screenshot">
+      <nav class="hero-actions" aria-label="デモページの主要操作">
+        <a class="btn btn--primary" href="#demo-video">
+          動画を見る
+          <span class="btn__arrow" aria-hidden="true">↓</span>
+        </a>
 
-      <h3>請求書一覧</h3>
-      <img src="../images/invoice-wpf-invoice-list.png" alt="請求書・入金管理WPFクライアントの請求書一覧画面" class="screenshot">
+        <a class="btn" href="../index.html">
+          WPF詳細へ戻る
+        </a>
 
-      <h3>請求書詳細・入金状況</h3>
-      <img src="../images/invoice-wpf-invoice-detail.png" alt="請求書・入金管理WPFクライアントの請求書詳細画面" class="screenshot">
+        <a
+          class="btn"
+          href="https://github.com/fewioaghwrao/InvoiceSystem.Wpf"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          GitHub
+          <span class="btn__arrow" aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </div>
+  </section>
 
-      <a class="btn" href="../index.html">← ポートフォリオへ戻る</a>
-    </section>
-
-    <aside>
-      <div class="panel">
-        <h2>デモの流れ</h2>
-        <ul>
-          <li>管理者アカウントでログイン</li>
-          <li>管理者ダッシュボードを表示</li>
-          <li>請求書一覧を検索・確認</li>
-          <li>請求書詳細で入金状況と残額を確認</li>
-          <li>PDF出力例を確認</li>
-          <li>売上一覧・顧客別集計を確認</li>
-        </ul>
-      </div>
-
-      <div class="panel" style="margin-top:16px;">
-        <h2>技術要素</h2>
-        <div class="chips" aria-label="使用技術">
-          <span class="chip">C#</span>
-          <span class="chip">.NET 8</span>
-          <span class="chip">WPF</span>
-          <span class="chip">MVVM</span>
-          <span class="chip">HttpClient</span>
-          <span class="chip">ASP.NET Core API</span>
-          <span class="chip">JWT</span>
-          <span class="chip">OxyPlot</span>
-          <span class="chip">xUnit</span>
-          <span class="chip">GitHub Actions</span>
+  <main class="container">
+    <div class="content-grid">
+      <section class="main-column">
+        <div
+          id="demo-video"
+          class="player"
+          role="region"
+          aria-label="請求書・入金管理WPFクライアントの動画プレイヤー"
+        >
+          <video
+            controls
+            preload="metadata"
+            poster="../images/管理者ダッシュボード.png"
+            playsinline
+          >
+            <source src="../assets/video/invoice-wpf-demo.mp4" type="video/mp4">
+            お使いのブラウザは動画要素に対応していません。
+            <a href="../assets/video/invoice-wpf-demo.mp4">動画ファイルを直接開く</a>ことができます。
+          </video>
         </div>
-      </div>
 
-      <div class="panel" style="margin-top:16px;">
-        <h2>補足</h2>
-        <ul>
-          <li>社内端末などで実行ファイルのダウンロードや実行が難しい場合に備え、動画で動作確認できるようにしています。</li>
-          <li>デモデータを使用しており、実在する個人情報・顧客情報は含みません。</li>
-          <li>WPF クライアントは既存の ASP.NET Core Web API と連携する別クライアントとして実装しています。</li>
-        </ul>
-      </div>
+        <p class="note">
+          ※動画では、デモ用データを用いて管理者画面の主要な業務フローを確認できます。
+          実在する個人情報・顧客情報は含みません。
+        </p>
 
-      <div class="panel" style="margin-top:16px;">
-        <h2>関連リンク</h2>
-        <ul>
-          <li>
-            <a href="https://github.com/fewioaghwrao/InvoiceSystem.Wpf" target="_blank" rel="noopener noreferrer nofollow">
-              GitHub：InvoiceSystem.Wpf
+        <section class="section-block" aria-labelledby="demoContentsTitle">
+          <h2 id="demoContentsTitle">デモで確認できる内容</h2>
+
+          <p class="lead">
+            管理者ログイン後、ダッシュボードで請求・入金状況を確認し、
+            請求書一覧から詳細画面を開いて請求金額・入金済み金額・残額・入金履歴を確認します。
+            その後、PDF出力、売上一覧、顧客別集計などの業務画面へ進みます。
+          </p>
+        </section>
+
+        <section id="screens" class="section-block" aria-labelledby="screensTitle">
+          <h2 id="screensTitle">主な画面</h2>
+
+          <div class="screens">
+            <figure class="screen-card">
+              <h3>管理者ダッシュボード</h3>
+              <img
+                src="../images/管理者ダッシュボード.png"
+                alt="請求書・入金管理WPFクライアントの管理者ダッシュボード"
+                class="screenshot"
+                loading="lazy"
+              >
+              <figcaption>
+                請求合計、未入金額、請求書数、入金数、回収率、未入金一覧、月別売上を一画面で確認します。
+              </figcaption>
+            </figure>
+
+            <figure class="screen-card">
+              <h3>管理者用請求書一覧</h3>
+              <img
+                src="../images/管理者用請求書一覧.png"
+                alt="請求書・入金管理WPFクライアントの管理者用請求書一覧画面"
+                class="screenshot"
+                loading="lazy"
+              >
+              <figcaption>
+                請求番号、会員名、ステータス、請求期間で検索し、詳細確認や催促管理へ進みます。
+              </figcaption>
+            </figure>
+
+            <figure class="screen-card">
+              <h3>管理者用請求書詳細</h3>
+              <img
+                src="../images/管理者用請求書詳細.png"
+                alt="請求書・入金管理WPFクライアントの管理者用請求書詳細画面"
+                class="screenshot"
+                loading="lazy"
+              >
+              <figcaption>
+                請求基本情報、明細、入金割当、残額、催促履歴をまとめて確認します。
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <nav class="bottom-actions" aria-label="ページ下部の操作">
+          <a class="btn btn--primary" href="../index.html">
+            <span class="btn__arrow" aria-hidden="true">←</span>
+            WPF詳細へ戻る
+          </a>
+
+          <a class="btn" href="../../index.html#works">
+            Works一覧へ
+          </a>
+
+          <a class="btn" href="#top">
+            ページ上部へ
+            <span class="btn__arrow" aria-hidden="true">↑</span>
+          </a>
+        </nav>
+      </section>
+
+      <aside class="side-column">
+        <section class="panel" aria-labelledby="flowTitle">
+          <h2 id="flowTitle">デモの流れ</h2>
+          <ul>
+            <li>管理者アカウントでログイン</li>
+            <li>管理者ダッシュボードを表示</li>
+            <li>請求書一覧を検索・確認</li>
+            <li>請求書詳細で入金状況と残額を確認</li>
+            <li>請求書PDFを表示</li>
+            <li>売上一覧・顧客別集計を確認</li>
+          </ul>
+        </section>
+
+        <section class="panel" aria-labelledby="techTitle">
+          <h2 id="techTitle">技術要素</h2>
+          <div class="chips" aria-label="使用技術">
+            <span class="chip">C#</span>
+            <span class="chip">.NET 8</span>
+            <span class="chip">WPF</span>
+            <span class="chip">MVVM</span>
+            <span class="chip">HttpClient</span>
+            <span class="chip">ASP.NET Core API</span>
+            <span class="chip">JWT</span>
+            <span class="chip">OxyPlot</span>
+            <span class="chip">xUnit</span>
+            <span class="chip">GitHub Actions</span>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="supplementTitle">
+          <h2 id="supplementTitle">補足</h2>
+          <ul>
+            <li>実行ファイルを起動しにくい環境でも、動画から動作を確認できます。</li>
+            <li>掲載している請求・会員・入金情報はすべてデモ用です。</li>
+            <li>WPF版は既存のASP.NET Core Web APIを利用する別クライアントとして実装しています。</li>
+          </ul>
+        </section>
+
+        <section id="links" class="panel" aria-labelledby="linksTitle">
+          <h2 id="linksTitle">関連リンク</h2>
+
+          <div class="link-actions">
+            <a
+              class="btn btn--primary btn--full"
+              href="https://github.com/fewioaghwrao/InvoiceSystem.Wpf"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              GitHub リポジトリ
+              <span class="btn__arrow" aria-hidden="true">↗</span>
             </a>
-          </li>
-        </ul>
-      </div>
-    </aside>
+
+            <a class="btn btn--full" href="../index.html">
+              WPF詳細ページ
+            </a>
+
+            <a class="btn btn--full" href="../../invoice.html">
+              Web版の詳細ページ
+            </a>
+
+            <a
+              class="btn btn--full"
+              href="https://invoice-management-system-lite.vercel.app/auth/login"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              Web版デモ
+              <span class="btn__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+      </aside>
+    </div>
   </main>
 
-  <footer>
-    <p style="margin-top:24px;color:#6b7280">© <span id="year"></span> N.O. All rights reserved.</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>
+        © <span id="year"></span> N.O. All rights reserved.
+        本ページは検索避け（noindex）設定済みです。
+      </small>
+
+      <a class="to-top" href="#top" aria-label="ページ上部へ戻る">↑</a>
+    </div>
   </footer>
 
   <script>

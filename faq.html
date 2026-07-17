@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>社内FAQ・業務ナレッジ検索AIアプリ｜ポートフォリオ</title>
-  <meta name="description" content="ASP.NET Core API と Next.js による社内FAQ・業務ナレッジ検索AIアプリ。FAQ検索、AI回答生成、参照元FAQ表示、AI検索履歴管理、ユーザー管理、テスト、CI/CD、クラウドデプロイまで実装。">
+  <title>社内FAQ・業務ナレッジ検索AIアプリ（ASP.NET Core / Next.js）｜ポートフォリオ</title>
+  <meta name="description" content="ASP.NET Core APIとNext.jsによる社内FAQ・業務ナレッジ検索AIアプリ。FAQ検索、AI回答生成、参照元表示、検索履歴管理、ユーザー管理を実装。同一業務要件のASP.NET Web Forms版も掲載。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -53,7 +53,9 @@
               <strong>ASP.NET Core API と Next.js による、社内FAQ・業務ナレッジ検索を想定したWebアプリ</strong>です。<br>
               FAQ、手順書、障害対応メモを一元管理し、通常検索とAI検索の両方から必要な情報を確認できる構成にしています。<br>
               AI検索では、質問内容をもとに関連FAQを検索し、上位FAQをコンテキストとして外部AI APIへ渡して回答を生成します。
-              回答には参照元FAQを表示し、FAQにない内容を断言しないようガードレールを設けています。
+              回答には参照元FAQを表示し、FAQにない内容を断言しないようガードレールを設けています。<br>
+              <strong>本ページでは公開デモを備えたASP.NET Core / Next.js版を主構成として紹介し、
+              同じ業務要件をASP.NET Web Formsで実装した一体型版も別バージョンとして作成しています。</strong>
             </p>
 
             <div class="hero__actions reveal reveal-delay-2">
@@ -72,6 +74,11 @@
               <a class="btn btn--ghost" href="https://faq-app-api-d060ab93d646.herokuapp.com/swagger"
                  target="_blank" rel="noopener noreferrer nofollow">
                 Swagger UI
+              </a>
+              <a class="btn btn--ghost"
+                 href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/webforms/README.md"
+                 target="_blank" rel="noopener noreferrer nofollow">
+                Web Forms版 README
               </a>
             </div>
 
@@ -105,9 +112,18 @@
             <div class="summary-list__row">
               <dt>位置づけ</dt>
               <dd>
-                ASP.NET Core / Next.js による、社内ナレッジ管理・AI検索を題材にした業務想定アプリです。
+                ASP.NET Core Web API / Next.js による、社内ナレッジ管理・AI検索を題材にした業務想定アプリです。
                 FAQ検索、AI回答生成、参照元表示、検索履歴管理、ユーザー管理まで実装し、
                 実務で発生しやすい問い合わせ対応・障害対応ナレッジの共有を想定しています。
+              </dd>
+            </div>
+
+            <div class="summary-list__row">
+              <dt>構成展開</dt>
+              <dd>
+                公開デモは、Next.jsとASP.NET Core Web APIによるフロントエンド・バックエンド分離型構成です。
+                あわせて、同じ業務要件をASP.NET Web Forms（.NET Framework 4.8）の一体型構成でも実装しています。
+                Web Forms版はローカル実行を前提とし、画面・設計・テスト内容をGitHubのREADMEで公開しています。
               </dd>
             </div>
 
@@ -225,6 +241,11 @@
             </ul>
           </article>
         </div>
+
+        <p class="note reveal mt-2">
+          ※別実装として、ASP.NET Web Forms / .NET Framework 4.8 / Entity Framework 6 /
+          ASP.NET Identity 2 / OWIN Cookie Authentication / MySQLによる一体型版も作成しています。
+        </p>
       </div>
     </section>
 
@@ -415,6 +436,69 @@ AI Search
       </div>
     </section>
 
+
+    <!-- 複数アーキテクチャでの実装 -->
+    <section class="section section--alt">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="section__title">複数アーキテクチャでの実装</h2>
+          <p class="section__lead">
+            同じFAQ・AI検索の業務要件を、API分離型とサーバーサイド一体型の2構成で実装しています。
+          </p>
+        </header>
+
+        <div class="grid cards">
+          <article class="card reveal">
+            <p class="card__role">Primary / Public Demo</p>
+            <h3 class="card__title">ASP.NET Core Web API + Next.js</h3>
+            <p class="card__text">
+              本ページで主に紹介している公開デモ版です。
+              Next.jsのフロントエンドとASP.NET Core Web APIをREST APIで分離し、
+              ASP.NET Core IdentityとJWTで管理者向け機能を保護しています。
+            </p>
+            <ul class="card__list">
+              <li>フロントエンド・バックエンド分離型</li>
+              <li>Next.js / React / TypeScript</li>
+              <li>ASP.NET Core Web API / EF Core / JWT</li>
+              <li>Vercel・Azure Static Web Apps・Herokuで公開</li>
+            </ul>
+            <p class="card__links">
+              <a href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/README-aspnetcore-nextjs.md"
+                 target="_blank" rel="noopener noreferrer nofollow">
+                ASP.NET Core / Next.js版 README
+              </a>
+            </p>
+          </article>
+
+          <article class="card reveal reveal-delay-1">
+            <p class="card__role">Alternative Implementation</p>
+            <h3 class="card__title">ASP.NET Web Forms版</h3>
+            <p class="card__text">
+              同じ業務要件を、ASP.NET Web Formsによるサーバーサイド一体型構成でも作成しています。
+              Web Forms版はローカル実行を前提とし、公開デモはASP.NET Core / Next.js版へ集約しています。
+            </p>
+            <ul class="card__list">
+              <li>ASPX / CodeBehind / PostBack</li>
+              <li>.NET Framework 4.8 / Entity Framework 6</li>
+              <li>ASP.NET Identity 2 / OWIN Cookie認証</li>
+              <li>FAQ管理・AI検索・履歴・ユーザー管理を実装</li>
+            </ul>
+            <p class="card__links">
+              <a href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/webforms/README.md"
+                 target="_blank" rel="noopener noreferrer nofollow">
+                Web Forms版 README
+              </a>
+            </p>
+          </article>
+        </div>
+
+        <p class="note reveal mt-2">
+          ※Web Forms版は、同じ題材を別技術で再実装したことを示す補足的位置づけです。
+          ポートフォリオ上の主作品・公開デモはASP.NET Core / Next.js版としています。
+        </p>
+      </div>
+    </section>
+
     <!-- 実装上の工夫・テスト -->
     <section class="section section--alt">
       <div class="container">
@@ -533,6 +617,22 @@ AI Search
           <a href="https://github.com/fewioaghwrao/faq-knowledge-search"
              target="_blank" rel="noopener noreferrer nofollow">
             https://github.com/fewioaghwrao/faq-knowledge-search
+          </a>
+        </p>
+
+        <p class="mt-1">
+          ASP.NET Core / Next.js版 README：<br>
+          <a href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/README-aspnetcore-nextjs.md"
+             target="_blank" rel="noopener noreferrer nofollow">
+            README-aspnetcore-nextjs.md
+          </a>
+        </p>
+
+        <p class="mt-1">
+          ASP.NET Web Forms版 README：<br>
+          <a href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/webforms/README.md"
+             target="_blank" rel="noopener noreferrer nofollow">
+            webforms/README.md
           </a>
         </p>
 
