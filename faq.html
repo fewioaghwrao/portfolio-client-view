@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>社内FAQ・業務ナレッジ検索AIアプリ（ASP.NET Core / Next.js）｜ポートフォリオ</title>
-  <meta name="description" content="ASP.NET Core APIとNext.jsによる社内FAQ・業務ナレッジ検索AIアプリ。FAQ検索、AI回答生成、参照元表示、検索履歴管理、ユーザー管理を実装。同一業務要件のASP.NET Web Forms版も掲載。">
+  <title>社内FAQ・業務ナレッジ検索AIアプリ（Next.js / Razor Pages / Web Forms）｜ポートフォリオ</title>
+  <meta name="description" content="社内FAQ・業務ナレッジ検索AIアプリを、Next.js + ASP.NET Core Web API、ASP.NET Core Razor Pages、ASP.NET Web Formsの3構成で実装。FAQ検索、AI回答、参照元、履歴、ユーザー管理を掲載。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -55,7 +55,9 @@
               AI検索では、質問内容をもとに関連FAQを検索し、上位FAQをコンテキストとして外部AI APIへ渡して回答を生成します。
               回答には参照元FAQを表示し、FAQにない内容を断言しないようガードレールを設けています。<br>
               <strong>本ページでは公開デモを備えたASP.NET Core / Next.js版を主構成として紹介し、
-              同じ業務要件をASP.NET Web Formsで実装した一体型版も別バージョンとして作成しています。</strong>
+              同じ業務要件をASP.NET Core Razor PagesとASP.NET Web Formsでも実装しています。</strong><br>
+              Razor Pages版はモダンなサーバーサイド一体型、Web Forms版はレガシーなサーバーサイド一体型として、
+              API分離型を含む3構成を比較できるようにしています。
             </p>
 
             <div class="hero__actions reveal reveal-delay-2">
@@ -74,6 +76,11 @@
               <a class="btn btn--ghost" href="https://faq-app-api-d060ab93d646.herokuapp.com/swagger"
                  target="_blank" rel="noopener noreferrer nofollow">
                 Swagger UI
+              </a>
+              <a class="btn btn--ghost"
+                 href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/razorpages/README-razor-pages.md"
+                 target="_blank" rel="noopener noreferrer nofollow">
+                Razor Pages版 README
               </a>
               <a class="btn btn--ghost"
                  href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/webforms/README.md"
@@ -122,8 +129,9 @@
               <dt>構成展開</dt>
               <dd>
                 公開デモは、Next.jsとASP.NET Core Web APIによるフロントエンド・バックエンド分離型構成です。
-                あわせて、同じ業務要件をASP.NET Web Forms（.NET Framework 4.8）の一体型構成でも実装しています。
-                Web Forms版はローカル実行を前提とし、画面・設計・テスト内容をGitHubのREADMEで公開しています。
+                あわせて、同じ業務要件をASP.NET Core Razor Pages（.NET 10）と
+                ASP.NET Web Forms（.NET Framework 4.8）のサーバーサイド一体型構成でも実装しています。
+                Razor Pages版とWeb Forms版はローカル実行を前提とし、画面、設計、テスト内容をGitHubで公開しています。
               </dd>
             </div>
 
@@ -185,6 +193,12 @@
                   https://faq-app-api-d060ab93d646.herokuapp.com/swagger
                 </a>
                 <br>
+                Razor Pages版 README：
+                <a href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/razorpages/README-razor-pages.md"
+                   target="_blank" rel="noopener noreferrer nofollow">
+                  razorpages/README-razor-pages.md
+                </a>
+                <br>
                 GitHub：
                 <a href="https://github.com/fewioaghwrao/faq-knowledge-search"
                    target="_blank" rel="noopener noreferrer nofollow">
@@ -243,8 +257,10 @@
         </div>
 
         <p class="note reveal mt-2">
-          ※別実装として、ASP.NET Web Forms / .NET Framework 4.8 / Entity Framework 6 /
-          ASP.NET Identity 2 / OWIN Cookie Authentication / MySQLによる一体型版も作成しています。
+          ※別実装として、ASP.NET Core Razor Pages / .NET 10 / Entity Framework Core /
+          ASP.NET Core Identity / Cookie認証によるモダンな一体型版と、
+          ASP.NET Web Forms / .NET Framework 4.8 / Entity Framework 6 /
+          ASP.NET Identity 2 / OWIN Cookie認証によるレガシー一体型版も作成しています。
         </p>
       </div>
     </section>
@@ -443,7 +459,7 @@ AI Search
         <header class="section__head reveal">
           <h2 class="section__title">複数アーキテクチャでの実装</h2>
           <p class="section__lead">
-            同じFAQ・AI検索の業務要件を、API分離型とサーバーサイド一体型の2構成で実装しています。
+            同じFAQ・AI検索の業務要件を、API分離型、モダン一体型、レガシー一体型の3構成で実装しています。
           </p>
         </header>
 
@@ -471,7 +487,30 @@ AI Search
           </article>
 
           <article class="card reveal reveal-delay-1">
-            <p class="card__role">Alternative Implementation</p>
+            <p class="card__role">Modern Server-Side</p>
+            <h3 class="card__title">ASP.NET Core Razor Pages版</h3>
+            <p class="card__text">
+              同じ業務要件を、ASP.NET Core Razor Pagesによるモダンなサーバーサイド一体型構成でも作成しています。
+              内部APIをHTTP経由で呼び出さず、PageModelからApplication層のService／Queryを同一プロセス内で利用します。
+            </p>
+            <ul class="card__list">
+              <li>Razor View / PageModel</li>
+              <li>.NET 10 / Entity Framework Core</li>
+              <li>ASP.NET Core Identity / Cookie認証</li>
+              <li>Domain / Application / Infrastructure / Presentation</li>
+              <li>FAQ管理・AI検索・履歴・ユーザー管理を実装</li>
+              <li>DomainからPageModelまでをxUnitでテスト</li>
+            </ul>
+            <p class="card__links">
+              <a href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/razorpages/README-razor-pages.md"
+                 target="_blank" rel="noopener noreferrer nofollow">
+                Razor Pages版 README
+              </a>
+            </p>
+          </article>
+
+          <article class="card reveal reveal-delay-2">
+            <p class="card__role">Legacy Server-Side</p>
             <h3 class="card__title">ASP.NET Web Forms版</h3>
             <p class="card__text">
               同じ業務要件を、ASP.NET Web Formsによるサーバーサイド一体型構成でも作成しています。
@@ -493,8 +532,9 @@ AI Search
         </div>
 
         <p class="note reveal mt-2">
-          ※Web Forms版は、同じ題材を別技術で再実装したことを示す補足的位置づけです。
-          ポートフォリオ上の主作品・公開デモはASP.NET Core / Next.js版としています。
+          ※ポートフォリオ上の主作品・公開デモはASP.NET Core / Next.js版です。
+          Razor Pages版はWeb Formsからモダン.NETへ移行する構成の検証、
+          Web Forms版はレガシー構成の保守・移行観点を示す補足実装として位置付けています。
         </p>
       </div>
     </section>
@@ -625,6 +665,14 @@ AI Search
           <a href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/README-aspnetcore-nextjs.md"
              target="_blank" rel="noopener noreferrer nofollow">
             README-aspnetcore-nextjs.md
+          </a>
+        </p>
+
+        <p class="mt-1">
+          ASP.NET Core Razor Pages版 README：<br>
+          <a href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/razorpages/README-razor-pages.md"
+             target="_blank" rel="noopener noreferrer nofollow">
+            razorpages/README-razor-pages.md
           </a>
         </p>
 
