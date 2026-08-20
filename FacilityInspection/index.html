@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Facility Inspection App｜設備点検・保守記録アプリ｜ポートフォリオ</title>
+  <meta name="description" content="Avalonia UI / C# / SQLiteで構築した設備点検・保守記録デスクトップアプリ。点検予定、点検実施、結果・写真、承認・差し戻し、操作履歴、バックアップ、単体テスト・CIを掲載。">
+  <meta name="author" content="N.O." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Facility Inspection App｜設備点検・保守記録アプリ" />
+  <meta property="og:description" content="点検予定から点検実施、結果・写真、承認／差し戻し、操作履歴までを一連の業務フローとして管理するデスクトップアプリ。" />
+  <meta property="og:image" content="images/admin-dashboard.png" />
+  <meta name="robots" content="noindex,nofollow,noarchive,noimageindex" />
+  <meta name="googlebot" content="noindex,nofollow,noarchive,noimageindex" />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="icon" href="../icon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../icon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../icon/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../icon/apple-touch-icon.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="../index.html" aria-label="ポートフォリオ トップへ">
+      <img src="../images/logox.svg" alt="N.O. Portfolio" class="brand__logo-img" width="160" height="48" />
+    </a>
+    <nav class="nav" aria-label="グローバルナビゲーション">
+      <button class="nav__toggle" aria-expanded="false" aria-controls="navList">MENU</button>
+      <ul id="navList" class="nav__list">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#services">Skills</a></li>
+        <li><a href="../index.html#works">Works</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="overview" class="section section--alt">
+    <div class="container">
+      <header class="section__head reveal">
+        <h1 class="section__title">設備点検・保守管理アプリ</h1>
+      </header>
+      <div class="hero__inner hero__inner--detail">
+        <div class="hero__copy">
+          <p class="hero__lead reveal reveal-delay-1">
+            <strong>Avalonia UI / C# / SQLiteで構築した、設備点検・保守記録向けデスクトップアプリ</strong>です。<br>
+            工場設備の点検業務を想定し、点検予定の作成から担当者による点検実施、チェック結果・コメント・写真の記録、保全管理者による承認／差し戻し、操作履歴の保存までを一連の業務フローとして実装しています。
+          </p>
+          <div class="hero__actions reveal reveal-delay-2">
+            <a class="btn" href="https://github.com/fewioaghwrao/facility-inspection-app" target="_blank" rel="noopener noreferrer nofollow">GitHub リポジトリ</a>
+            <a class="btn btn--ghost" href="docs/facility-inspection-demo.html" target="_blank" rel="noopener noreferrer">動画デモを見る</a>
+          </div>
+          <p class="hero__note reveal reveal-delay-3">
+            ※デスクトップアプリのためブラウザ実行デモはありません。点検担当者・保全管理者それぞれの操作は動画で確認できます。<br>
+            ※掲載データ・設備情報・画像はすべてデモ用です。
+          </p>
+        </div>
+        <figure class="hero__image reveal reveal-delay-3">
+          <img src="images/admin-dashboard.png" alt="Facility Inspection App 保全管理者ダッシュボード">
+          <figcaption class="work__text">保全管理者ダッシュボード。点検状況・承認待ち・異常など、日々の点検業務を俯瞰できる画面です。</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <header class="section__head reveal"><h2 class="section__title">プロジェクト概要</h2></header>
+      <div class="project-summary reveal">
+        <dl class="summary-list">
+          <div class="summary-list__row"><dt>開発形態</dt><dd>1名（個人開発）</dd></div>
+          <div class="summary-list__row"><dt>担当範囲</dt><dd>要件整理／基本設計／詳細設計／画面設計／実装／単体テスト／CI／ドキュメント</dd></div>
+          <div class="summary-list__row"><dt>想定ユーザー</dt><dd>設備点検を実施する点検担当者／点検予定・設備・結果承認を管理する保全管理者</dd></div>
+          <div class="summary-list__row"><dt>位置付け</dt><dd>ローカル端末で完結する設備点検業務を題材に、MVVM・状態遷移・監査ログ・SQLite運用まで含めた業務アプリ設計を示す成果物</dd></div>
+          <div class="summary-list__row"><dt>使用技術</dt><dd>C#／.NET 10／Avalonia UI／MVVM／CommunityToolkit.Mvvm／EF Core／SQLite／xUnit／GitHub Actions</dd></div>
+          <div class="summary-list__row"><dt>関連リンク</dt><dd><div class="summary-links"><a class="summary-link summary-link--primary" href="https://github.com/fewioaghwrao/facility-inspection-app" target="_blank" rel="noopener noreferrer nofollow">GitHub</a><a class="summary-link" href="docs/facility-inspection-demo.html">動画デモ</a></div></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="status" class="section">
+    <div class="container">
+      <header class="section__head reveal">
+        <h2 class="section__title">実装内容</h2>
+        <p class="section__lead">点検予定を起点に、実施・結果記録・レビュー・運用管理までを役割別画面でつなげています。</p>
+      </header>
+      <div class="grid cards">
+        <article class="card reveal">
+          <h3 class="card__title">点検担当者</h3>
+          <ul class="card__list">
+            <li>ローカルログイン、ロール別画面遷移</li>
+            <li>担当点検予定カレンダー／担当点検一覧</li>
+            <li>点検チェックリスト、数値・テキスト等の入力</li>
+            <li>異常判定、コメント、点検写真の登録</li>
+            <li>点検開始・完了と状態管理</li>
+          </ul>
+        </article>
+        <article class="card reveal reveal-delay-1">
+          <h3 class="card__title">保全管理者</h3>
+          <ul class="card__list">
+            <li>点検実施状況・詳細、未実施・異常一覧</li>
+            <li>完了・承認待ち一覧、承認／差し戻し</li>
+            <li>設備、点検表テンプレート、点検予定、担当者管理</li>
+            <li>操作履歴の確認</li>
+            <li>SQLiteデータベースのバックアップ／復元</li>
+          </ul>
+        </article>
+        <article class="card reveal reveal-delay-2">
+          <h3 class="card__title">設計・品質</h3>
+          <ul class="card__list">
+            <li>Avalonia UI + MVVMでViewと画面状態・Commandを分離</li>
+            <li>Repository / Service / ViewModelの責務分離</li>
+            <li>点検予定と実施実績を分離したデータモデル</li>
+            <li>Domain / Service / ViewModelを中心としたxUnitテスト</li>
+            <li>GitHub ActionsでRestore / Build / Unit Testを自動化</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow" class="section section--alt">
+    <div class="container">
+      <header class="section__head reveal"><h2 class="section__title">業務フロー・設計</h2></header>
+      <div class="reveal">
+        <div class="api-table-wrap">
+          <table class="api-table">
+            <thead><tr><th>区分</th><th>主な内容</th><th>設計上のポイント</th></tr></thead>
+            <tbody>
+              <tr><td>点検予定</td><td>設備・点検表・担当者・予定日を割り当て</td><td>InspectionScheduleとして「予定」を独立管理</td></tr>
+              <tr><td>点検実施</td><td>開始、項目入力、異常判定、コメント、写真、完了</td><td>Inspection / InspectionResult / InspectionPhotoとして実績を保存</td></tr>
+              <tr><td>レビュー</td><td>保全管理者が結果を確認し、承認または差し戻し</td><td>状態遷移と差し戻し理由を保持</td></tr>
+              <tr><td>マスタ管理</td><td>設備、設置場所、点検表テンプレート、担当者</td><td>点検時点の結果情報を履歴として残せる構成</td></tr>
+              <tr><td>運用管理</td><td>操作履歴、バックアップ／復元</td><td>ローカルSQLite運用を前提にトレーサビリティと保全性を確保</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">点検予定 → 点検実施 → 結果・写真 → 承認／差し戻し → 操作履歴、という一連の流れを画面・データ双方で追跡できる構成にしています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" class="section">
+    <div class="container">
+      <header class="section__head reveal">
+        <h2 class="section__title">画面キャプチャ</h2>
+        <p class="section__lead">ログインから点検担当者の予定確認、保全管理者の承認・マスタ管理・バックアップまで、主要画面を掲載しています。</p>
+      </header>
+
+      <h3 class="h3 reveal">ログイン・共通操作</h3>
+      <div class="grid works works--detail">
+        <figure class="work work--plain reveal">
+          <img src="images/login.png" alt="Facility Inspection App ログイン画面" />
+          <figcaption class="work__meta"><span class="work__tag">ログイン</span><h3 class="work__title">ロールに応じた画面へ遷移</h3><p class="work__text">ローカル認証を行い、点検担当者または保全管理者の役割に応じた画面へ遷移します。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-1">
+          <img src="images/logout-dialog.png" alt="Facility Inspection App ログアウト確認" />
+          <figcaption class="work__meta"><span class="work__tag">ログアウト確認</span><h3 class="work__title">誤操作を防ぐ確認ダイアログ</h3><p class="work__text">ログアウト前に確認を挟み、現在の操作セッションを終了することを明示します。</p></figcaption>
+        </figure>
+      </div>
+
+      <h3 class="h3 mt-3 reveal">点検担当者向け画面</h3>
+      <div class="grid works works--detail">
+        <figure class="work work--plain reveal">
+          <img src="images/member-schedule.png" alt="Facility Inspection App 点検担当者予定" />
+          <figcaption class="work__meta"><span class="work__tag">点検予定</span><h3 class="work__title">担当予定をカレンダーで確認</h3><p class="work__text">自分に割り当てられた点検予定を日付単位で確認し、対象の点検へ進みます。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-1">
+          <img src="images/member-inspection-list.png" alt="Facility Inspection App 点検担当者点検一覧" />
+          <figcaption class="work__meta"><span class="work__tag">担当点検一覧</span><h3 class="work__title">実施対象と進捗を一覧化</h3><p class="work__text">担当する点検を一覧表示し、実施状況を確認しながら点検入力へ進める画面です。</p></figcaption>
+        </figure>
+      </div>
+
+      <h3 class="h3 mt-3 reveal">保全管理者 - 点検管理</h3>
+      <div class="grid works works--detail">
+        <figure class="work work--plain reveal">
+          <img src="images/admin-dashboard.png" alt="Facility Inspection App 保全管理者ダッシュボード" />
+          <figcaption class="work__meta"><span class="work__tag">ダッシュボード</span><h3 class="work__title">点検状況を俯瞰して把握</h3><p class="work__text">点検実施状況、承認待ち、未実施、異常など、保全管理に必要な情報への導線を集約しています。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-1">
+          <img src="images/admin-schedule-calendar.png" alt="Facility Inspection App 保全管理者点検予定カレンダー" />
+          <figcaption class="work__meta"><span class="work__tag">点検予定カレンダー</span><h3 class="work__title">設備点検の予定を月単位で管理</h3><p class="work__text">設備・担当者・予定日を確認しながら、点検予定の登録や管理へ進みます。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-2">
+          <img src="images/schedule-create.png" alt="Facility Inspection App 点検予定の新規登録" />
+          <figcaption class="work__meta"><span class="work__tag">点検予定登録</span><h3 class="work__title">設備・点検表・担当者を割り当て</h3><p class="work__text">点検対象設備、点検表テンプレート、担当者、予定日を指定して点検予定を作成します。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-3">
+          <img src="images/inspection-status.png" alt="Facility Inspection App 点検実施状況" />
+          <figcaption class="work__meta"><span class="work__tag">点検実施状況</span><h3 class="work__title">予定と実績の状態を一覧確認</h3><p class="work__text">未実施・実施中・完了・承認済みなど、点検の進捗を一覧から把握できます。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal">
+          <img src="images/inspection-detail.png" alt="Facility Inspection App 点検実施詳細" />
+          <figcaption class="work__meta"><span class="work__tag">点検実施詳細</span><h3 class="work__title">点検結果・コメント・写真を確認</h3><p class="work__text">点検項目ごとの結果や異常判定、コメント、記録写真など実施内容を確認します。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-1">
+          <img src="images/not-started-list.png" alt="Facility Inspection App 未実施一覧" />
+          <figcaption class="work__meta"><span class="work__tag">未実施一覧</span><h3 class="work__title">未着手の点検を抽出</h3><p class="work__text">予定済みでまだ実施されていない点検を一覧化し、対応漏れを確認できます。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-2">
+          <img src="images/abnormal-list.png" alt="Facility Inspection App 異常一覧" />
+          <figcaption class="work__meta"><span class="work__tag">異常一覧</span><h3 class="work__title">異常判定された結果を集約</h3><p class="work__text">点検結果のうち異常として記録された項目を抽出し、優先的な確認につなげます。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-3">
+          <img src="images/approval-pending.png" alt="Facility Inspection App 完了承認待ち" />
+          <figcaption class="work__meta"><span class="work__tag">完了・承認待ち</span><h3 class="work__title">レビュー対象を一覧化</h3><p class="work__text">点検担当者が完了した点検を集約し、保全管理者がレビュー対象を選択できます。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal">
+          <img src="images/approval-return.png" alt="Facility Inspection App 承認・差し戻し" />
+          <figcaption class="work__meta"><span class="work__tag">承認・差し戻し</span><h3 class="work__title">結果確認後に承認または差し戻し</h3><p class="work__text">点検結果を確認し、問題がなければ承認、不備があれば理由を添えて担当者へ差し戻します。</p></figcaption>
+        </figure>
+      </div>
+
+      <h3 class="h3 mt-3 reveal">保全管理者 - マスタ・運用管理</h3>
+      <div class="grid works works--detail">
+        <figure class="work work--plain reveal">
+          <img src="images/equipment-register.png" alt="Facility Inspection App 設備登録" />
+          <figcaption class="work__meta"><span class="work__tag">設備登録</span><h3 class="work__title">点検対象となる設備を管理</h3><p class="work__text">工場・設置場所と紐づけて、点検対象設備の基本情報を登録・管理します。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-1">
+          <img src="images/inspection-template.png" alt="Facility Inspection App 点検表テンプレート" />
+          <figcaption class="work__meta"><span class="work__tag">点検表テンプレート</span><h3 class="work__title">設備ごとの点検項目を再利用</h3><p class="work__text">チェック・数値・テキストなどの入力形式を持つ点検項目をテンプレートとして管理します。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-2">
+          <img src="images/inspection-template-create.png" alt="Facility Inspection App 点検表テンプレート作成" />
+          <figcaption class="work__meta"><span class="work__tag">テンプレート作成</span><h3 class="work__title">点検項目を組み合わせて定義</h3><p class="work__text">項目名・入力種別・単位などを指定し、設備点検に使用するチェックリストを作成します。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-3">
+          <img src="images/operator-management.png" alt="Facility Inspection App 担当者一覧・管理" />
+          <figcaption class="work__meta"><span class="work__tag">担当者管理</span><h3 class="work__title">点検担当者・保全管理者を管理</h3><p class="work__text">利用者の一覧と役割を管理し、点検予定で割り当てる担当者情報を整備します。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal">
+          <img src="images/operator-create.png" alt="Facility Inspection App 担当者新規登録" />
+          <figcaption class="work__meta"><span class="work__tag">担当者新規登録</span><h3 class="work__title">ロールを指定して利用者を登録</h3><p class="work__text">点検担当者または保全管理者として、アプリを利用する担当者を新規登録します。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-1">
+          <img src="images/audit-log.png" alt="Facility Inspection App 操作履歴" />
+          <figcaption class="work__meta"><span class="work__tag">操作履歴</span><h3 class="work__title">主要操作のトレーサビリティを確保</h3><p class="work__text">作成・更新・点検・承認・差し戻しなど、操作者と対象を紐づけて履歴を確認できます。</p></figcaption>
+        </figure>
+        <figure class="work work--plain reveal reveal-delay-2">
+          <img src="images/backup-restore.png" alt="Facility Inspection App バックアップ・復元" />
+          <figcaption class="work__meta"><span class="work__tag">バックアップ・復元</span><h3 class="work__title">ローカルSQLiteの運用を補助</h3><p class="work__text">保全管理者がデータベースをバックアップし、必要に応じて復元できる運用機能です。</p></figcaption>
+        </figure>
+      </div>
+
+      <p class="mt-2"><a class="btn btn--ghost" href="docs/facility-inspection-demo.html">動画デモを見る</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <header class="section__head reveal"><h2 class="section__title">設計ドキュメント・品質</h2></header>
+      <div class="grid cards">
+        <article class="card reveal"><h3 class="card__title">設計ドキュメント</h3><ul class="card__list"><li><a href="https://github.com/fewioaghwrao/facility-inspection-app/blob/main/docs/FacilityInspection_要件定義書.md" target="_blank" rel="noopener noreferrer nofollow">要件定義書</a></li><li><a href="https://github.com/fewioaghwrao/facility-inspection-app/blob/main/docs/FacilityInspection_基本設計書.md" target="_blank" rel="noopener noreferrer nofollow">基本設計書</a></li><li><a href="https://github.com/fewioaghwrao/facility-inspection-app/blob/main/docs/FacilityInspection_詳細設計書.md" target="_blank" rel="noopener noreferrer nofollow">詳細設計書</a></li><li>ER図／ロール別画面遷移図</li></ul><p class="card__text">要件から詳細設計まで、実装内容に対応したドキュメントをGitHubで確認できます。</p></article>
+        <article class="card reveal reveal-delay-1"><h3 class="card__title">単体テスト</h3><ul class="card__list"><li>Domainの業務ルール・状態遷移</li><li>認証、SQLiteバックアップ／復元</li><li>各種ViewModelの入力検証・ページング・例外処理</li><li>Delegate / Clock注入によるテスト容易性の確保</li></ul></article>
+        <article class="card reveal reveal-delay-2"><h3 class="card__title">CI</h3><ul class="card__list"><li>GitHub Actions</li><li>Restore</li><li>Release Build</li><li>Unit Test</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="links" class="section section--alt">
+    <div class="container">
+      <header class="section__head reveal"><h2 class="section__title">リンク</h2></header>
+      <div class="reveal">
+        <ul class="link-list">
+          <li><strong>GitHub：</strong><a href="https://github.com/fewioaghwrao/facility-inspection-app" target="_blank" rel="noopener noreferrer nofollow">facility-inspection-app を開く</a></li>
+          <li><strong>動画デモ：</strong><a href="docs/facility-inspection-demo.html">点検担当者／保全管理者の動画を見る</a></li>
+        </ul>
+        <p class="mt-2"><a class="btn btn--ghost" href="../index.html#works">Works 一覧へ戻る</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="container footer-inner"><small>※本ページは検索避け（noindex）設定済み。URLをご存知の方のみの想定公開です。</small><a href="#top" class="to-top" aria-label="ページ上部へ">↑</a></div></footer>
+<script>
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible')); return; }
+  const io = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); } }); }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+(function(){
+  const toggle = document.querySelector('.nav__toggle'); const nav = document.querySelector('.nav__list'); const navLinks = document.querySelectorAll('.nav__list a'); if (!toggle || !nav) return;
+  toggle.addEventListener('click', function(){ const isOpen = nav.classList.contains('is-open'); nav.classList.toggle('is-open', !isOpen); toggle.setAttribute('aria-expanded', String(!isOpen)); });
+  navLinks.forEach(link => link.addEventListener('click', function(){ nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }));
+  document.addEventListener('click', function(e){ if (!nav.contains(e.target) && !toggle.contains(e.target)) { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); } });
+})();
+</script>
+</body>
+</html>
