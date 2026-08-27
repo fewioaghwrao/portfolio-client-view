@@ -79,7 +79,8 @@
 </div>
 
 <p class="hero__note reveal reveal-delay-3">
-  ※フロントエンドは Vercel および Azure Static Web Apps、バックエンド API とデータベースは Heroku 上で公開しています。<br>
+  ※フロントエンドは Vercel および Azure Static Web Apps、バックエンド API と PostgreSQL は ConoHa VPS 上で Docker Compose により公開しています。<br>
+  ※API は独自ドメイン <code>https://api.oybusin.com</code> を使用し、nginx + Let's Encrypt により HTTPS 化しています。<br>
   ※デモデータはダミーです。
 </p>
       </div>
@@ -138,14 +139,14 @@
       </a>
 
   <a class="summary-link"
-     href="https://invoice-app-api-b1a73aa4f113.herokuapp.com/swagger"
+     href="https://api.oybusin.com/swagger"
      target="_blank"
      rel="noopener noreferrer nofollow">
     Swagger
   </a>
 
   <a class="summary-link"
-     href="https://invoice-app-api-b1a73aa4f113.herokuapp.com/health"
+     href="https://api.oybusin.com/health"
      target="_blank"
      rel="noopener noreferrer nofollow">
     Health Check
@@ -167,12 +168,17 @@
 
   <div>
     <dt>Backend</dt>
-    <dd>ASP.NET Core API / Heroku</dd>
+    <dd>ASP.NET Core API / ConoHa VPS / Docker / nginx</dd>
   </div>
 
   <div>
     <dt>Database</dt>
-    <dd>PostgreSQL / Heroku Postgres</dd>
+    <dd>PostgreSQL 16 / Docker Volume</dd>
+  </div>
+
+  <div>
+    <dt>Infrastructure</dt>
+    <dd>Ubuntu / Docker Compose / nginx / Let's Encrypt / 独自ドメイン</dd>
   </div>
 </dl>
 
@@ -453,6 +459,7 @@
         <li>集計（売上/未入金/回収率）を「一覧・検索」と同じUXで扱うための API 設計（条件・ページング・サマリー）</li>
         <li>“動くデモ”として成立させるためのダミーデータ設計と公開時の安全設計（権限/入力/ログ）</li>
         <li>認可（管理者/会員）や重要ロジックを CI 上の自動テストで継続的に検証し、リファクタリング耐性を確保</li>
+        <li>Heroku から ConoHa VPS へバックエンドを移行し、Docker Compose、nginx、独自ドメイン、HTTPS、PostgreSQL 永続化まで含む公開環境を構築</li>
       </ul>
 
 <h3 class="h3 mt-3">今後の改善予定</h3>
@@ -506,8 +513,8 @@
               </a>
             </li>
             <li>
-              <strong>バックエンド API（Heroku）：</strong>
-              <a href="https://invoice-app-api-b1a73aa4f113.herokuapp.com"
+              <strong>バックエンド API（ConoHa VPS）：</strong>
+              <a href="https://api.oybusin.com"
                  target="_blank"
                  rel="noopener noreferrer nofollow">
                 APIを開く
@@ -515,7 +522,7 @@
             </li>
             <li>
               <strong>Health Check：</strong>
-              <a href="https://invoice-app-api-b1a73aa4f113.herokuapp.com/health"
+              <a href="https://api.oybusin.com/health"
                  target="_blank"
                  rel="noopener noreferrer nofollow">
                 稼働状態を確認
@@ -523,7 +530,7 @@
             </li>
             <li>
               <strong>Swagger：</strong>
-              <a href="https://invoice-app-api-b1a73aa4f113.herokuapp.com/swagger"
+              <a href="https://api.oybusin.com/swagger"
                  target="_blank"
                  rel="noopener noreferrer nofollow">
                 API仕様を確認
