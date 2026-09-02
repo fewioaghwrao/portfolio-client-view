@@ -65,15 +65,11 @@
                  target="_blank" rel="noopener noreferrer nofollow">
                 Vercel デモサイトを見る
               </a>
-              <a class="btn btn--ghost" href="https://green-bush-0db40ef00.7.azurestaticapps.net/"
-                 target="_blank" rel="noopener noreferrer nofollow">
-                Azure デモサイトを見る
-              </a>
               <a class="btn btn--ghost" href="https://github.com/fewioaghwrao/faq-knowledge-search"
                  target="_blank" rel="noopener noreferrer nofollow">
                 GitHub リポジトリ
               </a>
-              <a class="btn btn--ghost" href="https://faq-app-api-d060ab93d646.herokuapp.com/swagger"
+              <a class="btn btn--ghost" href="https://faq-api.oybusin.com/swagger"
                  target="_blank" rel="noopener noreferrer nofollow">
                 Swagger UI
               </a>
@@ -90,9 +86,8 @@
             </div>
 
             <p class="hero__note reveal reveal-delay-3">
-              ※フロントエンドは Vercel および Azure Static Web Apps、バックエンド API は Heroku 上で動作する構成です。<br>
-              ※デモ環境の状態により、初回アクセス時に起動待ちやAPI応答待ちが発生する場合があります。<br>
-              ※掲載しているFAQ、ユーザー、検索履歴データは、すべて架空の検証用データです。
+              ※フロントエンドは Vercel、バックエンド API は ConoHa VPS 上の Docker 環境で動作し、nginx 経由で HTTPS 公開しています。<br>
+                            ※掲載しているFAQ、ユーザー、検索履歴データは、すべて架空の検証用データです。
             </p>
 
             <p class="hero__note reveal reveal-delay-3">
@@ -161,7 +156,7 @@
             <div class="summary-list__row">
               <dt>デモアカウント</dt>
               <dd>
-                管理者：admin@faq-app.local / Admin1234!<br>
+                管理者：admin@faq-app.local / Password123!<br>
                 ※ポートフォリオ確認用のデモアカウントです。
               </dd>
             </div>
@@ -175,22 +170,16 @@
                   https://faq-knowledge-search.vercel.app
                 </a>
                 <br>
-                Azure デモサイト：
-                <a href="https://green-bush-0db40ef00.7.azurestaticapps.net/"
-                   target="_blank" rel="noopener noreferrer nofollow">
-                  https://green-bush-0db40ef00.7.azurestaticapps.net/
-                </a>
-                <br>
                 バックエンドAPI：
-                <a href="https://faq-app-api-d060ab93d646.herokuapp.com/"
+                <a href="https://faq-api.oybusin.com/"
                    target="_blank" rel="noopener noreferrer nofollow">
-                  https://faq-app-api-d060ab93d646.herokuapp.com/
+                  https://faq-api.oybusin.com/
                 </a>
                 <br>
                 Swagger UI：
-                <a href="https://faq-app-api-d060ab93d646.herokuapp.com/swagger"
+                <a href="https://faq-api.oybusin.com/swagger"
                    target="_blank" rel="noopener noreferrer nofollow">
-                  https://faq-app-api-d060ab93d646.herokuapp.com/swagger
+                  https://faq-api.oybusin.com/swagger
                 </a>
                 <br>
                 Razor Pages版 README：
@@ -222,7 +211,7 @@
           <article class="card reveal">
             <h3 class="card__title">バックエンド</h3>
             <ul class="card__list">
-              <li>C# / ASP.NET Core（.NET 8 / Web API）</li>
+              <li>C# / ASP.NET Core（.NET 10 / Web API）</li>
               <li>Entity Framework Core</li>
               <li>ASP.NET Core Identity</li>
               <li>JWT認証 / 管理者向け認可</li>
@@ -247,8 +236,8 @@
             <h3 class="card__title">インフラ・その他</h3>
             <ul class="card__list">
               <li>MySQL</li>
-              <li>Heroku（バックエンドAPI）</li>
-              <li>Vercel / Azure Static Web Apps（フロントエンド）</li>
+              <li>ConoHa VPS / Docker Compose / nginx（バックエンドAPI）</li>
+              <li>Vercel（フロントエンド）</li>
               <li>GitHub Actions（CI/CD）</li>
               <li>Docker / Docker Compose</li>
               <li>Git / GitHub（ソースコード管理）</li>
@@ -414,7 +403,7 @@
               <li>Database：MySQL</li>
               <li>Auth：ASP.NET Core Identity / JWT</li>
               <li>AI：FAQ Context + OpenAI API</li>
-              <li>Deploy：Vercel / Azure Static Web Apps + Heroku</li>
+              <li>Deploy：Vercel + ConoHa VPS（Docker Compose / nginx / HTTPS）</li>
             </ul>
 
             <pre class="code-block"><code>User Browser
@@ -476,7 +465,7 @@ AI Search
               <li>フロントエンド・バックエンド分離型</li>
               <li>Next.js / React / TypeScript</li>
               <li>ASP.NET Core Web API / EF Core / JWT</li>
-              <li>Vercel・Azure Static Web Apps・Herokuで公開</li>
+              <li>Vercel・ConoHa VPSで公開</li>
             </ul>
             <p class="card__links">
               <a href="https://github.com/fewioaghwrao/faq-knowledge-search/blob/main/README-aspnetcore-nextjs.md"
@@ -566,8 +555,8 @@ AI Search
               <li>xUnit によるバックエンドの Controller / Service テスト</li>
               <li>Jest / React Testing Library によるフロントエンドの Page / Component / lib テスト</li>
               <li>GitHub Actions によるバックエンド・フロントエンドテストの自動実行</li>
-              <li>Vercel / Azure Static Web Apps へのフロントエンドデプロイ</li>
-              <li>Heroku への ASP.NET Core API デプロイ</li>
+              <li>Vercel へのフロントエンドデプロイ</li>
+              <li>ConoHa VPS への ASP.NET Core API デプロイ（Docker Compose / nginx / HTTPS）</li>
               <li>環境変数によるAPI URL、DB接続、AI API設定の切り替え</li>
             </ul>
             <p class="mt-2">
@@ -629,26 +618,18 @@ AI Search
         </p>
 
         <p class="mt-1">
-          Azure デモサイト：<br>
-          <a href="https://green-bush-0db40ef00.7.azurestaticapps.net/"
-             target="_blank" rel="noopener noreferrer nofollow">
-            https://green-bush-0db40ef00.7.azurestaticapps.net/
-          </a>
-        </p>
-
-        <p class="mt-1">
           バックエンドAPI：<br>
-          <a href="https://faq-app-api-d060ab93d646.herokuapp.com/"
+          <a href="https://faq-api.oybusin.com/"
              target="_blank" rel="noopener noreferrer nofollow">
-            https://faq-app-api-d060ab93d646.herokuapp.com/
+            https://faq-api.oybusin.com/
           </a>
         </p>
 
         <p class="mt-1">
           Swagger UI：<br>
-          <a href="https://faq-app-api-d060ab93d646.herokuapp.com/swagger"
+          <a href="https://faq-api.oybusin.com/swagger"
              target="_blank" rel="noopener noreferrer nofollow">
-            https://faq-app-api-d060ab93d646.herokuapp.com/swagger
+            https://faq-api.oybusin.com/swagger
           </a>
         </p>
 
