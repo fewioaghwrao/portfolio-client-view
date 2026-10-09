@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ポートフォリオ</title>
 <meta name="description"
-      content="N.O.のポートフォリオ。C#／WPFを中心としたWindows業務アプリ開発の実務経験と、ASP.NET Web Formsの改修、ASP.NET Core／Next.jsによる個人開発成果を掲載しています。">
+      content="N.O.のポートフォリオ。C#／WPFを中心とした業務アプリ開発とASP.NET Web Formsの実務経験、ASP.NET Core／Next.js／.NET 10を用いた個人開発、VPS運用、外部起動バッチ、Access月次照合の成果を紹介します。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -49,60 +49,53 @@
 <h2 class="hero__title reveal">
   N.O.<br class="only-sp">
   <span class="hero__subtitle">
-    C#・WPF業務アプリ開発｜Webシステム開発にも対応
+    C# / .NET 業務アプリ開発｜Web・デスクトップ・運用
   </span>
 </h2>
 
+
 <div class="hero__lead reveal reveal-delay-1">
   <p>
-    C#／.NET Framework、特にWPFを中心に、
-    Windows業務アプリの要件整理、設計、実装、テスト、
-    運用・保守を経験してきました。
+    C#／.NETを主軸に、Windowsデスクトップアプリと
+    Web業務システムの設計・開発を経験してきました。
+    特にWPFによる業務アプリ開発では、
+    要件整理から設計・実装・テスト・運用保守まで担当してきました。
   </p>
 
   <p>
-    製造・品質保証・生産管理領域において、
-    業務ロジック、データ管理、ログ・例外処理、
-    障害発生時の原因調査や改修に対応しています。
+    Web開発では、ASP.NET Web Formsによる
+    既存業務システムの基本・詳細設計、画面改修、
+    単体・総合テスト、本番移行、障害調査を経験しています。
   </p>
 
   <p>
-    直近では、ASP.NET Web Formsによる既存Webシステムの改修に携わり、
-    設計書・既存画面の調査、C#／HTML／CSS修正、
-    テスト、本番移行、リリース後の障害調査を担当しています。
-  </p>
-
-<p>
-  個人開発では、ASP.NET Core／Next.jsによる業務想定Webアプリに加え、
-  WPFやAvalonia UIを用いたデスクトップ業務アプリを構築しています。
-  API・DB設計、認証・認可、MVVM、状態遷移、
-  テスト、CI、クラウドデプロイまで実践しています。
-</p>
-
-  <p>
-    本ポートフォリオでは、WindowsアプリとWebアプリの成果物を通じて、
-    業務仕様、設計、品質、運用を意識した開発経験を紹介しています。
+    個人開発では、ASP.NET Core／Next.jsによるWebアプリや
+    WPF／Avalonia UIによるデスクトップアプリを構築しています。
+    API・DB設計、認証・認可、CIに加え、
+    Docker／VPS運用、外部起動バッチ、Access連携まで実践しています。
   </p>
 
   <ul class="hero__summary">
     <li>
-      <strong>得意領域：</strong>
-      C#／WPFによるWindows業務アプリ開発
-    </li>
-    <li>
-      <strong>実務経験：</strong>
-      要件整理、設計、実装、テスト、運用・保守
+      <strong>主力技術：</strong>
+      C#／.NET（Web・Windows）
     </li>
     <li>
       <strong>Web実務：</strong>
-      ASP.NET Web Formsによる既存システム改修
+      ASP.NET Web Forms（設計・改修・テスト）
     </li>
-<li>
-  <strong>個人開発：</strong>
-  ASP.NET Core／Next.jsによるWebアプリ、WPF／Avalonia UIによるデスクトップアプリ
-</li>
+    <li>
+      <strong>Windows実務：</strong>
+      C#／WPF（設計・開発・運用保守）
+    </li>
+    <li>
+      <strong>個人開発：</strong>
+      ASP.NET Core／Next.js／Avalonia UI／
+      Docker／Batch／Access・VBA
+    </li>
   </ul>
 </div>
+
 
     <div class="hero__actions reveal reveal-delay-2">
       <a class="btn btn--ghost" href="#works" aria-label="制作実績へ">
@@ -151,6 +144,13 @@
     クラウドデプロイまで実装しています。
   </p>
 
+  <p class="card__text">
+    請求・入金管理システムでは、WebとWPFでAPIを共通化し、
+    .NET 10のReminder Batchを外部ジョブとして実装しました。
+    Docker／systemdによる定刻起動・ログ確認に加え、
+    Access月次照合用のCSV／ZIPエクスポートAPIも開発しています。
+  </p>
+
   <ul class="card__list">
     <li>
       <strong>実務：</strong>
@@ -159,7 +159,7 @@
 
     <li>
       <strong>個人開発：</strong>
-      ASP.NET Core Web API / Next.js / TypeScript
+      ASP.NET Core Web API（Invoiceは.NET 10）/ Next.js / TypeScript
     </li>
 
     <li>
@@ -172,23 +172,14 @@
       EF Core / Entity Framework 6 / MySQL / PostgreSQL /
       CSV・PDF出力 / テスト / CI/CD
     </li>
+    <li>
+      <strong>運用・連携：</strong>
+      ConoHa VPS / Docker Compose / nginx / systemd / Access・VBA
+    </li>
   </ul>
 
   <p class="card__links">
-    <a href="studiobook.html">
-      Studio Book Detail
-    </a>
-
-    <span class="sep">/</span>
-
-    <a href="https://studio-book-dotnet-next.vercel.app"
-       target="_blank"
-       rel="noopener noreferrer nofollow">
-      Studio Book Demo
-    </a>
-
-    <span class="sep">/</span>
-
+    
     <a href="invoice.html">
       Invoice Detail
     </a>
@@ -199,6 +190,20 @@
        target="_blank"
        rel="noopener noreferrer nofollow">
       Invoice Demo
+    </a>
+
+    <span class="sep">/</span>
+
+    <a href="studiobook.html">
+      Studio Book Detail
+    </a>
+
+    <span class="sep">/</span>
+
+    <a href="https://studio-book-dotnet-next.vercel.app"
+       target="_blank"
+       rel="noopener noreferrer nofollow">
+      Studio Book Demo
     </a>
 
     <span class="sep">/</span>
@@ -219,7 +224,7 @@
 
   <p class="card__note">
     ※ ASP.NET Web Formsは実務およびFAQアプリの別実装、
-    ASP.NET Core／Next.jsは業務想定の個人開発成果物として掲載しています。
+    ASP.NET Core／Next.js、Batch、Access連携は業務を想定した個人開発成果物として掲載しています。
   </p>
 </article>
 
@@ -321,20 +326,21 @@
       </header>
 <div class="grid works">
 
-<!-- ① Studio Book ASP.NET Core + Next.js -->
-<a class="work reveal reveal-delay-1" href="studiobook.html" aria-label="スタジオ時間貸し予約アプリ ASP.NET Core Next.js版 詳細">
-  <img src="images/studio-book-next-top.png" alt="スタジオ時間貸し予約アプリ ASP.NET Core Next.js版">
+<!-- ① Invoice -->
+<a class="work reveal reveal-delay-1" href="invoice.html" aria-label="請求・入金管理システム 詳細">
+  <img src="images/invoice-top.png" alt="請求・入金管理システム（Lite）">
   <div class="work__meta">
-    <span class="work__tag">スタジオ時間貸し予約アプリ / 予約・決済・管理・AI検索</span>
-    <h3 class="work__title">C#（ASP.NET Core）/ TypeScript（Next.js）</h3>
+    <span class="work__tag">請求・入金管理 / Web・WPF共通API / 外部起動Batch / Access連携</span>
+    <h3 class="work__title">C#（ASP.NET Core / .NET 10）/ Next.js・Batch</h3>
   </div>
 </a>
 
-<!-- ② Invoice -->
-<a class="work reveal reveal-delay-2" href="invoice.html" aria-label="請求書・入金ステータスダッシュボード 詳細">
-  <img src="images/invoice-top.png" alt="請求書・入金ステータスダッシュボード（Lite）">
+
+<!-- ② Studio Book ASP.NET Core + Next.js -->
+<a class="work reveal reveal-delay-2" href="studiobook.html" aria-label="スタジオ時間貸し予約アプリ ASP.NET Core Next.js版 詳細">
+  <img src="images/studio-book-next-top.png" alt="スタジオ時間貸し予約アプリ ASP.NET Core Next.js版">
   <div class="work__meta">
-    <span class="work__tag">請求書・入金ステータスダッシュボード</span>
+    <span class="work__tag">スタジオ時間貸し予約アプリ / 予約・決済・管理・AI検索</span>
     <h3 class="work__title">C#（ASP.NET Core）/ TypeScript（Next.js）</h3>
   </div>
 </a>
@@ -383,6 +389,21 @@
   </div>
 </a>
 
+
+<!-- ⑥ Microsoft Access 月次照合ツール -->
+<a class="work reveal reveal-delay-2"
+   href="https://github.com/fewioaghwrao/Invoice-Access-Operations-Tool-"
+   target="_blank"
+   rel="noopener noreferrer nofollow"
+   aria-label="Microsoft Access 月次照合ツール GitHub リポジトリ">
+  <img src="https://raw.githubusercontent.com/fewioaghwrao/Invoice-Access-Operations-Tool-/main/docs/images/11-monthly-report.png"
+       alt="Microsoft Access 月次確認レポート画面"
+       loading="lazy">
+  <div class="work__meta">
+    <span class="work__tag">Invoice関連ツール / API認証・ZIP/CSV取込・照合・月次レポート</span>
+    <h3 class="work__title">Microsoft Access / VBA / Access SQL</h3>
+  </div>
+</a>
 
 </div>
     </div>
