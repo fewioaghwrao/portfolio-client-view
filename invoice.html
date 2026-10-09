@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>請求書・入金ステータスダッシュボード（Lite）｜ポートフォリオ</title>
-  <meta name="description" content="請求書・入金・ステータス管理を中心に、業務アプリとしての一覧/検索/詳細/更新を揃えたダッシュボード（Lite）の制作実績ページ。実装状況・API設計・画面イメージを掲載。">
+  <title>請求・入金管理システム（Lite）｜ポートフォリオ</title>
+  <meta name="description" content="ASP.NET Core（.NET 10）とNext.jsによる請求・入金管理システム。共通APIとWPFクライアント、Reminder Batch、ConoHa VPS／systemd運用、Access月次照合連携の設計・実装を紹介。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -45,14 +45,16 @@
 <section id="overview" class="section section--alt">
   <div class="container">
     <header class="section__head reveal">
-      <h1 class="section__title">請求書・入金ステータスダッシュボード（Lite）</h1>
+      <h1 class="section__title">請求・入金管理システム（Lite）</h1>
     </header>
 
     <div class="hero__inner hero__inner--detail">
       <div class="hero__copy">
         <p class="hero__lead reveal reveal-delay-1">
-          <strong>請求書・入金・ステータス管理を中心に、業務アプリとして必要になりやすい「一覧 / 検索 / 詳細 / 更新」を一通り揃えたダッシュボード</strong>です。<br>
-          Lite版として要件を絞りつつも、<strong>設計（データ構造・画面遷移・API）と実装の整合</strong>が伝わる構成を目指しています。
+          <strong>請求・入金・入金割当を管理する、ASP.NET Core（.NET 10）＋Next.jsの業務アプリケーション</strong>です。<br>
+          共通のWeb APIをWeb版・WPF版から利用し、認証・認可、状態遷移、監査ログ、PDF出力まで実装しています。<br>
+          さらに、<strong>外部起動可能なReminder Batch</strong>、VPS上のDocker／systemdによる定刻実行検証、
+          <strong>Access月次照合ツール向けCSVエクスポートAPI</strong>へと拡張しています。
         </p>
 
 <div class="hero__actions reveal reveal-delay-2">
@@ -79,8 +81,9 @@
 </div>
 
 <p class="hero__note reveal reveal-delay-3">
-  ※フロントエンドは Vercel および Azure Static Web Apps、バックエンド API と PostgreSQL は ConoHa VPS 上で Docker Compose により公開しています。<br>
-  ※API は独自ドメイン <code>https://api.oybusin.com</code> を使用し、nginx + Let's Encrypt により HTTPS 化しています。<br>
+  ※Web版はVercel／Azure Static Web Apps、API（.NET 10）とPostgreSQL 16はConoHa VPS上のDockerで公開しています。<br>
+  ※APIは <code>https://api.oybusin.com</code> にてnginx／Let's EncryptでHTTPS化しています。<br>
+  ※Reminder Batchのsystemd timerは定刻起動を検証後、無効化しています（常時定期実行中ではありません）。<br>
   ※デモデータはダミーです。
 </p>
       </div>
@@ -103,7 +106,7 @@
       <dl class="summary-list">
         <div class="summary-list__row">
           <dt>開発期間</dt>
-          <dd>初期実装：約1ヶ月／以降、テスト・監査ログ・CI/CD・クラウド対応を継続改善</dd>
+          <dd>初期実装：約1ヶ月／以降、テスト・監査ログ・CI/CD・VPS移行・Batch・Access連携を継続改善</dd>
         </div>
         <div class="summary-list__row">
           <dt>開発人数</dt>
@@ -111,15 +114,13 @@
         </div>
         <div class="summary-list__row">
           <dt>担当範囲</dt>
-          <dd>要件整理／画面設計／DB設計／バックエンドAPI／フロント実装／デモデータ整備／ドキュメント</dd>
+          <dd>要件整理／画面・DB・API設計／Next.js／WPF／Batch／Access連携API／テスト／デプロイ／設計書</dd>
         </div>
         <div class="summary-list__row">
           <dt>想定ユーザー</dt>
           <dd>請求・入金を管理する管理者／支払状況を確認する会員（ロール制御）</dd>
         </div>
         <div class="summary-list__row">
-            <div class="card__links">
-<div class="summary-list__row">
   <dt>公開環境</dt>
 
   <dd>
@@ -168,7 +169,17 @@
 
   <div>
     <dt>Backend</dt>
-    <dd>ASP.NET Core API / ConoHa VPS / Docker / nginx</dd>
+    <dd>ASP.NET Core / .NET 10 / ConoHa VPS / Docker / nginx</dd>
+  </div>
+
+  <div>
+    <dt>External Batch</dt>
+    <dd>.NET 10 Console / Docker / systemd service・timer（定刻起動を検証）</dd>
+  </div>
+
+  <div>
+    <dt>Related Tool</dt>
+    <dd>Microsoft Access / VBA（別リポジトリの月次照合ツール）</dd>
   </div>
 
   <div>
@@ -216,6 +227,9 @@
   <li>請求書PDF出力（管理者/会員）※QuestPDF + 日本語フォント埋め込み</li>
   <li>操作ログ：請求・入金・催促などの監査ログ記録および管理者向け一覧画面</li>
   <li>催促処理：非同期ジョブとして実行</li>
+  <li>Reminder Batch：.NET 10 CLI、終了コード、再実行／排他制御、Docker起動</li>
+  <li>VPS：systemd service／timerによるBatch定刻起動とjournalctlログ確認（検証後timer停止）</li>
+  <li>Access連携：管理者向けエクスポートAPI（ZIP／請求・入金・入金割当の3 CSV）</li>
   <li>単体テスト：主要サービス層の業務ロジックを検証</li>
   <li>統合テスト：認証・認可・主要APIエンドポイントを検証</li>
   <li>Docker / GitHub Actions によるビルド・テスト自動化</li>
@@ -229,7 +243,7 @@
           <article class="card reveal reveal-delay-1">
             <h3 class="card__title">これから（実装予定）</h3>
 <ul class="card__list">
-  <li>月次締め処理（締め後の更新制御）</li>
+  <li>月次締め処理（締め後の更新制御）※ Access月次照合とは別機能</li>
   <li>催促テンプレートの管理機能</li>
   <li>監査ログ検索条件・CSV出力の拡充</li>
   <li>境界値・異常系テストの追加</li>
@@ -351,6 +365,69 @@
       </div>
     </section>
 
+<!-- Batch / VPS / Access連携 -->
+<section id="operations" class="section section--alt">
+  <div class="container">
+    <header class="section__head reveal">
+      <h2 class="section__title">外部ジョブ・運用・月次照合連携</h2>
+      <p class="section__lead">
+        画面中心のWebアプリにとどまらず、外部ジョブ実行と業務データ照合までを対象にした拡張です。
+      </p>
+    </header>
+
+    <div class="grid cards">
+      <article class="card reveal">
+        <p class="card__role">External Batch / .NET 10</p>
+        <h3 class="card__title">Reminder CLI Batch</h3>
+        <p class="card__text">
+          督促処理をAPI内の常駐Workerから切り離し、外部ジョブ管理から起動できる
+          CLIとして実装しました。ジョブID、終了コード（0／10／20／50／99）、
+          Pending→Processing→Completed／Retry／Failedの状態遷移に対応しています。
+          PostgreSQLのFOR UPDATE SKIP LOCKEDによる排他、RetryCount管理、
+          staleジョブの復旧を組み込んでいます。
+        </p>
+        <p class="card__links">
+          <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite/blob/main/docs/batch/02_basic-design.md"
+             target="_blank" rel="noopener noreferrer nofollow">Batch設計書・実行証跡（GitHub）</a>
+        </p>
+      </article>
+
+      <article class="card reveal reveal-delay-1">
+        <p class="card__role">VPS / Docker / systemd</p>
+        <h3 class="card__title">定刻起動・運用検証</h3>
+        <p class="card__text">
+          ConoHa VPS（Ubuntu 24.04）でAPI／PostgreSQLをDocker Composeにより配置。
+          Reminder BatchはDockerコンテナとして起動し、systemd service／timerで
+          定刻実行、終了コード判定、journalctlでのログ確認を検証しています。
+          nginx・Let's Encrypt・独自ドメインも設定しています。
+        </p>
+        <p class="card__note">
+          ※ timerは08:35 JSTの自動起動を検証後に無効化しています。常時運転の実績とは区別しています。
+        </p>
+      </article>
+
+      <article class="card reveal reveal-delay-2">
+        <p class="card__role">Access / VBA / Monthly Reconciliation</p>
+        <h3 class="card__title">Access月次照合ツールとの連携</h3>
+        <p class="card__text">
+          別リポジトリのAccess／VBA業務支援ツールと連携するため、
+          管理者JWT認証付きのエクスポートAPIから
+          ZIP／3 CSV（請求・入金・入金割当）を出力します。
+          Access側では未入金・一部入金・過剰割当・未割当入金の照合、
+          対象月の集計・レポート出力を実装しています。
+        </p>
+        <p class="card__links">
+          <a href="https://github.com/fewioaghwrao/Invoice-Access-Operations-Tool-"
+             target="_blank" rel="noopener noreferrer nofollow">Access月次照合ツール（GitHub）</a>
+        </p>
+        <p class="card__note">
+          ※ 月次照合は確認・集計のための機能で、月次締めロックは未実装です。
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
     <!-- Screens -->
     <section id="screens" class="section">
       <div class="container">
@@ -460,6 +537,8 @@
         <li>“動くデモ”として成立させるためのダミーデータ設計と公開時の安全設計（権限/入力/ログ）</li>
         <li>認可（管理者/会員）や重要ロジックを CI 上の自動テストで継続的に検証し、リファクタリング耐性を確保</li>
         <li>Heroku から ConoHa VPS へバックエンドを移行し、Docker Compose、nginx、独自ドメイン、HTTPS、PostgreSQL 永続化まで含む公開環境を構築</li>
+        <li>非同期の督促処理を外部起動可能なCLI Batchに分離し、排他・再実行・終了コード・systemd定刻起動の設計と検証を実施</li>
+        <li>API／Access間のデータ連携によって、請求・入金・入金割当の月次照合を実装（別リポジトリ）</li>
       </ul>
 
 <h3 class="h3 mt-3">今後の改善予定</h3>
@@ -534,6 +613,20 @@
                  target="_blank"
                  rel="noopener noreferrer nofollow">
                 API仕様を確認
+              </a>
+            </li>
+            <li>
+              <strong>Access月次照合ツール（別リポジトリ）：</strong>
+              <a href="https://github.com/fewioaghwrao/Invoice-Access-Operations-Tool-"
+                 target="_blank" rel="noopener noreferrer nofollow">
+                GitHubを開く
+              </a>
+            </li>
+            <li>
+              <strong>Batch設計・証跡：</strong>
+              <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite/blob/main/docs/batch/02_basic-design.md"
+                 target="_blank" rel="noopener noreferrer nofollow">
+                GitHubの設計資料を開く
               </a>
             </li>
             <li>
