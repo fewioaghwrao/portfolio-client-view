@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>請求書・入金管理 WPF クライアント｜ポートフォリオ</title>
-  <meta name="description" content="ASP.NET Core Web APIと連携する請求書・入金管理WPFクライアントの制作実績ページ。JWT認証、ロール制御、請求・入金・会員・売上・催促管理、PDF・CSV出力、MVVM設計、xUnitテストを掲載。">
+  <meta name="description" content="ASP.NET Core Web APIと連携するC# / WPF製の請求・入金管理クライアント。JWT認証、会員登録・パスワード再設定、ロール別シェル、請求・入金・売上管理、MVVM設計、xUnit・CIを紹介。">
   <meta name="author" content="N.O." />
 
   <meta property="og:type" content="website" />
@@ -59,7 +59,7 @@
           <p class="hero__lead reveal reveal-delay-1">
             <strong>Invoice Management System (Lite) のASP.NET Core Web APIを利用する、C# / WPF製の業務向けデスクトップクライアント</strong>です。<br>
             Web版と同じ請求・入金ドメインを題材に、JWT認証、Admin / Memberのロール制御、請求・入金・会員・売上・催促管理、PDF・CSV出力を実装しています。
-            WPF版では、表形式データの一覧性とデスクトップアプリらしい操作導線を意識して再構成しました。
+            新規会員登録・パスワード再設定にも対応し、ロール別シェルとサイドバーによる画面遷移、表形式データの一覧性を意識してWPF向けに再構成しました.
           </p>
 
           <div class="hero__actions reveal reveal-delay-2">
@@ -90,7 +90,7 @@
           </div>
 
           <p class="hero__note reveal reveal-delay-3">
-            ※WPFクライアント自体はデスクトップアプリのため、ブラウザ上の公開デモはありません。Web版デモでは共通する業務機能を確認できます。<br>
+            ※WPFクライアント自体はデスクトップアプリのため、ブラウザ上での直接操作には対応していません。WPF版の画面操作は上の動画デモ、共通する業務機能はWeb版デモで確認できます。<br>
             ※掲載データ・アカウント・請求情報はすべてダミーです。
           </p>
         </div>
@@ -139,6 +139,7 @@
                    href="https://github.com/fewioaghwrao/Invoice-management-system-lite/tree/main/wpfclient"
                    target="_blank"
                    rel="noopener noreferrer nofollow">GitHub</a>
+                <a class="summary-link" href="docs/invoice-wpf-demo.html" target="_blank" rel="noopener noreferrer">WPF動画デモ</a>
                 <a class="summary-link" href="../invoice.html">Web版詳細</a>
                 <a class="summary-link"
                    href="https://invoice-management-system-lite.vercel.app/auth/login"
@@ -166,7 +167,8 @@
         <article class="card reveal">
           <h3 class="card__title">実装済み（現時点）</h3>
           <ul class="card__list">
-            <li>JWTログイン／ログアウト、Admin / Memberロール別画面遷移</li>
+            <li>JWTログイン／ログアウト、新規会員登録、パスワード再設定</li>
+            <li>Admin / Memberロール別シェルとサイドバー内の画面遷移</li>
             <li>会員ダッシュボード、プロフィール確認・編集</li>
             <li>会員用請求書一覧・詳細、PDF表示、未入金状況確認</li>
             <li>管理者ダッシュボード、会員一覧・詳細・退会（無効化）</li>
@@ -204,6 +206,7 @@
             <li>ViewModel：入力値・画面状態・コマンド・画面遷移の管理</li>
             <li>Service：HttpClientを利用したAPI通信</li>
             <li>Model：DTO／Request／Response／表示用データの保持</li>
+            <li>管理者・会員ごとのシェルウィンドウ内で画面を切り替える構成</li>
             <li>Web版の単純移植ではなく、一覧性・視認性・役割別導線をWPF向けに再設計</li>
           </ul>
         </article>
@@ -211,7 +214,7 @@
         <article class="card reveal reveal-delay-3">
           <h3 class="card__title">品質・テスト</h3>
           <ul class="card__list">
-            <li>xUnitで19種類の主要ViewModelをテスト対象として整理</li>
+            <li>主要ViewModelをxUnitによる単体テスト対象として整理</li>
             <li>検索条件・ページング・集計値・バリデーション・DTO組み立てを検証</li>
             <li>IAuthServiceなどのinterfaceとFake Serviceで外部API依存を分離</li>
             <li>エラー時のHasError／ErrorMessage、画面遷移Action・Commandを検証</li>
@@ -311,6 +314,24 @@
         </figure>
 
         <figure class="work work--plain reveal reveal-delay-1">
+          <img src="images/新規会員登録画面.png" alt="WPFクライアントの新規会員登録画面" />
+          <figcaption class="work__meta">
+            <span class="work__tag">新規会員登録</span>
+            <h3 class="work__title">ログイン画面内で登録フォームに切り替え</h3>
+            <p class="work__text">ログインと同じウィンドウで会員登録を行い、登録後はログイン画面へ戻って完了メッセージを表示します。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="work work--plain reveal reveal-delay-2">
+          <img src="images/パスワード再設定画面.png" alt="WPFクライアントのパスワード再設定申請画面" />
+          <figcaption class="work__meta">
+            <span class="work__tag">パスワード再設定</span>
+            <h3 class="work__title">再設定リンクの送信を申請</h3>
+            <p class="work__text">登録済みメールアドレスに再設定リンクを送り、パスワードの再登録はリンク先のブラウザで行います。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="work work--plain reveal reveal-delay-3">
           <img src="images/ログアウト確認.png" alt="WPFクライアントのログアウト確認ダイアログ" />
           <figcaption class="work__meta">
             <span class="work__tag">ログアウト確認</span>
@@ -375,7 +396,7 @@
           <figcaption class="work__meta">
             <span class="work__tag">管理者ダッシュボード</span>
             <h3 class="work__title">請求・入金・未回収・回収率を集約</h3>
-            <p class="work__text">請求合計、未入金額、請求書数、入金数、回収率、未入金Top5、月別売上を一画面で確認できます。</p>
+            <p class="work__text">年度切替に対応し、請求・入金・未回収・回収率のKPI、四半期で絞り込める月別売上、未入金Top5と回収率ワースト顧客Top5を確認できます。</p>
           </figcaption>
         </figure>
 
@@ -416,6 +437,15 @@
         </figure>
 
         <figure class="work work--plain reveal reveal-delay-5">
+          <img src="images/管理者用請求書編集.png" alt="管理者用請求書作成・編集画面" />
+          <figcaption class="work__meta">
+            <span class="work__tag">請求書作成・編集</span>
+            <h3 class="work__title">明細行と金額計算をまとめて操作</h3>
+            <p class="work__text">会員・請求日・支払期限・明細行を入力し、行の追加・削除・並び替え、小計・税・合計の自動計算に対応しています。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="work work--plain reveal">
           <img src="images/管理者用売上一覧.png" alt="管理者用売上一覧画面" />
           <figcaption class="work__meta">
             <span class="work__tag">管理者用売上一覧</span>
