@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>請求・入金管理システム（Lite）｜ポートフォリオ</title>
-  <meta name="description" content="ASP.NET Core（.NET 10）とNext.jsによる請求・入金管理システム。共通APIとWPFクライアント、Reminder Batch、ConoHa VPS／systemd運用、Access月次照合連携の設計・実装を紹介。">
+  <meta name="description" content="ASP.NET Core（.NET 10）の共通APIをNext.js・WPF・Avaloniaの3クライアントから利用する請求・入金管理システム。MVVM移植、Reminder Batch、ConoHa VPS運用、Access月次照合連携を紹介。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -19,6 +19,26 @@
   <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
   <meta name="theme-color" content="#ffffff">
+  <style>
+    /* 3クライアント構成図: 既存 assets/styles.css を変更せずこのページ内で完結 */
+    #clients .client-arch { margin: 1.5rem 0 1.25rem; }
+    #clients .client-arch__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    #clients .client-arch__box { padding: 1.25rem; border: 1px solid rgba(85, 115, 145, .24); border-radius: 14px; background: rgba(127, 151, 173, .075); text-align: center; }
+    #clients .client-arch__box h3 { font-size: 1.12rem; margin: 0 0 .5rem; }
+    #clients .client-arch__box p { margin: 0; font-size: .94rem; line-height: 1.75; }
+    #clients .client-arch__connector { position: relative; margin: 0 auto; padding: 1.25rem 0 .75rem; text-align: center; font-size: .9rem; }
+    #clients .client-arch__connector::before { content: ''; display: block; width: 1px; height: 22px; margin: 0 auto .45rem; background: currentColor; opacity: .3; }
+    #clients .client-arch__api { max-width: 730px; margin: 0 auto; padding: 1.25rem; border: 2px solid rgba(50, 120, 180, .38); border-radius: 14px; text-align: center; background: rgba(52, 146, 213, .07); }
+    #clients .client-arch__api h3 { margin: 0 0 .4rem; font-size: 1.15rem; }
+    #clients .client-arch__api p { margin: 0; line-height: 1.7; }
+    #clients .client-arch__db { text-align: center; margin: .85rem 0 0; font-size: .93rem; }
+    #avalonia .avalonia-gallery img { width: 100%; height: auto; aspect-ratio: 16/10; object-fit: contain; background: #0b1426; }
+    #avalonia .avalonia-summary { margin-bottom: 1.75rem; }
+    @media (max-width: 720px) {
+      #clients .client-arch__row { grid-template-columns: 1fr; }
+      #clients .client-arch__box { padding: .9rem; }
+    }
+  </style>
 </head>
 
 <body>
@@ -51,8 +71,8 @@
     <div class="hero__inner hero__inner--detail">
       <div class="hero__copy">
         <p class="hero__lead reveal reveal-delay-1">
-          <strong>請求・入金・入金割当を管理する、ASP.NET Core（.NET 10）＋Next.jsの業務アプリケーション</strong>です。<br>
-          共通のWeb APIをWeb版・WPF版から利用し、認証・認可、状態遷移、監査ログ、PDF出力まで実装しています。<br>
+          <strong>ASP.NET Core（.NET 10）の共通APIを、Next.js Web版・WPF版・Avalonia版から利用する請求・入金管理システム</strong>です。<br>
+          請求書管理、入金割当、会員管理、売上集計、PDF・CSV出力に対応。Avalonia版ではWPF版のViewModel・Service・Modelを移植し、UI層を再構築することでMVVMの再利用性を検証しました。<br>
           さらに、<strong>外部起動可能なReminder Batch</strong>、VPS上のDocker／systemdによる定刻実行検証、
           <strong>Access月次照合ツール向けCSVエクスポートAPI</strong>へと拡張しています。
         </p>
@@ -106,7 +126,7 @@
       <dl class="summary-list">
         <div class="summary-list__row">
           <dt>開発期間</dt>
-          <dd>初期実装：約1ヶ月／以降、テスト・監査ログ・CI/CD・VPS移行・Batch・Access連携を継続改善</dd>
+          <dd>初期実装：約1ヶ月／以降、テスト・監査ログ・CI/CD・VPS移行・Batch・Access連携・WPF／Avalonia版を継続改善</dd>
         </div>
         <div class="summary-list__row">
           <dt>開発人数</dt>
@@ -114,7 +134,7 @@
         </div>
         <div class="summary-list__row">
           <dt>担当範囲</dt>
-          <dd>要件整理／画面・DB・API設計／Next.js／WPF／Batch／Access連携API／テスト／デプロイ／設計書</dd>
+          <dd>要件整理／画面・DB・API設計／Next.js／WPF／Avalonia移植／Batch／Access連携API／テスト／デプロイ／設計書</dd>
         </div>
         <div class="summary-list__row">
           <dt>想定ユーザー</dt>
@@ -168,6 +188,11 @@
   </div>
 
   <div>
+    <dt>Desktop Clients（ソース公開）</dt>
+    <dd>C# / WPF / Avalonia UI 12 / .NET 10 / MVVM</dd>
+  </div>
+
+  <div>
     <dt>Backend</dt>
     <dd>ASP.NET Core / .NET 10 / ConoHa VPS / Docker / nginx</dd>
   </div>
@@ -202,6 +227,53 @@
 </section>
 
 
+<!-- 3クライアント構成 -->
+<section id="clients" class="section section--alt">
+  <div class="container">
+    <header class="section__head reveal">
+      <h2 class="section__title">3クライアント共通API構成</h2>
+      <p class="section__lead">
+        UIはWeb・WPF・Avaloniaの3方式、業務ロジックと認証・認可は共通のASP.NET Core APIに集約しています。
+      </p>
+    </header>
+    <div class="client-arch reveal" role="group" aria-label="Next.js・WPF・Avaloniaの各クライアントから共通Web APIとPostgreSQLを利用する構成">
+      <div class="client-arch__row">
+        <div class="client-arch__box">
+          <h3>Web版 / Next.js</h3>
+          <p>ブラウザから利用するUI<br>Vercel / Azure Static Web Apps</p>
+        </div>
+        <div class="client-arch__box">
+          <h3>Desktop版 / WPF</h3>
+          <p>C# / .NET 10 / MVVM<br>Windows向けUI</p>
+        </div>
+        <div class="client-arch__box">
+          <h3>Desktop版 / Avalonia</h3>
+          <p>C# / .NET 10 / MVVM<br>WPF版からUI層を移植</p>
+        </div>
+      </div>
+      <div class="client-arch__connector">HTTPS / REST API / JWT</div>
+      <div class="client-arch__api">
+        <h3>共通 Backend API / ASP.NET Core（.NET 10）</h3>
+        <p>認証・認可 / 請求・入金割当 / 会員・売上管理 / PDF・CSV出力</p>
+      </div>
+      <p class="client-arch__db">↓ EF Core &nbsp;｜&nbsp; PostgreSQL 16</p>
+    </div>
+    <div class="grid cards">
+      <article class="card reveal">
+        <p class="card__role">設計上のポイント</p>
+        <h3 class="card__title">共通APIによる業務ロジックの一元化</h3>
+        <p class="card__text">各クライアントは表示と画面状態を担当し、請求ステータス再計算や権限制御などの業務処理はAPI側で管理します。</p>
+      </article>
+      <article class="card reveal reveal-delay-1">
+        <p class="card__role">WPF → Avalonia</p>
+        <h3 class="card__title">MVVMの移植性を検証</h3>
+        <p class="card__text">WPF版のViewModel・Service・Modelをほぼ再利用し、XAMLからAXAMLへの画面移植とフレームワーク固有処理の置き換えを行いました。</p>
+      </article>
+    </div>
+    <p class="note mt-2">※ Avaloniaはクロスプラットフォーム対応のUIフレームワークを採用しています。現在の対象はDesktop版で、macOS・Linux上での動作検証済みとは表記していません。</p>
+  </div>
+</section>
+
     <!-- Status -->
     <section id="status" class="section">
       <div class="container">
@@ -217,6 +289,8 @@
           <article class="card reveal">
             <h3 class="card__title">実装済み（現時点）</h3>
 <ul class="card__list">
+  <li>Web（Next.js）・WPF・Avaloniaの3クライアントから共通APIを利用</li>
+  <li>Avalonia版：WPF版のViewModel・Service・Modelを移植し、UI層を再構築</li>
   <li>認証/認可（ログイン・ロール制御）</li>
   <li>請求書：一覧/検索/詳細/作成/更新</li>
   <li>請求明細（InvoiceLines）：追加/更新/削除</li>
@@ -230,6 +304,7 @@
   <li>Reminder Batch：.NET 10 CLI、終了コード、再実行／排他制御、Docker起動</li>
   <li>VPS：systemd service／timerによるBatch定刻起動とjournalctlログ確認（検証後timer停止）</li>
   <li>Access連携：管理者向けエクスポートAPI（ZIP／請求・入金・入金割当の3 CSV）</li>
+  <li>Avalonia版：xUnit v3／Avalonia.HeadlessによるViewModelテストとCIワークフローを整備</li>
   <li>単体テスト：主要サービス層の業務ロジックを検証</li>
   <li>統合テスト：認証・認可・主要APIエンドポイントを検証</li>
   <li>Docker / GitHub Actions によるビルド・テスト自動化</li>
@@ -259,6 +334,7 @@
             <h3 class="card__title">設計方針</h3>
             <ul class="card__list">
               <li>関心の分離：API / Application / Domain / Infrastructure</li>
+               <li>WPF・Avaloniaの画面ロジックをMVVMで整理し、UI層の移植時に再利用</li>
               <li>DTO で入出力を固定し、内部実装の変更に強い構造へ</li>
               <li>一覧は標準で：検索条件・ページング・ソート</li>
             </ul>
@@ -269,6 +345,7 @@
     <li>CI（GitHub Actions）で build / test を自動実行</li>
     <li>入金割当・ステータス再計算など重要ロジックの単体テストを実装</li>
     <li>管理者 / 会員の認可について Integration Test で 403 を検証</li>
+    <li>Avalonia.HeadlessによるViewModelテストと専用GitHub Actionsワークフローを整備</li>
   </ul>
   <p class="card__text">
     業務上の重要度が高い処理から優先的にテストし、
@@ -432,7 +509,7 @@
     <section id="screens" class="section">
       <div class="container">
         <header class="section__head reveal">
-          <h2 class="section__title">画面キャプチャ</h2>
+          <h2 class="section__title">Web版の画面キャプチャ</h2>
         </header>
 
 <div class="grid works works--detail">
@@ -521,6 +598,62 @@
       </div>
     </section>
 
+<!-- Avaloniaクライアント -->
+<section id="avalonia" class="section section--alt">
+  <div class="container">
+    <header class="section__head reveal">
+      <h2 class="section__title">Avaloniaデスクトップクライアント</h2>
+      <p class="section__lead">
+        WPF版を基に移植したDesktopクライアント。共通APIを利用しながら、UIと画面操作をAvalonia UI 12向けに作り直しました。
+      </p>
+    </header>
+    <div class="avalonia-summary grid cards">
+      <article class="card reveal">
+        <p class="card__role">Migration / MVVM</p>
+        <h3 class="card__title">ViewModel・Service・Modelを再利用</h3>
+        <p class="card__text">認証、請求・入金、会員、売上などの画面ロジックをWPF版から移植。UIフレームワークの差異に合わせてXAML→AXAML、スタイル・コマンド・画面遷移処理を調整しています。</p>
+      </article>
+      <article class="card reveal reveal-delay-1">
+        <p class="card__role">UI Implementation</p>
+        <h3 class="card__title">Avalonia固有APIへの置き換え</h3>
+        <p class="card__text">ダイアログは非同期処理に変更し、ファイル保存はStorageProviderを利用。月別売上グラフはOxyPlotの代わりに自作コントロールで描画しています。</p>
+      </article>
+      <article class="card reveal reveal-delay-2">
+        <p class="card__role">Testing / CI</p>
+        <h3 class="card__title">xUnit v3 + Avalonia.Headless</h3>
+        <p class="card__text">画面ロジックのテストを移植し、Headless環境上で実行する構成とGitHub Actionsの専用ワークフローを整備しました。</p>
+      </article>
+    </div>
+    <div class="grid works works--detail avalonia-gallery">
+      <figure class="work work--plain reveal">
+        <img src="images/avalonia/管理者ダッシュボード.png" alt="Avalonia版 管理者ダッシュボード" loading="lazy">
+        <figcaption class="work__meta"><span class="work__tag">Avalonia / 管理者</span><h3 class="work__title">管理者ダッシュボード</h3><p class="work__text">売上・未入金・回収状況をまとめた管理者向けトップ画面。</p></figcaption>
+      </figure>
+      <figure class="work work--plain reveal reveal-delay-1">
+        <img src="images/avalonia/管理者用請求書一覧.png" alt="Avalonia版 管理者の請求書一覧・検索画面" loading="lazy">
+        <figcaption class="work__meta"><span class="work__tag">Avalonia / 請求管理</span><h3 class="work__title">請求書一覧・検索</h3><p class="work__text">請求書の検索と一覧表示をデスクトップ向けUIで実装。</p></figcaption>
+      </figure>
+      <figure class="work work--plain reveal reveal-delay-2">
+        <img src="images/avalonia/管理者用請求書編集.png" alt="Avalonia版 請求書編集フォーム" loading="lazy">
+        <figcaption class="work__meta"><span class="work__tag">Avalonia / 請求編集</span><h3 class="work__title">請求書の編集</h3><p class="work__text">請求明細の入力・編集とAPI連携を行う業務フォーム。</p></figcaption>
+      </figure>
+      <figure class="work work--plain reveal reveal-delay-3">
+        <img src="images/avalonia/入金一覧.png" alt="Avalonia版 入金一覧画面" loading="lazy">
+        <figcaption class="work__meta"><span class="work__tag">Avalonia / 入金管理</span><h3 class="work__title">入金一覧</h3><p class="work__text">入金情報の検索・確認、詳細画面への導線を提供。</p></figcaption>
+      </figure>
+      <figure class="work work--plain reveal reveal-delay-4">
+        <img src="images/avalonia/会員ダッシュボード.png" alt="Avalonia版 会員ダッシュボード" loading="lazy">
+        <figcaption class="work__meta"><span class="work__tag">Avalonia / 会員</span><h3 class="work__title">会員ダッシュボード</h3><p class="work__text">請求書一覧、入金状況、プロフィールへの導線を配置。</p></figcaption>
+      </figure>
+      <figure class="work work--plain reveal reveal-delay-5">
+        <img src="images/avalonia/顧客別売上一覧.png" alt="Avalonia版 顧客別売上一覧画面" loading="lazy">
+        <figcaption class="work__meta"><span class="work__tag">Avalonia / 集計</span><h3 class="work__title">顧客別売上集計</h3><p class="work__text">顧客単位の売上・回収状況を確認する集計画面。</p></figcaption>
+      </figure>
+    </div>
+    <p class="card__text mt-2">※ デスクトップ版はWebデモとは別です。ソースコード・実装内容は <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite/tree/feature/add-avalonia-client/avaloniaClient" target="_blank" rel="noopener noreferrer nofollow">Avaloniaクライアント（GitHub）</a> で確認できます。</p>
+  </div>
+</section>
+
 <!-- 学び・今後の改善予定 -->
 <section class="section">
   <div class="container">
@@ -539,6 +672,8 @@
         <li>Heroku から ConoHa VPS へバックエンドを移行し、Docker Compose、nginx、独自ドメイン、HTTPS、PostgreSQL 永続化まで含む公開環境を構築</li>
         <li>非同期の督促処理を外部起動可能なCLI Batchに分離し、排他・再実行・終了コード・systemd定刻起動の設計と検証を実施</li>
         <li>API／Access間のデータ連携によって、請求・入金・入金割当の月次照合を実装（別リポジトリ）</li>
+        <li>WPF版のViewModel・Service・ModelをAvaloniaへ移植し、業務ロジックとUIの責務分離・MVVMの再利用性を確認</li>
+        <li>Avalonia.Headless／xUnit v3による画面ロジックテストとCI環境を整備</li>
       </ul>
 
 <h3 class="h3 mt-3">今後の改善予定</h3>
@@ -614,6 +749,17 @@
                  rel="noopener noreferrer nofollow">
                 API仕様を確認
               </a>
+            </li>
+            <li>
+              <strong>Avaloniaクライアント（ソースコード）：</strong>
+              <a href="https://github.com/fewioaghwrao/Invoice-management-system-lite/tree/feature/add-avalonia-client/avaloniaClient"
+                 target="_blank" rel="noopener noreferrer nofollow">
+                GitHubで実装・READMEを確認
+              </a>
+            </li>
+            <li>
+              <strong>WPFクライアント（紹介ページ）：</strong>
+              <a href="CSharp/index.html">WPF版の画面・実装を見る</a>
             </li>
             <li>
               <strong>Access月次照合ツール（別リポジトリ）：</strong>

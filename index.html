@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ポートフォリオ</title>
 <meta name="description"
-      content="N.O.のポートフォリオ。C#／WPFを中心とした業務アプリ開発とASP.NET Web Formsの実務経験、ASP.NET Core／Next.js／.NET 10を用いた個人開発、VPS運用、外部起動バッチ、Access月次照合の成果を紹介します。">
+      content="N.O.のポートフォリオ。C#／.NETによるWeb・デスクトップ業務アプリ開発、ASP.NET Web Formsの実務経験、Next.js・WPF・Avalonia UIの3クライアント対応Invoice、VPS運用・Batch・Access連携などを紹介します。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -71,6 +71,8 @@
   <p>
     個人開発では、ASP.NET Core／Next.jsによるWebアプリや
     WPF／Avalonia UIによるデスクトップアプリを構築しています。
+    Invoiceでは共通APIを3クライアントから利用し、WPFからAvaloniaへの
+    ViewModel再利用・UI移植も検証しました。
     API・DB設計、認証・認可、CIに加え、
     Docker／VPS運用、外部起動バッチ、Access連携まで実践しています。
   </p>
@@ -145,8 +147,8 @@
   </p>
 
   <p class="card__text">
-    請求・入金管理システムでは、WebとWPFでAPIを共通化し、
-    .NET 10のReminder Batchを外部ジョブとして実装しました。
+    請求・入金管理システムでは、Next.js／WPF／Avalonia UIの3クライアントで
+    ASP.NET Core APIを共通利用し、.NET 10のReminder Batchを外部ジョブとして実装しました。
     Docker／systemdによる定刻起動・ログ確認に加え、
     Access月次照合用のCSV／ZIPエクスポートAPIも開発しています。
   </p>
@@ -245,12 +247,12 @@
   </p>
 
   <p class="card__text">
-    ポートフォリオでは、
-    ASP.NET Core APIと連携する請求書・入金管理WPFクライアントに加え、
-    Avalonia UI + SQLiteによる設備点検・保守管理アプリを実装しています。
-    MVVMによる責務分離、API／データベース連携、
-    ロール別画面遷移、業務状態管理、
-    xUnitによるViewModel・ドメインロジックの単体テストまで対応しています。
+    ポートフォリオでは、同一のASP.NET Core APIを利用するInvoiceの
+    WPF版・Avalonia版を実装しました。Avalonia版はWPF版のViewModel・Service・Modelを
+    移植し、AXAMLによるUI再構築でMVVMの再利用性を検証しています。
+    別作品としてAvalonia UI + SQLiteによる設備点検・保守管理アプリも開発。
+    ロール別画面遷移、業務状態管理、xUnit／Avalonia.Headlessによる
+    ViewModelテストまで対応しています。
   </p>
 
   <ul class="card__list">
@@ -261,7 +263,7 @@
 
 <li>
   <strong>ポートフォリオ：</strong>
-  WPF / Avalonia UI / ASP.NET Core / SQLite
+  WPF / Avalonia UI / ASP.NET Core / SQLite / xUnit
 </li>
 
     <li>
@@ -283,6 +285,12 @@
   <p class="card__links">
     <a href="CSharp/index.html">
       WPF Client
+    </a>
+
+    <span class="sep">/</span>
+
+    <a href="invoice.html#avalonia">
+      Invoice Avalonia Client
     </a>
 
     <span class="sep">/</span>
@@ -310,7 +318,7 @@
 
   <p class="card__note">
     ※ 実務で培ったWindows業務アプリ開発に加え、
-    WPFによるAPI連携クライアントと、
+    WPFからAvalonia UIへの移植事例（共通API・MVVM再利用）と、
     Avalonia UIによるローカル業務アプリの実装例を掲載しています。
   </p>
 </article>
@@ -330,8 +338,8 @@
 <a class="work reveal reveal-delay-1" href="invoice.html" aria-label="請求・入金管理システム 詳細">
   <img src="images/invoice-top.png" alt="請求・入金管理システム（Lite）">
   <div class="work__meta">
-    <span class="work__tag">請求・入金管理 / Web・WPF共通API / 外部起動Batch / Access連携</span>
-    <h3 class="work__title">C#（ASP.NET Core / .NET 10）/ Next.js・Batch</h3>
+    <span class="work__tag">請求・入金管理 / Web・WPF・Avaloniaの3クライアント / Batch・Access連携</span>
+    <h3 class="work__title">ASP.NET Core（.NET 10）/ Next.js・WPF・Avalonia UI</h3>
   </div>
 </a>
 
@@ -345,14 +353,14 @@
   </div>
 </a>
 
-<!-- ③ WPF -->
-<a class="work reveal reveal-delay-3" href="CSharp/index.html" aria-label="請求書・入金管理 WPF クライアント 詳細">
-  <img src="images/invoice-wpf-top.png" alt="請求書・入金管理 WPF クライアント">
+<!-- ③ Invoice Desktop Clients：WPF / Avalonia -->
+<a class="work reveal reveal-delay-3" href="invoice.html#clients" aria-label="請求・入金管理デスクトップクライアント WPF・Avalonia の設計と移植事例">
+  <img src="images/invoice-wpf-top.png" alt="Invoiceデスクトップクライアント（WPF版の画面）" loading="lazy">
   <div class="work__meta">
-<span class="work__tag">
-  Web版と共通のASP.NET Core APIを利用する請求・入金管理WPFクライアント
-</span>
-    <h3 class="work__title">C#（WPF / .NET 10）</h3>
+    <span class="work__tag">
+      共通ASP.NET Core API / WPFからAvaloniaへの移植 / MVVM・ViewModel再利用
+    </span>
+    <h3 class="work__title">C#（WPF / Avalonia UI / .NET 10）</h3>
   </div>
 </a>
 
